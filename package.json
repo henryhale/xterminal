@@ -39,6 +39,7 @@
     "build": "npm run clean && npm run build:ts && npm run build:js && npm run build:css",
     "lint": "eslint -c .eslintrc.json --max-warnings 0 --ext .ts source/",
     "lint:fix": "eslint \"src/**/*.ts\" --fix",
+    "prepack": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
