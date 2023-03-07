@@ -1,0 +1,68 @@
+{
+  "name": "xterminal",
+  "version": "0.1.1",
+  "description": "Build web-based cli interfaces",
+  "main": "./dist/xterminal.js",
+  "module": "./dist/xterminal.js",
+  "browser": "./dist/xterminal.js",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist",
+    "./LICENSE",
+    "./README.md"
+  ],
+  "keywords": [
+    "terminal",
+    "terminal-emulator",
+    "command-line",
+    "cli",
+    "web"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henryhale/xterminal.git"
+  },
+  "author": {
+    "name": "Henry Hale",
+    "url": "https://github.com/henryhale"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/henryhale/xterminal/issues"
+  },
+  "homepage": "https://github.com/henryhale/xterminal#readme",
+  "scripts": {
+    "clean": "del-cli out dist",
+    "build:ts": "tsc -b",
+    "build:js": "rollup -c",
+    "build:css": "postcss theme/index.css > dist/xterminal.css",
+    "build": "npm run clean && npm run build:ts && npm run build:js && npm run build:css",
+    "lint": "eslint -c .eslintrc.json --max-warnings 0 --ext .ts source/",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-terser": "^0.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.15",
+    "del-cli": "^5.0.0",
+    "eslint": "^8.35.0",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "rollup": "^3.17.3",
+    "typescript": "^4.9.5"
+  },
+  "browserslist": [
+    "last 4 versions",
+    ">1%"
+  ],
+  "engines": {
+    "node": ">=14"
+  }
+}
