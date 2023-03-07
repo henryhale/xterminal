@@ -9,9 +9,6 @@
 
 /// <reference lib="dom"/>
 
-/**
- * Terminal Constructor
- */
 declare module 'xterminal' {
 
     /**
