@@ -20,11 +20,11 @@ jobs:
 
     # Install pnpm
     - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
+      name: Install pnpm
+      id: pnpm-install
+      with:
+        version: 7
+        run_install: false
 
     # Setup pnpm store
     - name: Get pnpm store directory
