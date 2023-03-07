@@ -1,0 +1,33 @@
+name: Release NPM package
+on:
+  release:
+    types: [published]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    
+    # Checkout project repository
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Setup Node.js environment
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        registry-url: https://registry.npmjs.org/
+        node-version: 16
+
+    # Install dependencies
+    - name: Install dependencies
+      run: npm ci
+
+    # Tests
+    #- name: Run tests
+    #  run: npm run test
+    
+    # Publish version to public repository
+    - name: Publish
+      run: npm publish --verbose --access=public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
