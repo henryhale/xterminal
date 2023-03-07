@@ -20,7 +20,7 @@ jobs:
 
     # Install dependencies
     - name: Install dependencies
-      run: npm ci
+      run: pnpm ci
 
     # Tests
     #- name: Run tests
