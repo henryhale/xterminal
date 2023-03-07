@@ -1,6 +1,6 @@
 <div align="center">
 <h1>XTerminal</h1> 
-<p>Build web-based CLI interfaces.</p>
+<p><i>Build web-based CLI interfaces.</i></p>
 </div>
 
 XTerminal is a simple, lightweight and perfomant front-end component written in TypeScript that lets you create terminal-like interfaces for use in the browser.
@@ -45,7 +45,7 @@ Setup your `index.html` page as follows, add the `xterminal.js` and `xterminal.c
 
 ### Alternative installation
 
-You can add `xterminal.js` to your HTML page using [unpkg](https://unpkg.com/xterminal)
+You can add `xterminal.js` and `xterminal.css` using to your HTML page using [unpkg](https://unpkg.com/xterminal).
 
 ```html
     <link rel="stylesheet" href="https://unpkg.com/xterminal/dist/xterminal.css" />
@@ -62,6 +62,6 @@ Supporting wide range of browsers is the goal. Modern browsers, most specificall
 
 ## License
 
-Copyright (c) 2023 [Henry Hale](https://github.com/henryhale/)
+Copyright (c) 2023 [Henry Hale](https://github.com/henryhale/).
 
-Released under the [MIT License](./LICENSE)
+Released under the [MIT License](./LICENSE).
