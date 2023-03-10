@@ -4,7 +4,7 @@
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/henryhale/xterminal/npm-publish.yml">
 <img alt="npm" src="https://img.shields.io/npm/v/xterminal">
 <img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/henryhale/xterminal">
-<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/henryhale/xterminal">
+<img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/xterminal">
 <img alt="GitHub" src="https://img.shields.io/github/license/henryhale/xterminal">
 </div>
 
