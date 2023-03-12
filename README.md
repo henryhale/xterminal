@@ -20,7 +20,7 @@ XTerminal is a simple, lightweight and perfomant front-end component written in 
 - **Efficient Execution**: Commands are executed asynchronously and efficiently uses the event loop.
 - **TypeScript Support**: Smooth development with TypeScript Intellisense support in your code editor.
 
-> **Note:** **`XTerminal`** provides the user interface for building browser-based cli apps. It can't be connected to your terminal, it's entirely browser based.
+> **Note**: **`XTerminal`** provides the user interface for building browser-based cli apps. It can't be connected to your terminal, it's entirely browser based.
 > If you're searching for a full blown command line program (web terminal), then check out [xterm.js](https://github.com/xtermjs).
 
 ## Getting Started
@@ -31,7 +31,7 @@ Install the module via [NPM](https://npmjs.org/package/xterminal). Run the follo
 npm install xterminal
 ```
 
-Setup your `index.html` page as follows, add the `xterminal.js` and `xterminal.css`, create a terminal container `<div id="terminal"></div>` in which xterminal will be mounted. Instantiate the `Terminal` object and then call the `mount` function with the container reference `#terminal`.
+Setup your `index.html` page as follows, add the `xterminal.js` and `xterminal.css`, create a terminal container `<div id="terminal"></div>` in which xterminal will be mounted. Instantiate the `XTerminal` object and then call the `mount` function with the container reference `#terminal`.
 
 ```html
 <!doctype html>
@@ -57,8 +57,8 @@ Setup your `index.html` page as follows, add the `xterminal.js` and `xterminal.c
 You can add `xterminal.js` and `xterminal.css` using to your HTML page using [unpkg](https://unpkg.com/xterminal).
 
 ```html
-    <link rel="stylesheet" href="https://unpkg.com/xterminal/dist/xterminal.css" />
-    <script src="https://unpkg.com/xterminal/dist/xterminal.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/xterminal/dist/xterminal.css" />
+  <script src="https://unpkg.com/xterminal/dist/xterminal.js"></script>
 ```
 
 ## API
