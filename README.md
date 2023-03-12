@@ -46,6 +46,7 @@ Setup your `index.html` page as follows, add the `xterminal.js` and `xterminal.c
         var term = new XTerminal();
         term.mount('#terminal'); 
         term.write('Hello, Dev!\n$ ');
+        term.prompt();
       </script>
     </body>
   </html>
