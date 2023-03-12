@@ -102,6 +102,12 @@ term.focus();
 term.prompt();
 ```
 
+### Preview
+
+> **Note**: Additional content and styles were added to setup the layout in the preview.
+
+![](https://raw.githubusercontent.com/henryhale/xterminal/639745b7b76979559557f9539c536b2bc0a82bb3/example.gif)
+
 ## Browser Support
 
 Supporting wide range of browsers is the goal. Modern browsers, most specifically the latest versions of  Chrome, Firefox, Safari, and Edge (for desktop and mobile devices) are supported.
