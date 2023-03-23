@@ -104,6 +104,8 @@ term.prompt();
 
 ### Preview
 
+> **Note**: Additional layout styles were added to setup a desktop like environment on the page.
+ 
 ![](https://raw.githubusercontent.com/henryhale/xterminal/master/demo/preview.gif)
 
 ## Browser Support
