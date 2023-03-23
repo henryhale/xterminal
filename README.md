@@ -102,6 +102,10 @@ term.focus();
 term.prompt();
 ```
 
+### Live Demo
+
+Try the example online, [click here.](https://henryhale.github.io/xterminal/)
+
 ### Preview
 
 > **Note**: Additional layout styles were added to setup a desktop like environment on the page.
