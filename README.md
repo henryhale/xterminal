@@ -23,7 +23,7 @@ XTerminal is a simple, lightweight and perfomant front-end component written in 
 > **Note**: **`XTerminal`** provides the user interface for building browser-based cli apps. It can't be connected to your terminal, it's entirely browser based.
 > If you're searching for a full blown command line program (web terminal), then check out [xterm.js](https://github.com/xtermjs).
 
-### Live Demo
+## Live Demo
 
 In the `demo` subfolder, there is a quick demo. [Try it Online](https://henryhale.github.io/xterminal/).
 
