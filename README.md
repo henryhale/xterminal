@@ -16,7 +16,7 @@ XTerminal is a simple, lightweight and perfomant front-end component written in 
 - **Perfomant**: It is lightweight and really fast.
 - **Simple and minimal**: Learn the basics that can be built on top of with little configuration.
 - **Debuggable**: The natural elements (div,span,...) can be inspected in your browser's devtools.
-- **Well documented**: Right from getting started, configurations, APIs, and beyond. 
+- **Well documented**: Right from getting started, configurations, APIs, and beyond.
 - **Efficient Execution**: Commands are executed asynchronously and efficiently uses the event loop.
 - **TypeScript Support**: Smooth development with TypeScript Intellisense support in your code editor.
 
@@ -25,7 +25,7 @@ XTerminal is a simple, lightweight and perfomant front-end component written in 
 
 ## Getting Started
 
-Install the module via [NPM](https://npmjs.org/package/xterminal). Run the following command to add XTerminal as a dependency. 
+Install the module via [NPM](https://npmjs.org/package/xterminal). Run the following command to add XTerminal as a dependency.
 
 ```sh
 npm install xterminal
@@ -44,7 +44,7 @@ Setup your `index.html` page as follows, add the `xterminal.js` and `xterminal.c
       <div id="terminal"></div>
       <script>
         var term = new XTerminal();
-        term.mount('#terminal'); 
+        term.mount('#terminal');
         term.write('Hello, Dev!\n$ ');
         term.prompt();
       </script>
@@ -90,13 +90,13 @@ term.mount(
 term.writeln('Welcome to XTerminal!')
     .write('Demo\t[hint] type anything and hit enter\n# ');
 
-term.on('data', input => { 
+term.on('data', input => {
   term.writeln(input)
       .writeln("Data: " + input)
-      .write("# "); 
-  term.prompt(); 
+      .write("# ");
+  term.prompt();
 });
-     
+
 term.focus();
 
 term.prompt();
@@ -106,11 +106,11 @@ term.prompt();
 
 > **Note**: Additional content and styles were added to setup the layout in the preview.
 
-![](https://raw.githubusercontent.com/henryhale/xterminal/639745b7b76979559557f9539c536b2bc0a82bb3/example.gif)
+![](./demo/preview.gif)
 
 ## Browser Support
 
-Supporting wide range of browsers is the goal. Modern browsers, most specifically the latest versions of  Chrome, Firefox, Safari, and Edge (for desktop and mobile devices) are supported.
+Supporting wide range of browsers is the goal. Modern browsers, most specifically the latest versions of Chrome, Firefox, Safari, and Edge (for desktop and mobile devices) are supported.
 
 ## Contributing
 
@@ -121,6 +121,11 @@ Contributions are welcome, here are areas that need your help;
 - Testing
 - Documentation
 - ... anything else
+
+## Related
+
+- chalk-dom - Chalk for the browser
+- inken - Terminal-like string styling for the browser
 
 ## License
 
