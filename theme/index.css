@@ -1,62 +1,68 @@
+/**
+ * XTerminal styles
+ * @license MIT
+ * -> https://github.com/henryhale/xterminal
+ */
+
 :root {
-    --xt-bg: #191A22;
-    --xt-fg: #EFEFEF;
-    --xt-font-family: monospace;
-    --xt-font-size: min(15px, calc(2vw + 5px));
-    --xt-padding: min(6px, calc(1.25vw + 4px));
+  --xt-bg: #191a22;
+  --xt-fg: #efefef;
+  --xt-font-family: monospace;
+  --xt-font-size: min(15px, calc(2vw + 5px));
+  --xt-padding: min(6px, calc(1.25vw + 4px));
 }
 
 .xt,
 .xt *,
 .xt *::after,
 .xt *::before {
-    box-sizing: border-box;
-    font-size: var(--xt-font-size);
-    font-family: var(--xt-font-family);
+  box-sizing: border-box;
+  font-size: var(--xt-font-size);
+  font-family: var(--xt-font-family);
 }
 
 .xt {
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    background-color: var(--xt-bg);
-    color: var(--xt-fg);
-    padding: var(--xt-padding);
-    overflow-y: auto;
-    overflow-x: hidden;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    overflow-wrap: break-word;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  background-color: var(--xt-bg);
+  color: var(--xt-fg);
+  padding: var(--xt-padding);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow-wrap: break-word;
 }
 
 .xt > .xt-stdout > .xt-cursor {
-    background-color: var(--xt-fg);
-    color: var(--xt-bg);
-    border: 0.25px solid transparent;
+  background-color: var(--xt-fg);
+  color: var(--xt-bg);
+  border: 0.25px solid transparent;
 }
 
 .xt.xt-inactive > .xt-stdout > .xt-cursor {
-    background-color: transparent;
-    color: var(--xt-fg);
-    border-color: currentColor;
+  background-color: transparent;
+  color: var(--xt-fg);
+  border-color: currentColor;
 }
 
 .xt > .xt-stdin {
-    width: 100%;
-    height: 0;
-    position: relative;
-    margin-top: 2px;
+  width: 100%;
+  height: 0;
+  position: relative;
+  margin-top: 2px;
 }
 
 .xt > .xt-stdin > input {
-    border: 0 none;
-    outline: 0 none;
-    position: absolute;
-    top: -20px;
-    z-index: -100;
+  border: 0 none;
+  outline: 0 none;
+  position: absolute;
+  top: -20px;
+  z-index: -100;
 }
 
 .xt .xt-hidden {
-    display: none;
+  display: none;
 }
