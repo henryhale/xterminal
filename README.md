@@ -104,8 +104,6 @@ term.prompt();
 
 ### Preview
 
-> **Note**: Additional content and styles were added to setup the layout in the preview.
-
 ![](https://raw.githubusercontent.com/henryhale/xterminal/master/demo/preview.gif)
 
 ## Browser Support
