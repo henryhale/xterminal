@@ -104,7 +104,7 @@ term.prompt();
 
 ### Preview
 
-![](https://raw.githubusercontent.com/henryhale/xterminal/master/demo/preview-demo.gif)
+![](https://raw.githubusercontent.com/henryhale/xterminal/master/demo/preview.gif)
 
 ## Browser Support
 
