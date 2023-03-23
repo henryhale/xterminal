@@ -23,6 +23,10 @@ XTerminal is a simple, lightweight and perfomant front-end component written in 
 > **Note**: **`XTerminal`** provides the user interface for building browser-based cli apps. It can't be connected to your terminal, it's entirely browser based.
 > If you're searching for a full blown command line program (web terminal), then check out [xterm.js](https://github.com/xtermjs).
 
+### Live Demo
+
+In the `demo` subfolder, there is a quick demo. [Try it Online](https://henryhale.github.io/xterminal/).
+
 ## Getting Started
 
 Install the module via [NPM](https://npmjs.org/package/xterminal). Run the following command to add XTerminal as a dependency.
@@ -101,10 +105,6 @@ term.focus();
 
 term.prompt();
 ```
-
-### Live Demo
-
-Try the example online, [click here.](https://henryhale.github.io/xterminal/)
 
 ### Preview
 
