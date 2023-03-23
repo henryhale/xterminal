@@ -58,7 +58,7 @@ Setup your `index.html` page as follows, add the `xterminal.js` and `xterminal.c
 
 ### Alternative installation
 
-You can add `xterminal.js` and `xterminal.css` using to your HTML page using [unpkg](https://unpkg.com/xterminal).
+You can add `xterminal.js` and `xterminal.css` using to your HTML page using any CDN that ships npm packages e.g [unpkg](https://unpkg.com/xterminal).
 
 ```html
   <link rel="stylesheet" href="https://unpkg.com/xterminal/dist/xterminal.css" />
