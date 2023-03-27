@@ -129,8 +129,8 @@ Contributions are welcome, here are areas that need your help;
 
 ## Related
 
-- chalk-dom - Chalk for the browser
-- inken - Terminal-like string styling for the browser
+- [chalk-dom](https://github.com/henryhale/chalk-dom) - Chalk for the browser
+- [inken](https://github.com/henryhale/inken) - Terminal-like string styling for the browser
 
 ## License
 
