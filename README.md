@@ -1,7 +1,7 @@
 <div align="center">
 <img width="75" height="75" src="https://raw.githubusercontent.com/henryhale/xterminal/master/assets/logo.png" />
 <h1>XTerminal</h1> 
-<p><i>Build web-based CLI interfaces.</i></p>
+<p><i>Build web-based command line interfaces.</i></p>
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/henryhale/xterminal/npm-publish.yml">
 <img alt="npm" src="https://img.shields.io/npm/v/xterminal">
 <img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/henryhale/xterminal">
