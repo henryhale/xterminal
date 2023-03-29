@@ -1,10 +1,17 @@
-import Disposable from '../base/Disposable';
-import { IReactive, IRenderer, IKeyBindings  } from '../types';
-import { createEffect, ref } from '../base/Reactivity';
-import { cancelEvent, getCursorPosition, h, initBuild, parseOutput, SPACE, THEME } from './dom';
-import { bounce, debouncer } from '../base/Debouncer';
-import { isFunction, isObject } from '../helpers';
-
+import Disposable from "../base/Disposable";
+import { IReactive, IRenderer, IKeyBindings } from "../types";
+import { createEffect, ref } from "../base/Reactivity";
+import {
+    cancelEvent,
+    getCursorPosition,
+    h,
+    initBuild,
+    parseOutput,
+    SPACE,
+    THEME
+} from "./dom";
+import { bounce, debouncer } from "../base/Debouncer";
+import { isFunction, isObject } from "../helpers";
 
 export default class XRenderer extends Disposable implements IRenderer {
     private _data: IReactive<string>;
@@ -21,7 +28,7 @@ export default class XRenderer extends Disposable implements IRenderer {
     constructor() {
         super();
 
-        this._data = ref<string>('');
+        this._data = ref<string>("");
         this._isActive = ref<boolean>(false);
         this._ptr = ref<number>(0);
         this._canInput = ref(false);
@@ -39,14 +46,14 @@ export default class XRenderer extends Disposable implements IRenderer {
         this._initEffects();
 
         this.mount = mount;
-
     }
 
     private _on(
-        el: Element | Document, 
-        type: string, 
+        el: Element | Document,
+        type: string,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        handler: (e: any) => void, opt?: boolean
+        handler: (e: any) => void,
+        opt?: boolean
     ) {
         el.addEventListener(type, handler, opt);
         let disposed = false;
@@ -56,11 +63,11 @@ export default class XRenderer extends Disposable implements IRenderer {
                 el.removeEventListener(type, handler, opt);
                 disposed = true;
             }
-        }
+        };
     }
-    
+
     private _initEvents() {
-        let buffer = '';
+        let buffer = "";
         const inputHandler = debouncer();
         const cursorHandler = debouncer();
 
@@ -75,59 +82,88 @@ export default class XRenderer extends Disposable implements IRenderer {
             this._scrollDown();
         };
 
-        const setInputValue = (val = '', dir?: number) => {
+        const setInputValue = (val = "", dir?: number) => {
             if (dir === 1 && !val) {
                 return;
             } else if (dir === 2 && !val && buffer) {
                 val = buffer;
             }
-            val = val || '';
+            val = val || "";
             if (this._el.inputBox) this._el.inputBox.value = val;
             this._data.value = val;
             this._ptr.value = val.length;
         };
 
-        this.register(this._on(this._el.term, 'focus', () => this.focusInput()));
-        this.register(this._on(this._el.inputBox, 'focus', () => this._isActive.value = true));
-        this.register(this._on(this._el.inputBox, 'blur', () => this._isActive.value = false));
+        this.register(
+            this._on(this._el.term, "focus", () => this.focusInput())
+        );
+        this.register(
+            this._on(
+                this._el.inputBox,
+                "focus",
+                () => (this._isActive.value = true)
+            )
+        );
+        this.register(
+            this._on(
+                this._el.inputBox,
+                "blur",
+                () => (this._isActive.value = false)
+            )
+        );
 
-        this.register(this._on(this._el.inputBox, 'input', () => {
-            inputHandler(() => {
-                this._data.value = (buffer = this._el.inputBox.value);
-            });
-            cursorHandler(setCursorPosition);
-        }));
+        this.register(
+            this._on(this._el.inputBox, "input", () => {
+                inputHandler(() => {
+                    this._data.value = buffer = this._el.inputBox.value;
+                });
+                cursorHandler(setCursorPosition);
+            })
+        );
 
-        this.register(this._on(this._el.inputBox, 'keyup', () => cursorHandler(setCursorPosition)));
+        this.register(
+            this._on(this._el.inputBox, "keyup", () =>
+                cursorHandler(setCursorPosition)
+            )
+        );
 
-        this.register(this._on(this._el.inputBox, 'keydown', (e: KeyboardEvent) => {
-            const key = (e?.key || '').toLowerCase();
-            if (key === 'enter') buffer = '';
-            if (key in this._bindings) {
-                const isNormalKey = 'cl'.includes(key);
-                if (!isNormalKey || (isNormalKey && e?.ctrlKey)) {
-                    cancelEvent(e); 
+        this.register(
+            this._on(this._el.inputBox, "keydown", (e: KeyboardEvent) => {
+                const key = (e?.key || "").toLowerCase();
+                if (key === "enter") buffer = "";
+                if (key in this._bindings) {
+                    const isNormalKey = "cl".includes(key);
+                    if (!isNormalKey || (isNormalKey && e?.ctrlKey)) {
+                        cancelEvent(e);
+                    }
+                    if (key === "enter") {
+                        bounce(this._bindings[key], this._data.value);
+                        bounce(setInputValue, buffer);
+                    } else if (key === "arrowup") {
+                        bounce(this._bindings[key], (val: string) =>
+                            setInputValue(val, 1)
+                        );
+                    } else if (key === "arrowdown") {
+                        bounce(this._bindings[key], (val: string) =>
+                            setInputValue(val, 2)
+                        );
+                    } else if (key === "tab") {
+                        bounce(
+                            this._bindings[key],
+                            (val: string) => val && setInputValue(val),
+                            this._data.value || buffer || ""
+                        );
+                    } else if (e?.ctrlKey && isNormalKey) {
+                        cancelEvent(e);
+                        bounce(this._bindings[key]);
+                    }
                 }
-                if (key === 'enter') {
-                    bounce(this._bindings[key], this._data.value);
-                    bounce(setInputValue, buffer);
-                } else if (key === 'arrowup') {
-                    bounce(this._bindings[key], (val: string) => setInputValue(val, 1));
-                } else if (key === 'arrowdown') {
-                    bounce(this._bindings[key], (val: string) => setInputValue(val, 2));
-                } else if (key === 'tab') {
-                    bounce(this._bindings[key], (val: string) => val && setInputValue(val), this._data.value || buffer || '');
-                } else if (e?.ctrlKey && isNormalKey) {
-                    cancelEvent(e);
-                    bounce(this._bindings[key]);
-                }
-            }
-            cursorHandler(setCursorPosition);
-        }));
+                cursorHandler(setCursorPosition);
+            })
+        );
     }
 
     private _initEffects() {
-        
         createEffect(() => {
             const active = this._isActive.value;
             const hasClass = this._el.term.classList.contains(THEME.INACTIVE);
@@ -140,17 +176,18 @@ export default class XRenderer extends Disposable implements IRenderer {
         });
 
         createEffect(() => {
-            const i = this._ptr.value, d = this._data.value;
+            const i = this._ptr.value,
+                d = this._data.value;
             if (!this._canInput.value) {
                 this._el.cursor.innerHTML = SPACE;
                 return;
             }
             const a = d.substring(0, i);
-            const b = d.substring(i, i+1);
-            const c = d.substring(i+1);
-            this._el.txtBefore.innerHTML =  a.replace(/\s{2}/g, ' '+SPACE);
-            this._el.cursor.innerHTML = (!b || b === ' ') ? SPACE : b;
-            this._el.txtAfter.innerHTML = c.replace(/\s{2}/g, ' '+SPACE);
+            const b = d.substring(i, i + 1);
+            const c = d.substring(i + 1);
+            this._el.txtBefore.innerHTML = a.replace(/\s{2}/g, " " + SPACE);
+            this._el.cursor.innerHTML = !b || b === " " ? SPACE : b;
+            this._el.txtAfter.innerHTML = c.replace(/\s{2}/g, " " + SPACE);
         });
 
         createEffect(() => {
@@ -167,13 +204,16 @@ export default class XRenderer extends Disposable implements IRenderer {
     private _scrollDown() {
         if (this._el.term) {
             this._el.term.scrollTo(0, this._el.term.scrollHeight);
-        } 
+        }
     }
 
     public setKeyBindings(options: IKeyBindings): void {
         if (!isObject(options)) return;
         for (const key in options) {
-            if (Object.hasOwnProperty.call(options, key) && isFunction(options[key])) {
+            if (
+                Object.hasOwnProperty.call(options, key) &&
+                isFunction(options[key])
+            ) {
                 this._bindings[key] = options[key];
             }
         }
@@ -193,7 +233,7 @@ export default class XRenderer extends Disposable implements IRenderer {
 
     public clearConsole(): void {
         if (this._el.consoleBox) {
-            this._el.consoleBox.innerHTML = '';
+            this._el.consoleBox.innerHTML = "";
         }
     }
 
@@ -203,9 +243,7 @@ export default class XRenderer extends Disposable implements IRenderer {
 
     public output(data: string): void {
         if (!data || !this._el.consoleBox) return;
-        this._el.consoleBox.appendChild(
-            h('span',{ html: parseOutput(data) })
-        );
+        this._el.consoleBox.appendChild(h("span", { html: parseOutput(data) }));
         this._scrollDown();
     }
 
@@ -216,5 +254,4 @@ export default class XRenderer extends Disposable implements IRenderer {
         this._bindings = {};
         this._el.term.parentNode?.removeChild(this._el.term);
     }
-    
 }

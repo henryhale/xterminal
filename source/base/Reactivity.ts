@@ -1,5 +1,5 @@
-import { isFunction } from '../helpers';
-import { IEffect, IReactive } from '../types';
+import { isFunction } from "../helpers";
+import { IEffect, IReactive } from "../types";
 
 let observer: IEffect | null;
 
@@ -13,14 +13,14 @@ export function ref<T>(value: T): IReactive<T> {
         },
         set value(newValue) {
             value = newValue;
-            if (!disposed) observers.forEach(o => o.call(undefined));
+            if (!disposed) observers.forEach((o) => o.call(undefined));
         },
         dispose() {
             if (disposed) return;
             disposed = true;
             observers.clear();
         }
-    }
+    };
 }
 
 export function createEffect(fn: IEffect): void {

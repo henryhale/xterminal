@@ -37,10 +37,11 @@
     "build:js": "rollup -c",
     "build:css": "postcss theme/index.css > dist/xterminal.css",
     "build": "pnpm clean && pnpm build:ts && pnpm build:js && pnpm build:css",
-    "lint": "eslint -c .eslintrc.json --max-warnings 0 --ext .ts source/",
-    "lint:fix": "eslint \"src/**/*.ts\" --fix",
+    "lint": "eslint -c .eslintrc.json --max-warnings 0 --ext .ts source/ theme/ types/",
+    "lint:fix": "eslint \"source/**/*.ts\" --fix",
     "prepack": "pnpm build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
@@ -48,15 +49,18 @@
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-terser": "^0.4.0",
-    "@typescript-eslint/eslint-plugin": "^5.56.0",
-    "@typescript-eslint/parser": "^5.56.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
     "autoprefixer": "^10.4.14",
     "cssnano": "^5.1.15",
     "del-cli": "^5.0.0",
-    "eslint": "^8.36.0",
+    "eslint": "^8.37.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
-    "rollup": "^3.20.1",
+    "prettier": "^2.8.7",
+    "rollup": "^3.20.2",
     "typescript": "^5.0.2"
   },
   "browserslist": [

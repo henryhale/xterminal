@@ -1,36 +1,46 @@
-import Disposable from '../base/Disposable';
-import { XError } from '../base/Error';
-import { isFunction } from '../helpers';
-import { IEventEmitter, IEventListener, IEventName } from '../types';
+import Disposable from "../base/Disposable";
+import { XError } from "../base/Error";
+import { isFunction } from "../helpers";
+import { IEventEmitter, IEventListener, IEventName } from "../types";
 
 export default class XEventEmitter extends Disposable implements IEventEmitter {
-    
     private _store: Map<IEventName, Set<IEventListener>>;
     private _canEmit: boolean;
     public isEmitting: boolean;
-    
+
     constructor() {
         super();
         this._store = new Map();
         this._canEmit = true;
         this.isEmitting = false;
-        
+
         this.register({ dispose: () => this._store.clear() });
     }
 
-    private _addEventListener(ev: IEventName, listener: IEventListener, once = false): this {
-        if (!(typeof ev === 'string' || typeof ev == 'symbol')) {
-            throw new XError("EventEmitter: The event name (first argument) should either be a string or symbol, got '"+(typeof ev)+"'");
+    private _addEventListener(
+        ev: IEventName,
+        listener: IEventListener,
+        once = false
+    ): this {
+        if (!(typeof ev === "string" || typeof ev == "symbol")) {
+            throw new XError(
+                "EventEmitter: The event name (first argument) should either be a string or symbol, got '" +
+                    typeof ev +
+                    "'"
+            );
         }
         if (!isFunction(listener)) {
-            throw new XError("EventEmitter: The event listener (second argument) is required and must be a function, got "+(typeof listener));
+            throw new XError(
+                "EventEmitter: The event listener (second argument) is required and must be a function, got " +
+                    typeof listener
+            );
         }
         const evlistener = !once
             ? listener
             : (arg1?: unknown, arg2?: unknown) => {
-                listener.call(undefined, arg1, arg2);
-                this.off(ev, listener);
-            };
+                  listener.call(undefined, arg1, arg2);
+                  this.off(ev, listener);
+              };
         if (this._store.has(ev)) {
             this._store.get(ev)?.add(evlistener);
         } else {
@@ -55,7 +65,7 @@ export default class XEventEmitter extends Disposable implements IEventEmitter {
                 if (arr[i] === eventListener) {
                     all.delete(eventListener);
                     break;
-                }       
+                }
             }
         }
         return this;
@@ -80,5 +90,4 @@ export default class XEventEmitter extends Disposable implements IEventEmitter {
             this._canEmit = false;
         }
     }
-
 }

@@ -1,7 +1,6 @@
-import { IDisposable } from '../types';
+import { IDisposable } from "../types";
 
 export default class Disposable implements IDisposable {
-    
     private _isDisposed: boolean;
     private _disposables: IDisposable[];
 
@@ -27,5 +26,4 @@ export default class Disposable implements IDisposable {
         }
         this._disposables.length = 0;
     }
-
 }

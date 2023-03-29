@@ -1,6 +1,10 @@
-import { isFunction } from '../helpers';
+import { isFunction } from "../helpers";
 
-export function bounce(fn: TimerHandler, arg1?: unknown, arg2?: unknown): number {
+export function bounce(
+    fn: TimerHandler,
+    arg1?: unknown,
+    arg2?: unknown
+): number {
     return setTimeout(fn, 0, arg1, arg2);
 }
 

@@ -1,63 +1,71 @@
-import { isArray, isObject } from '../helpers';
-import { IElementProps } from '../types';
+import { isArray, isObject } from "../helpers";
+import { IElementProps } from "../types";
 
 export const THEME = {
-    CONTAINER: 'xt',
-    HIDDEN: 'xt-hidden',
-    INACTIVE: 'xt-inactive',
-    CURSOR: 'xt-cursor',
-    STDOUT: 'xt-stdout',
-    STDIN: 'xt-stdin',
+    CONTAINER: "xt",
+    HIDDEN: "xt-hidden",
+    INACTIVE: "xt-inactive",
+    CURSOR: "xt-cursor",
+    STDOUT: "xt-stdout",
+    STDIN: "xt-stdin"
 };
 
-export function h<T extends HTMLElement>(tag: string, options?: IElementProps): T {
+export function h<T extends HTMLElement>(
+    tag: string,
+    options?: IElementProps
+): T {
     const elem = document.createElement(tag);
-    if (typeof options !== 'object' || options === null) {
+    if (typeof options !== "object" || options === null) {
         return elem as T;
     }
-    if (options?.id) elem.id = options.id || '';
-    if (options?.class) elem.className = options.class || '';
+    if (options?.id) elem.id = options.id || "";
+    if (options?.class) elem.className = options.class || "";
     if (options?.content) {
-        elem.appendChild(document.createTextNode(''+options.content));
+        elem.appendChild(document.createTextNode("" + options.content));
     }
     if (options?.html) elem.innerHTML = options.html;
     if (isArray(options?.children)) {
-        options.children.forEach(c => elem.append(c));
+        options.children.forEach((c) => elem.append(c));
     }
     if (isObject(options?.props)) {
-        Object.entries(options.props).forEach(v => elem.setAttribute(v[0], v[1]));
+        Object.entries(options.props).forEach((v) =>
+            elem.setAttribute(v[0], v[1])
+        );
     }
     return elem as T;
 }
 
-export const SPACE = '&nbsp;';
+export const SPACE = "&nbsp;";
 
 export function initBuild() {
-    const consoleBox = h<HTMLSpanElement>('span');
-    const txtBefore = h<HTMLSpanElement>('span');
-    const cursor = h<HTMLSpanElement>('span', { class: THEME.CURSOR, html: SPACE });
-    const txtAfter = h<HTMLSpanElement>('span');
-    const inputBox = h<HTMLInputElement>('input', {
+    const consoleBox = h<HTMLSpanElement>("span");
+    const txtBefore = h<HTMLSpanElement>("span");
+    const cursor = h<HTMLSpanElement>("span", {
+        class: THEME.CURSOR,
+        html: SPACE
+    });
+    const txtAfter = h<HTMLSpanElement>("span");
+    const inputBox = h<HTMLInputElement>("input", {
         props: {
             autofocus: true,
-            spellcheck: 'false',
-            autocomplete: 'off',
+            spellcheck: "false",
+            autocomplete: "off"
         }
     });
 
-    const term = h<HTMLDivElement>('div', {
+    const term = h<HTMLDivElement>("div", {
         class: THEME.CONTAINER,
         props: { tabindex: 0 },
         children: [
-            h<HTMLDivElement>('div', { 
+            h<HTMLDivElement>("div", {
                 class: THEME.STDOUT,
                 children: [consoleBox, txtBefore, cursor, txtAfter]
             }),
-            h<HTMLDivElement>('div', { 
-                class: THEME.STDIN, 
-                children: [inputBox] 
+            h<HTMLDivElement>("div", {
+                class: THEME.STDIN,
+                children: [inputBox]
             })
-        ] 
+        ]
     });
 
     const fragment = document.createDocumentFragment();
@@ -66,7 +74,7 @@ export function initBuild() {
     return {
         mount(el: HTMLElement) {
             if (el instanceof HTMLElement) {
-                el.innerHTML = '';
+                el.innerHTML = "";
                 el.appendChild(fragment);
             }
         },
@@ -80,14 +88,14 @@ export function cancelEvent(e: Event): void {
 }
 
 export function parseOutput(data: string): string {
-    return ('' + data)
-        .replace(/\t/g, SPACE.repeat(4))    // Tab size -> 4 spaces
-        .replace(/(\n)|(\r\n)/g, '<br />');
+    return ("" + data)
+        .replace(/\t/g, SPACE.repeat(4)) // Tab size -> 4 spaces
+        .replace(/(\n)|(\r\n)/g, "<br />");
 }
 
-// TODO: compactibility check 
+// TODO: compactibility check
 export function getCursorPosition<T extends HTMLElement>(field: T): number {
-    if ('selectionStart' in field) {
+    if ("selectionStart" in field) {
         return field.selectionStart as number;
     }
     return 0;

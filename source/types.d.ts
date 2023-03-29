@@ -23,12 +23,12 @@ export interface IReactive<T> extends IDisposable {
  * Render function - element props
  */
 interface IElementProps {
-    id?: string,
-    class?: string,
-    content?: string,
-    html?: string,
-    children?: (string | Node)[],
-    props?: object
+    id?: string;
+    class?: string;
+    content?: string;
+    html?: string;
+    children?: (string | Node)[];
+    props?: object;
 }
 
 /**
@@ -68,7 +68,7 @@ export interface IHistory {
 }
 
 /**
- * Events 
+ * Events
  */
 export type IEventName = string | symbol;
 

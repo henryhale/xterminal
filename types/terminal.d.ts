@@ -9,8 +9,7 @@
 
 /// <reference lib="dom"/>
 
-declare module 'xterminal' {
-
+declare module "xterminal" {
     /**
      * An object that can be disposed via a dispose function.
      */
@@ -40,7 +39,7 @@ declare module 'xterminal' {
 
     /**
      * Event emitter
-     * 
+     *
      * It extends the Disposable class.
      */
     export class IEventEmitter extends IDisposable {
@@ -51,29 +50,29 @@ declare module 'xterminal' {
 
         /**
          * Appends a event listener to the specified event.
-         * 
+         *
          * The listener is invoked everytime the event is dispatched.
          */
         on: IAddEventListener<this>;
 
         /**
          * Appends a event listener to the specified event.
-         * 
+         *
          * The listener is invoked _only once_ when the event is dispatched.
-         * 
+         *
          * _It is deleted thereafter._
          */
         once: IAddEventListener<this>;
 
         /**
          * Removes an event listener from the specified event.
-         * 
+         *
          * The listener won't be invoked on event dispatch thereafter.
          */
         off: IAddEventListener<this>;
 
         /**
-         * 
+         *
          * @param event The event name to dispatch.
          * @param arg1 data to be passed to the event listener.
          * @param arg2 data to be passed to the event listener.
@@ -82,10 +81,10 @@ declare module 'xterminal' {
 
         /**
          * Terminates the currently dispatched event.
-         * 
+         *
          * NB: This waits for the currently executing function, and breaks
          * the loops in which listeners are being invoked.
-         * 
+         *
          * This is useful some cases like, emitting an event during another
          * event's dispatch to achieve more control.
          */
@@ -96,7 +95,6 @@ declare module 'xterminal' {
      * Terminal
      */
     export default class Terminal extends IEventEmitter {
-        
         /**
          * Blurs the terminal.
          */
@@ -109,9 +107,9 @@ declare module 'xterminal' {
 
         /**
          * Mounts the terminal instance in the `target` HTMLElement.
-         * 
+         *
          * If the selector is given, the first element is used.
-         * 
+         *
          * @param target An HTMLElement in which the terminal will be mounted.
          */
         mount(target: HTMLElement | string): void;
@@ -121,24 +119,24 @@ declare module 'xterminal' {
          *
          * This detaches all event listeners, unmounts the terminal from the DOM,
          * and clears the backing functionality of the terminal.
-         * 
+         *
          * _The terminal should not be used again once disposed._
-         * 
+         *
          */
         dispose(): void;
 
         /**
          * Clear the entire terminal.
-         * 
+         *
          * This triggers the `clear` event.
          */
         clear(): void;
 
         /**
          * Write data to the terminal.
-         * 
+         *
          * Write operations can be chained or access the instance after a write
-         * 
+         *
          * @param data The data to write to the terminal.
          * @returns this reference to the terminal instance.
          */
@@ -146,9 +144,9 @@ declare module 'xterminal' {
 
         /**
          * Write data to the terminal, followed by a break line character (\n).
-         * 
+         *
          * Write operations can be chained or access the instance after a write
-         * 
+         *
          * @param data The data to write to the terminal.
          * @returns this reference to the terminal instance.
          */
@@ -161,7 +159,7 @@ declare module 'xterminal' {
 
         /**
          * Sets the autocomplete function that is invoked on Tab key.
-         * 
+         *
          * @param fn completer function that takes a string input and return a better
          * completion.
          */
@@ -169,21 +167,20 @@ declare module 'xterminal' {
 
         /**
          * Suspends the currently dispatched event, and triggers the `close` event.
-         * 
-         * This could be useful to notify the backing shell that the process needs to be 
-         * closed/terminated. 
+         *
+         * This could be useful to notify the backing shell that the process needs to be
+         * closed/terminated.
          */
         terminate(): void;
-        
+
         /**
          * Activates the terminal to be ready for input.
          */
         prompt(): void;
 
         /**
-         * Version number 
+         * Version number
          */
         version: string;
     }
-
 }
