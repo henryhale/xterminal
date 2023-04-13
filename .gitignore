@@ -16,10 +16,6 @@ pids
 
 # Dependency directories
 node_modules/
-jspm_packages/
-
-# TypeScript v1 declaration files
-# typings/
 
 # TypeScript cache
 *.tsbuildinfo
@@ -57,5 +53,3 @@ out/
 
 # Build output
 dist/
-
-pnpm-lock.yaml
