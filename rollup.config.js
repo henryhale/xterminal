@@ -12,7 +12,7 @@ const banner = `
  *  XTerminal - v${pkg.version}
  *  @author Henry Hale
  *  @license MIT
- *  -> https://github.com/henryhale/xterminal
+ *  @url https://github.com/henryhale/xterminal
  */`;
 
 function copyToDist() {
