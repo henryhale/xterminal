@@ -21,7 +21,7 @@
         "prettier/prettier": "error"
     },
     "ignorePatterns": [
-        "**/typings/*.d.ts",
+        "**/types",
         "**/node_modules",
         "**/*.js"
     ]
