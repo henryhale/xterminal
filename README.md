@@ -28,6 +28,8 @@ XTerminal is a simple, lightweight and perfomant front-end component written in 
 
 In the `demo` subfolder, there is a quick demo. [Try it Online](https://henryhale.github.io/xterminal/).
 
+![](https://raw.githubusercontent.com/henryhale/xterminal/master/demo/screenshot.png)
+
 ## Getting Started
 
 Install the module via [NPM](https://npmjs.org/package/xterminal). Run the following command to add XTerminal as a dependency.
