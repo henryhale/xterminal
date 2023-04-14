@@ -9,7 +9,14 @@
 <img alt="GitHub" src="https://img.shields.io/github/license/henryhale/xterminal">
 </div>
 
-XTerminal is a simple, lightweight and perfomant front-end component written in TypeScript that lets you create terminal-like interfaces for use in the browser.
+## What is XTerminal?
+
+`XTerminal` is a simple, lightweight and perfomant front-end component written in TypeScript that lets you create terminal-like interfaces for use in the browser.
+It only provides the platform for rendering terminal output and accepting keyboard input, that is a terminal emulator.
+
+> **Note:** It can't be connected to your terminal nor ssh, it's entirely browser based.
+> If you're searching for a full blown command line program (web terminal), then check out [xterm.js](https://github.com/xtermjs).
+
 
 ## Key Features
 
@@ -20,9 +27,6 @@ XTerminal is a simple, lightweight and perfomant front-end component written in 
 - **Well documented**: Right from getting started, configurations, APIs, and beyond.
 - **Efficient Execution**: Commands are executed asynchronously and efficiently uses the event loop.
 - **TypeScript Support**: Smooth development with TypeScript Intellisense support in your code editor.
-
-> **Note**: **`XTerminal`** provides the user interface for building browser-based cli apps. It can't be connected to your terminal, it's entirely browser based.
-> If you're searching for a full blown command line program (web terminal), then check out [xterm.js](https://github.com/xtermjs).
 
 ## Live Demo
 
