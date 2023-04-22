@@ -135,4 +135,4 @@ Contributions are welcome, here are areas that need your help;
 
 Copyright (c) 2023 [Henry Hale](https://github.com/henryhale/).
 
-Released under the [MIT License](./LICENSE.txt).
+Released under the [MIT License](https://github.com/henryhale/xterminal/blob/master/LICENSE.txt).
