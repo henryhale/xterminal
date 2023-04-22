@@ -25,7 +25,6 @@ It only provides the platform for rendering terminal output and accepting keyboa
 - **Simple and minimal**: Learn the basics that can be built on top of with little configuration.
 - **Debuggable**: The natural elements (div,span,...) can be inspected in your browser's devtools.
 - **Well documented**: Right from getting started, configurations, APIs, and beyond.
-- **Efficient Execution**: Commands are executed asynchronously and efficiently uses the event loop.
 - **TypeScript Support**: Smooth development with TypeScript Intellisense support in your code editor.
 
 ## Live Demo
@@ -136,4 +135,4 @@ Contributions are welcome, here are areas that need your help;
 
 Copyright (c) 2023 [Henry Hale](https://github.com/henryhale/).
 
-Released under the [MIT License](./LICENSE).
+Released under the [MIT License](./LICENSE.txt).
