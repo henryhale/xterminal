@@ -1,4 +1,5 @@
 /**
+ * @author Henry Hale
  * @license MIT
  *
  * This contains the type declarations for the xterminal library. Note that
