@@ -38,7 +38,7 @@
     "build:css": "postcss theme/index.css > dist/xterminal.css",
     "build": "pnpm clean && pnpm build:ts && pnpm build:js && pnpm build:css",
     "lint": "eslint -c .eslintrc.json --max-warnings 0 --ext .ts source/ types/",
-    "lint:fix": "eslint \"source/**/*.ts\" --fix",
+    "lint:fix": "eslint \"source/**/*.ts\" \"types/*.ts\" --fix",
     "prepack": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
