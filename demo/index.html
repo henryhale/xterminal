@@ -10,14 +10,32 @@
       href="https://unpkg.com/xterminal/dist/xterminal.css"
     />
     <style type="text/css">
-      h1,
-      p {
-        text-align: center;
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      h1 {
+        display: none;
       }
       #term {
-        max-width: 600px;
-        margin: 0 auto;
-        height: 400px;
+        width: 100vw;
+        height: 100vh;
+        border: 4px solid #aaa;
+      }
+      @media screen and (min-width: 961px) {
+        h1 {
+          display: block;
+          text-align: center;
+        }
+        #term {
+          max-width: 600px;
+          margin: 0 auto;
+          height: 400px;
+        }
       }
     </style>
   </head>
