@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  display: none;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  border: 4px solid #aaa;
+}
+
+.center {
+  text-align: center;
+}
+
+@media screen and (min-width: 961px) {
+  
+  h1 {
+    display: block;
+    text-align: center;
+  }
+
+  #app {
+    max-width: 600px;
+    margin: 0 auto;
+    height: 400px;
+  }
+  
+}

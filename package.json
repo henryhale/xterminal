@@ -1,73 +1,22 @@
 {
-  "name": "xterminal",
-  "version": "1.1.0",
-  "description": "Build web-based cli interfaces",
-  "main": "./dist/xterminal.js",
-  "module": "./dist/xterminal.js",
-  "browser": "./dist/xterminal.js",
-  "types": "./dist/types.d.ts",
-  "files": [
-    "dist",
-    "./LICENSE",
-    "./README.md"
-  ],
-  "keywords": [
-    "terminal",
-    "terminal-emulator",
-    "command-line",
-    "cli",
-    "web"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/henryhale/xterminal.git"
-  },
+  "name": "xterminal-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "author": {
     "name": "Henry Hale",
     "url": "https://github.com/henryhale"
   },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/henryhale/xterminal/issues"
-  },
-  "homepage": "https://github.com/henryhale/xterminal#readme",
   "scripts": {
-    "clean": "del-cli out dist",
-    "build:ts": "tsc -b",
-    "build:js": "rollup -c",
-    "build:css": "postcss theme/index.css > dist/xterminal.css",
-    "build": "pnpm clean && pnpm build:ts && pnpm build:js && pnpm build:css",
-    "lint": "eslint -c .eslintrc.json --max-warnings 0 --ext .ts source/ types/",
-    "lint:fix": "eslint \"source/**/*.ts\" \"types/*.ts\" --fix",
-    "prepack": "pnpm build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.4",
-    "@babel/preset-env": "^7.21.4",
-    "@rollup/plugin-babel": "^6.0.3",
-    "@rollup/plugin-replace": "^5.0.2",
-    "@rollup/plugin-terser": "^0.4.1",
-    "@typescript-eslint/eslint-plugin": "^5.59.0",
-    "@typescript-eslint/parser": "^5.59.0",
-    "autoprefixer": "^10.4.14",
-    "cssnano": "^6.0.0",
-    "del-cli": "^5.0.0",
-    "eslint": "^8.39.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.3",
-    "postcss": "^8.4.23",
-    "postcss-cli": "^10.1.0",
-    "prettier": "^2.8.8",
-    "rollup": "^3.21.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "vite": "^4.3.3"
   },
-  "browserslist": [
-    "last 4 versions",
-    ">1%"
-  ],
-  "engines": {
-    "node": ">=14"
+  "dependencies": {
+    "xterminal": "^1.1.0"
   }
 }
