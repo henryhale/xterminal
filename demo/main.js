@@ -6,6 +6,11 @@ term.mount(
     document.getElementById('term')
 );
 
+term.writeln(`<span style="text-align: center"><pre>  _   _   _   _   _   _   _   _   _  
+ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ / \\ 
+-  X   T   E   R   M   I   N   A   L  -
+ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ </pre></span>`);
+
 term.writeln('Welcome to XTerminal!')
     .writeln('\nNote: This is just a simple demo with no backing shell,')
     .writeln('Just type anything and hit enter.')
