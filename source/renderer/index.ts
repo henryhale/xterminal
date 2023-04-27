@@ -12,6 +12,13 @@ import {
 } from "./dom";
 import { bounce, debouncer } from "../base/Debouncer";
 import { isFunction, isObject } from "../helpers";
+import {
+    ARROW_DOWN_KEY,
+    ARROW_UP_KEY,
+    ENTER_KEY,
+    TAB_KEY,
+    getEventKeyNames
+} from "./keys";
 
 export default class XRenderer extends Disposable implements IRenderer {
     private _data: IReactive<string>;
@@ -129,25 +136,26 @@ export default class XRenderer extends Disposable implements IRenderer {
 
         this.register(
             this._on(this._el.inputBox, "keydown", (e: KeyboardEvent) => {
-                const key = (e?.key || "").toLowerCase();
-                if (key === "enter") buffer = "";
-                if (key in this._bindings) {
+                const keynames = getEventKeyNames(e);
+                if (keynames.includes(ENTER_KEY)) buffer = "";
+                let key = "";
+                if (keynames.some((v) => (key = v) in this._bindings)) {
                     const isNormalKey = "cl".includes(key);
                     if (!isNormalKey || (isNormalKey && e?.ctrlKey)) {
                         cancelEvent(e);
                     }
-                    if (key === "enter") {
+                    if (key === ENTER_KEY) {
                         bounce(this._bindings[key], this._data.value);
                         bounce(setInputValue, buffer);
-                    } else if (key === "arrowup") {
+                    } else if (key === ARROW_UP_KEY) {
                         bounce(this._bindings[key], (val: string) =>
                             setInputValue(val, 1)
                         );
-                    } else if (key === "arrowdown") {
+                    } else if (key === ARROW_DOWN_KEY) {
                         bounce(this._bindings[key], (val: string) =>
                             setInputValue(val, 2)
                         );
-                    } else if (key === "tab") {
+                    } else if (key === TAB_KEY) {
                         bounce(
                             this._bindings[key],
                             (val: string) => val && setInputValue(val),
