@@ -29,9 +29,9 @@ It only provides the platform for rendering terminal output and accepting keyboa
 
 ## Live Demo
 
-In the `demo` subfolder, there is a quick demo. [Try it Online](https://henryhale.github.io/xterminal/).
+In the [demo](https://github.com/henryhale/xterminal/tree/demo) branch, there is a quick demo. [Try it Online](https://henryhale.github.io/xterminal/).
 
-![](https://raw.githubusercontent.com/henryhale/xterminal/master/demo/screenshot.png)
+![](https://raw.githubusercontent.com/henryhale/xterminal/demo/media/screenshot.png)
 
 ## Getting Started
 
