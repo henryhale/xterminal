@@ -70,10 +70,10 @@ export default class Terminal extends XEventEmitter implements ITerminalApi {
 
         this.on(DATA_EVENT, (data: string) => {
             $(this).isActive = false;
+            if ($(this).renderer) $(this).renderer.canInput = false;
             if ($(this).history?.add(data)) {
                 this.emit(HISTORY_CHANGE_EVENT, $(this).history?.list);
             }
-            if ($(this).renderer) $(this).renderer.canInput = false;
         });
     }
 
