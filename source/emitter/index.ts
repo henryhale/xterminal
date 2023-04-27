@@ -1,7 +1,12 @@
 import Disposable from "../base/Disposable";
 import { XError } from "../base/Error";
 import { isFunction } from "../helpers";
-import { IEventEmitter, IEventListener, IEventName } from "../types";
+import {
+    IDisposable,
+    IEventEmitter,
+    IEventListener,
+    IEventName
+} from "../types";
 
 export default class XEventEmitter extends Disposable implements IEventEmitter {
     private _store: Map<IEventName, Set<IEventListener>>;
@@ -21,7 +26,7 @@ export default class XEventEmitter extends Disposable implements IEventEmitter {
         ev: IEventName,
         listener: IEventListener,
         once = false
-    ): this {
+    ): IDisposable {
         if (!(typeof ev === "string" || typeof ev == "symbol")) {
             throw new XError(
                 "EventEmitter: The event name (first argument) should either be a string or symbol, got '" +
@@ -46,18 +51,23 @@ export default class XEventEmitter extends Disposable implements IEventEmitter {
         } else {
             this._store.set(ev, new Set([evlistener]));
         }
-        return this;
+        return {
+            dispose: () => this.off(ev, evlistener)
+        };
     }
 
-    public on(eventName: IEventName, eventListener: IEventListener): this {
+    public on(
+        eventName: IEventName,
+        eventListener: IEventListener
+    ): IDisposable {
         return this._addEventListener(eventName, eventListener);
     }
 
-    public once(eventName: IEventName, eventListener: IEventListener): this {
-        return this._addEventListener(eventName, eventListener, true);
+    public once(eventName: IEventName, eventListener: IEventListener): void {
+        this._addEventListener(eventName, eventListener, true);
     }
 
-    public off(eventName: IEventName, eventListener: IEventListener): this {
+    public off(eventName: IEventName, eventListener: IEventListener): void {
         const all = this._store.get(eventName);
         if (all) {
             const arr = [].slice.call(Array.from(all));
@@ -68,7 +78,6 @@ export default class XEventEmitter extends Disposable implements IEventEmitter {
                 }
             }
         }
-        return this;
     }
 
     public emit(eventName: IEventName, arg1?: unknown, arg2?: unknown): this {
