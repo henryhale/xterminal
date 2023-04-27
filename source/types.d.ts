@@ -81,17 +81,20 @@ interface IAddEventListener<T> {
     (ev: IEventName, listener: IEventListener): T;
 }
 
+/**
+ * Event Emiiter
+ */
 export interface IEventEmitter extends IDisposable {
     isEmitting: boolean;
-    on: IAddEventListener<this>;
-    once: IAddEventListener<this>;
-    off: IAddEventListener<this>;
-    emit(ev: IEventName, arg1?: unknown, arg2?: unknown): this;
+    on: IAddEventListener<IDisposable>;
+    once: IAddEventListener<void>;
+    off: IAddEventListener<void>;
+    emit(ev: IEventName, arg1?: unknown, arg2?: unknown): void;
     stopEmit(): void;
 }
 
 /**
- * Terminal
+ * Terminal State
  */
 export interface IBlock {
     history: IHistory;
@@ -100,6 +103,9 @@ export interface IBlock {
     completer: ((data: string) => string) | null;
 }
 
+/**
+ * Terminal API
+ */
 export interface ITerminalApi extends IEventEmitter {
     blur(): void;
     focus(): void;

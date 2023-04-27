@@ -53,8 +53,10 @@ declare module "xterminal" {
          * Appends a event listener to the specified event.
          *
          * The listener is invoked everytime the event is dispatched.
+         *
+         * - return disposable object to remove the event listener
          */
-        on: IAddEventListener<this>;
+        on: IAddEventListener<IDisposable>;
 
         /**
          * Appends a event listener to the specified event.
@@ -63,14 +65,14 @@ declare module "xterminal" {
          *
          * _It is deleted thereafter._
          */
-        once: IAddEventListener<this>;
+        once: IAddEventListener<void>;
 
         /**
          * Removes an event listener from the specified event.
          *
          * The listener won't be invoked on event dispatch thereafter.
          */
-        off: IAddEventListener<this>;
+        off: IAddEventListener<void>;
 
         /**
          *
@@ -78,7 +80,7 @@ declare module "xterminal" {
          * @param arg1 data to be passed to the event listener.
          * @param arg2 data to be passed to the event listener.
          */
-        emit(event: IEventName, arg1?: unknown, arg2?: unknown): this;
+        emit(event: IEventName, arg1?: unknown, arg2?: unknown): void;
 
         /**
          * Terminates the currently dispatched event.
