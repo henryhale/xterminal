@@ -1,0 +1,9 @@
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>XTerminal Logo</title>
+  <path stroke="#000" d="m-4,-2.5l103.99998,0l0,108l-103.99998,0l0,-108z" stroke-width="0" fill="#444444"/>
+  <rect stroke="#000" height="33" width="16" y="29" x="42" stroke-width="0" fill="#ffffff"/>
+  <rect transform="rotate(-45 23.25 40.25)" stroke="#000" height="18.56497" width="6.17157" y="30.96751" x="20.16421" stroke-width="0" fill="#ffffff"/>
+  <rect transform="rotate(45 22.6036 50.25)" stroke="#000" height="18.75736" width="6" y="40.87132" x="19.60356" stroke-width="0" fill="#ffffff"/>
+ </g>
+</svg>
