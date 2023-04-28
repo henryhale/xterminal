@@ -38,8 +38,8 @@ term.on('data', data => {
         term
             .writeln(data)
             .writeln('Data: ' + data)
+        promptUser();
     }
-    promptUser();
 });
 
 term.on('clear', () => {
