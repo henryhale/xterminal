@@ -2,10 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["demo"]
-
-  workflow_dispatch:
-
+    branches:
+      - demo
 permissions:
   contents: read
   pages: write
