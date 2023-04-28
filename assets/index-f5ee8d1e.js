@@ -11,4 +11,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
  \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ \\_/ </pre></span>`).writeln("Welcome to XTerminal!").writeln(`
 Note: This is just a simple demo with no backing shell,`).writeln("Just type anything and hit enter.").writeln(`
 [hint] To clear screen, type clear or CTRL+L`).writeln("[hint] To quit, type exit")}function it(){w.write(`
-# `).prompt(),w.focus()}w.on("data",h=>{if(h==="exit")return w.dispose();h==="clear"?w.clear():w.writeln(h).writeln("Data: "+h),it()});w.on("clear",()=>{vt(),it()});w.emit("clear");
+# `).prompt(),w.focus()}w.on("data",h=>{if(h==="exit")return w.dispose();h==="clear"?w.clear():(w.writeln(h).writeln("Data: "+h),it())});w.on("clear",()=>{vt(),it()});w.emit("clear");
