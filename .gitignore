@@ -33,3 +33,7 @@ out/
 
 # Build output
 dist/
+
+# VitePress
+docs/.vitepress/dist
+docs/.vitepress/cache
