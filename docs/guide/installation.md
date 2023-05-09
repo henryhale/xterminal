@@ -23,6 +23,10 @@ npm install xterminal
 pnpm add xterminal
 ```
 
+```sh [yarn]
+yarn add xterminal
+```
+
 :::
 
 It provides a production build of the latest release from it's [GitHub repository](https://github.com/henryhale/xterminal/).
@@ -38,7 +42,7 @@ First include the styles in your markup:
 Then import the script into your application.
 
 ```js
-import Terminal from 'xterminal';
+import XTerminal from 'xterminal';
 ```
 
 ## Using CDN
