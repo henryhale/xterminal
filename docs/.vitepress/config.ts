@@ -41,12 +41,14 @@ export default defineConfig({
           text: 'Getting Started',
           items: [
               { text: 'Installation', link: '/guide/installation' },
-              { text: 'Quick start', link: '/guide/quick-start' },
+              { text: 'Quick Start', link: '/guide/quick-start' },
           ]
       },
       {
           text: 'Essentials',
-          items: []
+          items: [
+            { text: 'Creating a Terminal', link: '/guide/creating-a-terminal' },
+          ]
       },
       {
         text: 'Examples',
@@ -65,7 +67,7 @@ export default defineConfig({
 
     footer: {
       message: 'Released under the <a href="https://github.com/henryhale/xterminal/blob/master/LICENSE.txt">MIT License</a>.',
-      copyright: `Copyright © 2023-${new Date().getFullYear()} <a href="https://github.com/henryhale">Henry Hale</a>.`
+      copyright: `Copyright © 2023 - Present <a href="https://github.com/henryhale">Henry Hale</a>.`
     }
 
   }

@@ -2,7 +2,7 @@
 
 ## Installation
 
-Below are some of the ways XTerminal can be installed;
+Below are some of the ways `XTerminal` can be installed;
 
 - [CDN](./installation.md#using-cdn) - (for development with a simple setup)
 - [NPM](./installation.md#using-npm) - (use this if you are using bundlers or having a build step)
@@ -51,7 +51,7 @@ You can use any CDN that serves npm packages;
 
 These deliver npm packages globally over their fast content delivery network.
 
-Install via cdn using one of the following;
+Install via CDN using one of the following;
 
 ::: code-group
 
@@ -67,6 +67,14 @@ Install via cdn using one of the following;
 
 :::
 
+Including `XTerminal` javascript file defines a global property `window.XTerminal` on the `window` object. This implies that the `XTerminal` class is globally accessible. 
+
+```js
+console.log(window.XTerminal());
+//or
+console.log(XTerminal);
+```
+
 ## Next Steps
 
-Now that you know how to install XTerminal, it is time to dive into the essential parts.  
+Now that you have installed `XTerminal`, it is time to dive into the essential parts.

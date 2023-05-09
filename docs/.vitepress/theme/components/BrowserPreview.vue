@@ -9,7 +9,7 @@
                 <span></span>
                 <span></span>
             </div>
-            <div class="title">Terminal ~ http://localhost:5173</div>
+            <div class="title">My First Terminal</div>
         </header>
         <main>
             <slot></slot>
