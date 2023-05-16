@@ -44,7 +44,7 @@ export default class XEventEmitter extends Disposable implements IEventEmitter {
             ? listener
             : (arg1?: unknown, arg2?: unknown) => {
                   listener.call(undefined, arg1, arg2);
-                  this.off(ev, listener);
+                  this.off(ev, evlistener);
               };
         if (this._store.has(ev)) {
             this._store.get(ev)?.add(evlistener);
