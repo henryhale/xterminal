@@ -1,3 +1,4 @@
+import { bounce } from "./base/Debouncer";
 import { XError } from "./base/Error";
 import XEventEmitter from "./emitter/index";
 import { isFunction } from "./helpers";
@@ -72,7 +73,9 @@ export default class Terminal extends XEventEmitter implements ITerminalApi {
             $(this).isActive = false;
             if ($(this).renderer) $(this).renderer.canInput = false;
             if ($(this).history?.add(data)) {
-                this.emit(HISTORY_CHANGE_EVENT, $(this).history?.list);
+                bounce(() => {
+                    this.emit(HISTORY_CHANGE_EVENT, $(this).history?.list);
+                });
             }
         });
     }
