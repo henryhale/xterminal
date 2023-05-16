@@ -6,7 +6,7 @@ import BrowserPreview from '../.vitepress/theme/components/BrowserPreview.vue';
 
 To get started, you need to [install XTerminal](./installation.md) and ship the `CSS` and `JS` from XTerminal `dist` folder into your application.
 
-Here is a quick setup using the [cdn installation guide](./installation.md#cdn). This setup requires a simple project structure with three essential files; `index.html`, `styles.css` and `main.js` in the same directory.
+Here is a quick setup using the [cdn installation guide](./installation.md#using-cdn). This setup requires a simple project structure with three essential files; `index.html`, `styles.css` and `main.js` in the same directory.
 
 Let's create a full page terminal application;
 
@@ -53,14 +53,37 @@ const term = new XTerminal();
 // mount the terminal to page
 term.mount('#app');
 
-// write data to the terminal
-term.write("Hello World!\n$ ");
+// prompt style
+const promptStyle = '[user] $ ';
 
-// allow user to input data
-term.prompt();
+// write prompt style and prepare for input
+function ask() {
+  term.write(promptStyle);
+  term.prompt();
+}
 
-// focus the input
-term.focus();
+// capture clear event
+// it erases everything, so prompt user again
+term.on('clear', () => ask());
+
+// capture data event
+term.on('data', input => {
+  if (input == 'clear') {
+    // trigger clear event
+    term.clear();
+  } else {
+    // write
+    term.writeln(input);
+    // then prompt user for more input
+    ask();
+  }
+});
+
+// print greeting message
+term.writeln('Hello World!');
+
+// initiate
+ask();
 ```
 
 :::
@@ -70,7 +93,7 @@ Open the `index.html` file in your browser.
 <browser-preview>
 
     Hello World!
-    $ ▊
+    [user] $ ▊
 </browser-preview>
 
 ::: tip

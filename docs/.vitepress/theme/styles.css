@@ -8,8 +8,8 @@
 }
 
 .VPImage.image-src {
-    width: 200px;
-    height: 200px;
+    width: min(25vw, 200px);
+    height: min(25vw, 200px);
 }
 
 .image-src {

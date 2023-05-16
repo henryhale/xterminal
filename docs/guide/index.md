@@ -24,9 +24,6 @@ Now that you know something about Hepsen.js, here is a brief definition of what 
 ## What XTerminal is not?
 
 ::: warning
-
-- XTerminal is not a fully fledged terminal application that comprises of all fundamental utility functions.
-
 - XTerminal is not an application that can be downloaded and used just like others on your computer.
-
+- XTerminal is not a fully fledged terminal application that comprises of all fundamental utility functions. It can't be connected to your terminal nor ssh, it's entirely browser based.
 :::
