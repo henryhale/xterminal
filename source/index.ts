@@ -77,6 +77,7 @@ export default class Terminal extends XEventEmitter implements ITerminalApi {
                     this.emit(HISTORY_CHANGE_EVENT, $(this).history?.list);
                 });
             }
+            this.writeln(data);
         });
     }
 
