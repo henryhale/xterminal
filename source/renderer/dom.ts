@@ -89,8 +89,9 @@ export function cancelEvent(e: Event): void {
 
 export function parseOutput(data: string): string {
     return ("" + data)
-        .replace(/\t/g, SPACE.repeat(4)) // Tab size -> 4 spaces
-        .replace(/(\n)|(\r\n)/g, "<br />");
+        .replace(/(\n)|(\n\r)|(\r\n)/g, "<br/>")
+        .replace(/\s{2}/g, SPACE.repeat(2))
+        .replace(/\t/g, SPACE.repeat(4)); // Tab size -> 4 spaces
 }
 
 // TODO: compactibility check
