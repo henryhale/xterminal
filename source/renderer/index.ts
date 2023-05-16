@@ -104,6 +104,7 @@ export default class XRenderer extends Disposable implements IRenderer {
         this.register(
             this._on(this._el.term, "focus", () => this.focusInput())
         );
+
         this.register(
             this._on(
                 this._el.inputBox,
@@ -111,6 +112,7 @@ export default class XRenderer extends Disposable implements IRenderer {
                 () => (this._isActive.value = true)
             )
         );
+
         this.register(
             this._on(
                 this._el.inputBox,
