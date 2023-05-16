@@ -34,6 +34,10 @@
   overflow-wrap: break-word;
 }
 
+.xt > .xt-stdout > span:first {
+  word-wrap: break-word;
+}
+
 .xt > .xt-stdout > .xt-cursor {
   background-color: var(--xt-fg);
   color: var(--xt-bg);
