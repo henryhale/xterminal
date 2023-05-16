@@ -63,7 +63,7 @@ export default class Terminal extends XEventEmitter implements ITerminalApi {
                 try {
                     result = c.call(undefined, data);
                 } catch (error) {
-                    throw new Error("[x] completer: " + error);
+                    throw new XError("completer: " + error);
                 }
             }
             return fn.call(undefined, result || data);
