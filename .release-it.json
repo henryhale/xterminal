@@ -5,13 +5,13 @@
         "changelog": "CHANGELOG.md",
         "requireBranch": "master"
     },
+    "changelogFile": "CHANGELOG.md",
     "github": {
         "release": true,
         "releaseName": "Release: XTerminal v${version}",
         "releaseNotes": "git log --no-merges --pretty=format:\"* %s %h\" ${latestTag}...main",
         "assets": ["dist/"],
         "comments": true
-
     },
     "npm": {
         "publish": true
