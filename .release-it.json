@@ -1,0 +1,24 @@
+{
+    "git": {
+        "tagName": "v${version}",
+        "commitMessage": "chore(release): v${version}",
+        "changelog": "CHANGELOG.md",
+        "requireBranch": "master"
+    },
+    "github": {
+        "release": true,
+        "releaseName": "Release: XTerminal v${version}",
+        "releaseNotes": "git log --no-merges --pretty=format:\"* %s %h\" ${latestTag}...main",
+        "assets": ["dist/"],
+        "comments": true
+
+    },
+    "npm": {
+        "publish": true
+    },
+    "plugins": {
+        "@release-it/keep-a-changelog": {
+            "filename": "CHANGELOG.md"
+        }
+    }
+}

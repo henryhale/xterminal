@@ -56,7 +56,7 @@ jobs:
       
       # Publish version to public repository
       - name: Release
-        run: npx semantic-release
+        run: pnpm release --ci
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
