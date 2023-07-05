@@ -14,7 +14,8 @@
         "comments": true
     },
     "npm": {
-        "publish": true
+        "publish": true,
+        "skipChecks": true
     },
     "plugins": {
         "@release-it/keep-a-changelog": {

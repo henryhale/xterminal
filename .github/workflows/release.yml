@@ -53,10 +53,15 @@ jobs:
       # Tests
       #- name: Run tests
       #  run: npm run test
-      
+
+      # Setup NPM
+      - name: Create .npmrc
+        run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       # Publish version to public repository
       - name: Release
-        run: pnpm release --ci
+        run: npx release-it --ci
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
