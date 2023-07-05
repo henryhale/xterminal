@@ -44,17 +44,16 @@
     "prepare": "husky install",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "release": "release-it"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
+    "@release-it/keep-a-changelog": "^3.1.0",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-terser": "^0.4.1",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/npm": "^10.0.4",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
     "autoprefixer": "^10.4.14",
@@ -66,8 +65,8 @@
     "postcss": "^8.4.23",
     "postcss-cli": "^10.1.0",
     "prettier": "^2.8.8",
+    "release-it": "^16.0.0",
     "rollup": "^3.21.0",
-    "semantic-release": "^21.0.7",
     "typescript": "^5.0.4",
     "vitepress": "1.0.0-alpha.75"
   },
