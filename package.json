@@ -50,7 +50,7 @@
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
-    "@release-it/keep-a-changelog": "^3.1.0",
+    "@release-it/conventional-changelog": "^6.0.0",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-terser": "^0.4.1",

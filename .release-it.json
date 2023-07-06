@@ -18,8 +18,10 @@
         "skipChecks": true
     },
     "plugins": {
-        "@release-it/keep-a-changelog": {
-            "filename": "CHANGELOG.md"
+        "@release-it/conventional-changelog": {
+            "preset": "angular",
+            "infile": "CHANGELOG.md",
+            "header": "# Changelog"
         }
     }
 }
