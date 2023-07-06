@@ -1,4 +1,4 @@
-import { IDisposable } from "../types";
+import { IDisposable } from "./types";
 
 export default class Disposable implements IDisposable {
     private _isDisposed: boolean;

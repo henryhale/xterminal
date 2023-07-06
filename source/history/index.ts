@@ -1,5 +1,5 @@
 import { isArray } from "../helpers";
-import { IHistory } from "../types";
+import { IHistory } from "./interface";
 
 export default class XHistory implements IHistory {
     private _store;

@@ -1,5 +1,5 @@
 import { isFunction } from "../helpers";
-import { IEffect, IReactive } from "../types";
+import { IEffect, IReactive } from "./types";
 
 let observer: IEffect | null;
 

@@ -4,7 +4,7 @@ import XEventEmitter from "./emitter/index";
 import { isFunction } from "./helpers";
 import XHistory from "./history/index";
 import XRenderer from "./renderer/index";
-import { IBlock, ITerminalApi } from "./types";
+import { IBlock, ITerminalApi } from "./interface";
 
 // Public events
 const DATA_EVENT = "data"; /* Enter key */
@@ -37,13 +37,14 @@ export default class Terminal extends XEventEmitter implements ITerminalApi {
         });
 
         $(this).renderer.setKeyBindings({
-            arrowup: (fn) =>
+            arrowup: (fn: unknown) =>
                 $(this).isActive && this.emit(HISTORY_PREVIOUS_EVENT, fn),
-            arrowdown: (fn) =>
+            arrowdown: (fn: unknown) =>
                 $(this).isActive && this.emit(HISTORY_NEXT_EVENT, fn),
-            tab: (fn, data) =>
+            tab: (fn: unknown, data: unknown) =>
                 $(this).isActive && this.emit(AUTOCOMPLETE_EVENT, fn, data),
-            enter: (data) => $(this).isActive && this.emit(DATA_EVENT, data),
+            enter: (data: unknown) =>
+                $(this).isActive && this.emit(DATA_EVENT, data),
             l: () => $(this).isActive && this.clear(),
             c: () => this.terminate()
         });

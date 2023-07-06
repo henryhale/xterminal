@@ -1,12 +1,8 @@
 import Disposable from "../base/Disposable";
+import { IDisposable } from "../base/types";
 import { XError } from "../base/Error";
 import { isFunction } from "../helpers";
-import {
-    IDisposable,
-    IEventEmitter,
-    IEventListener,
-    IEventName
-} from "../types";
+import { IEventEmitter, IEventListener, IEventName } from "./interface";
 
 export default class XEventEmitter extends Disposable implements IEventEmitter {
     private _store: Map<IEventName, Set<IEventListener>>;

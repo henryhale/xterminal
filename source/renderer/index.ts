@@ -1,5 +1,6 @@
 import Disposable from "../base/Disposable";
-import { IReactive, IRenderer, IKeyBindings } from "../types";
+import { IReactive } from "../base/types";
+import { IRenderer, IKeyBindings } from "./interface";
 import { createEffect, ref } from "../base/Reactivity";
 import {
     cancelEvent,

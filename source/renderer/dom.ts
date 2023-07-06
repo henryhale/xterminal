@@ -1,5 +1,5 @@
 import { isArray, isObject } from "../helpers";
-import { IElementProps } from "../types";
+import { IElementProps } from "./interface";
 
 export const THEME = {
     CONTAINER: "xt",
