@@ -1,4 +1,4 @@
-import Disposable from "../base/Disposable";
+import Disposable from "../base/disposable";
 import { IReactive } from "../base/types";
 import { IRenderer, IKeyBindings } from "./interface";
 import { createEffect, ref } from "../base/Reactivity";
