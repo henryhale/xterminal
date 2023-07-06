@@ -1,54 +1,48 @@
 import { isArray } from "../helpers";
 import { IHistory } from "./interface";
 
+/**
+ * History stack
+ */
 export default class XHistory implements IHistory {
-    private _store;
-    private _ptr;
-    private _maxSize;
+    private store;
+    private ptr;
 
     constructor(initialState: string[] = []) {
-        this._store = isArray(initialState) ? initialState : [];
-        this._ptr = -1;
-        this._maxSize = 0;
+        this.store = isArray(initialState) ? initialState : [];
+        this.ptr = -1;
     }
 
-    get size(): number {
-        return this._store.length;
+    private get size(): number {
+        return this.store.length;
     }
 
-    get list(): string[] {
-        return [].slice.call(this._store).reverse();
-    }
-
-    set maxSize(val: number) {
-        this._maxSize = val;
+    public get list(): string[] {
+        return [].slice.call(this.store).reverse();
     }
 
     add(input: string): boolean {
-        if (input && input !== this._store[0]) {
-            this._store.unshift(input);
-            if (this._maxSize) {
-                this._store.splice(this._maxSize);
-            }
-            this._ptr = -1;
+        if (input && input !== this.store[0]) {
+            this.store.unshift(input);
+            this.ptr = -1;
             return true;
         }
         return false;
     }
 
     get previous(): string {
-        this._ptr++;
-        if (this._ptr >= this.size) this._ptr = this.size - 1;
-        return this._store[this._ptr] || "";
+        this.ptr++;
+        if (this.ptr >= this.size) this.ptr = this.size - 1;
+        return this.store[this.ptr] || "";
     }
 
     get next(): string {
-        this._ptr--;
-        if (this._ptr <= -1) this._ptr = -1;
-        return this._store[this._ptr] || "";
+        this.ptr--;
+        if (this.ptr <= -1) this.ptr = -1;
+        return this.store[this.ptr] || "";
     }
 
     clear(): void {
-        this._store.splice(0);
+        this.store.splice(0);
     }
 }
