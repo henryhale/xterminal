@@ -57,12 +57,12 @@ Install via CDN using one of the following;
 
 ```html [unpkg]
 <link rel="stylesheet" href="https://unpkg.com/xterminal/dist/xterminal.css">
-<script src="https://unpkg.com/xterminal/dist/xterminal.js"></script>
+<script src="https://unpkg.com/xterminal/dist/xterminal.umd.js"></script>
 ```
 
 ```html [jsdelivr]
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterminal/dist/xterminal.css">
-<script src="https://cdn.jsdelivr.net/npm/xterminal/dist/xterminal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xterminal/dist/xterminal.umd.js"></script>
 ```
 
 :::

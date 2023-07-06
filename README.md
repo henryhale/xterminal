@@ -48,7 +48,7 @@ Setup your `index.html` page as follows, add the `xterminal.js` and `xterminal.c
   <html>
     <head>
       <link rel="stylesheet" href="node_modules/xterminal/dist/xterminal.css" />
-      <script src="node_modules/xterminal/dist/xterminal.js"></script>
+      <script src="node_modules/xterminal/dist/xterminal.umd.js"></script>
     </head>
     <body>
       <div id="terminal"></div>
@@ -68,7 +68,7 @@ You can add `xterminal.js` and `xterminal.css` using to your HTML page using any
 
 ```html
   <link rel="stylesheet" href="https://unpkg.com/xterminal/dist/xterminal.css" />
-  <script src="https://unpkg.com/xterminal/dist/xterminal.js"></script>
+  <script src="https://unpkg.com/xterminal/dist/xterminal.umd.js"></script>
 ```
 
 ## API

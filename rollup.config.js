@@ -1,11 +1,14 @@
-const { copyFileSync, readFileSync } = require('node:fs');
-const terser = require('@rollup/plugin-terser');
-const babel = require('@rollup/plugin-babel');
-const replace = require('@rollup/plugin-replace');
+import { copyFileSync, readFileSync } from 'node:fs';
+import terser from '@rollup/plugin-terser';
+import babel from '@rollup/plugin-babel';
+import replace from '@rollup/plugin-replace';
 
-const pkg = (() => {
-  return JSON.parse(readFileSync('./package.json', 'utf8'));
-})();
+const pkg = JSON.parse(readFileSync('./package.json', 'utf8'));
+
+const replacer = replace({
+  preventAssignment: true,
+  values: { __VERSION__: pkg.version },
+});
 
 const banner = `
 /**
@@ -26,21 +29,28 @@ function copyToDist() {
   };
 }
 
-module.exports = {
-  input: 'out/index.js',
-  output: {
-    name: 'XTerminal',
-    file: pkg.browser,
-    format: 'umd',
-    banner,
+export default [
+  {
+    input: 'out/index.js',
+    output: {
+      name: 'XTerminal',
+      file: pkg.browser,
+      format: 'umd',
+      banner,
+    },
+    plugins: [
+      replacer,
+      babel({ babelHelpers: 'bundled' }),
+      terser(),
+    ],
   },
-  plugins: [
-    replace({
-      preventAssignment: true,
-      values: { __VERSION__: pkg.version },
-    }),
-    babel({ babelHelpers: 'bundled' }),
-    terser(),
-    copyToDist(),
-  ],
-};
+  {
+    input: 'out/index.js',
+    output: {
+      file: pkg.module,
+      format: 'esm',
+      banner,
+    },
+    plugins: [replacer, terser(), copyToDist()],
+  },
+]
