@@ -11,7 +11,7 @@ import {
     SPACE,
     THEME
 } from "./dom";
-import { bounce, debouncer } from "../base/Debouncer";
+import { bounce, debounce } from "../base/debouncer";
 import { isFunction, isObject } from "../helpers";
 import {
     ARROW_DOWN_KEY,
@@ -76,8 +76,6 @@ export default class XRenderer extends Disposable implements IRenderer {
 
     private _initEvents() {
         let buffer = "";
-        const inputHandler = debouncer();
-        const cursorHandler = debouncer();
 
         const setCursorPosition = () => {
             let pos = getCursorPosition<HTMLInputElement>(this._el.inputBox);
@@ -89,6 +87,11 @@ export default class XRenderer extends Disposable implements IRenderer {
             this._ptr.value = pos;
             this._scrollDown();
         };
+
+        const cursorHandler = debounce(setCursorPosition);
+        const inputHandler = debounce(() => {
+            this._data.value = buffer = this._el.inputBox.value;
+        });
 
         const setInputValue = (val = "", dir?: number) => {
             if (dir === 1 && !val) {
@@ -124,17 +127,13 @@ export default class XRenderer extends Disposable implements IRenderer {
 
         this.register(
             this._on(this._el.inputBox, "input", () => {
-                inputHandler(() => {
-                    this._data.value = buffer = this._el.inputBox.value;
-                });
-                cursorHandler(setCursorPosition);
+                inputHandler();
+                cursorHandler();
             })
         );
 
         this.register(
-            this._on(this._el.inputBox, "keyup", () =>
-                cursorHandler(setCursorPosition)
-            )
+            this._on(this._el.inputBox, "keyup", () => cursorHandler())
         );
 
         this.register(

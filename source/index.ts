@@ -1,4 +1,4 @@
-import { bounce } from "./base/Debouncer";
+import { bounce } from "./base/debouncer";
 import { XError } from "./base/Error";
 import XEventEmitter from "./emitter/index";
 import { isFunction } from "./helpers";
