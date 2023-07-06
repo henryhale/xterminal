@@ -143,7 +143,6 @@ export default class Terminal extends XEventEmitter implements ITerminalApi {
     }
 
     public terminate(): void {
-        this.stopEmit();
         this.emit(CLOSE_EVENT);
     }
 
