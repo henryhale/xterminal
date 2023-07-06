@@ -23,5 +23,8 @@
             "infile": "CHANGELOG.md",
             "header": "# Changelog"
         }
+    },
+    "hooks": {
+        "before:init": "git fetch --tags"
     }
 }
