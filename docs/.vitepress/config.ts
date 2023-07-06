@@ -15,6 +15,10 @@ export default defineConfig({
     
     siteTitle: 'XTerminal Docs',
     logo: '/logo.svg',
+
+    search: {
+      provider: 'local'
+    },
     
     nav: [
       { text: 'Home', link: '/' },

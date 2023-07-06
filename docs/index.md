@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "XTerminal"
   text: "Build web-based command line interfaces"
-  tagline: Simple and perfomant fornt-end tool for building command-line interfaces in the browser.
+  tagline: Simple and perfomant front-end tool for building command-line interfaces in the browser.
   image:
     src: /logo.svg
     alt: XTerminal Logo

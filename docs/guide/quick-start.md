@@ -1,7 +1,3 @@
-<script setup>
-import BrowserPreview from '../.vitepress/theme/components/BrowserPreview.vue';
-</script>
-
 # Quick Start
 
 To get started, you need to [install XTerminal](./installation.md) and ship the `CSS` and `JS` from XTerminal `dist` folder into your application.

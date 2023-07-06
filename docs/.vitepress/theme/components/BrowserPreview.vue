@@ -1,19 +1,21 @@
 <template>
-    <div class="preview">
-        <b>Preview: </b>
-    </div>
-    <div class="container">
-        <header>
-            <div class="dots">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="title">My First Terminal</div>
-        </header>
-        <main>
-            <slot></slot>
-        </main>
+    <div>
+        <div class="preview">
+            <b>Preview: </b>
+        </div>
+        <div class="container">
+            <header>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="title">My First Terminal</div>
+            </header>
+            <main>
+                <slot></slot>
+            </main>
+        </div>
     </div>
 </template>
 

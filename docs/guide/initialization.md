@@ -1,12 +1,8 @@
-<script setup>
-import BrowserPreview from '../.vitepress/theme/components/BrowserPreview.vue';
-</script>
-
 # Creating Your First Terminal
 
 ## Terminal instance
 
-The `XTerminal` package exports the [Terminal](../api/index.md) class by default for public consumption.
+The `XTerminal` package exports the [XTerminal](../api/index.md) class by default for public consumption.
 To create your own terminal, you need to create an instance of it.
 
 ```js

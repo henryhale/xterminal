@@ -1,7 +1,3 @@
-<script setup>
-import BrowserPreview from '../.vitepress/theme/components/BrowserPreview.vue';
-</script>
-
 # Prompt
 
 Interaction with the user is initiated with the method `prompt()` on the terminal object.
