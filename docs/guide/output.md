@@ -1,7 +1,3 @@
-<script setup>
-import BrowserPreview from '../.vitepress/theme/components/BrowserPreview.vue';
-</script>
-
 # Output
 
 Information maybe output in a number of ways and logged in the terminal instance. With the help of [write()](../api/index.md) we can log data in `raw` format, as `html`.

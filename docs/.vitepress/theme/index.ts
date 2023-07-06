@@ -1,5 +1,13 @@
 import DefaultTheme from "vitepress/theme";
 
-import "./styles.css";
+// @ts-ignore
+import BrowserPreview from "./components/BrowserPreview.vue";
 
-export default DefaultTheme;
+import "./assets/styles.css";
+
+export default {
+    extends: DefaultTheme,
+    enhanceApp(ctx) {
+        ctx.app.component('BrowserPreview', BrowserPreview);
+    }
+};

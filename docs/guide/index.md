@@ -6,20 +6,20 @@ You're reading the official documentation for [XTerminal](https://github.com/hen
 
 ## What is XTerminal?
 
-XTerminal is a simple and perfomant web-based component written in TypeScript that lets you create command-line interfaces for use in the browser.
+**XTerminal** is a simple and perfomant web-based component written in TypeScript that lets you create command-line interfaces for use in the browser.
 
 It builds on top of standard HTML, CSS, and JavaScript to provide a simple yet powerful model that helps you develop command-line interfaces in the browser.
 
-XTerminal is dependency-free as it requires no dependency to work. Just ship it in and you are just close to setting up your own in-browser cli.
+**XTerminal** is dependency-free as it requires no dependency to work. Just ship it in and you are just close to setting up your own in-browser CLI.
 
 ::: tip What You Should Know
 Basic understanding and familiarity with HTML, CSS, and JavaScript is a major preresquite as the documentation assumes you already know.
 If you are totally new to frontend development, it might not be the best idea to jump right into the library as your first step - grasp the basics and then come back!
 :::
 
-Now that you know something about Hepsen.js, here is a brief definition of what it does;
+Now that you know something about **XTerminal**, here is a brief definition of what it does;
 
-- In a nutshell, it provides you with a single class from which your can create several terminal instances and mount onto your page.
+- In a nutshell, it provides you with a single class from which your can create several terminal instances and mount them onto your webpage.
 
 ## What XTerminal is not?
 

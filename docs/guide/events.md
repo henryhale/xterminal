@@ -1,7 +1,3 @@
-<script setup>
-import BrowserPreview from '../.vitepress/theme/components/BrowserPreview.vue';
-</script>
-
 # Events
 
 The `Terminal` class, from which we create an instance, extends an internal `EventEmitter` class.

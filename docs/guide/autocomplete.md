@@ -1,7 +1,3 @@
-<script setup>
-import BrowserPreview from '../.vitepress/theme/components/BrowserPreview.vue';
-</script>
-
 # AutoComplete
 
 Tab autocompletion saves a lot of time. It enables the user to type less of what
