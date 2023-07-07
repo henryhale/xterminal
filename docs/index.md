@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: "XTerminal"
-  text: "Build web-based command line interfaces"
+  text: "Build Web-based Command-line Interfaces"
   tagline: Simple and perfomant front-end tool for building command-line interfaces in the browser.
   image:
     src: /logo.svg
@@ -12,6 +12,9 @@ hero:
     - theme: brand
       text: Get Started
       link: /guide/index
+    - theme: alt
+      text: Demo
+      link: /demo/index
     - theme: alt
       text: View on GitHub
       link: https://github.com/henryhale/xterminal
