@@ -1,6 +1,0 @@
-import{_ as o,H as p,o as r,c,L as t,w as n,k as s,a as e,V as a}from"./chunks/framework.1b5edb90.js";const k=JSON.parse('{"title":"Output","description":"","frontmatter":{},"headers":[],"relativePath":"guide/output.md","filePath":"guide/output.md"}'),i={name:"guide/output.md"},D=a("",6),d=s("pre",null,[s("code",null,`Hello World!▊
-`)],-1),y=s("h2",{id:"escape-characters",tabindex:"-1"},[e("Escape characters "),s("a",{class:"header-anchor",href:"#escape-characters","aria-label":'Permalink to "Escape characters"'},"​")],-1),u=s("p",null,"Below is a list of available and ready to use escape characters;",-1),C=a("",4),A=s("pre",null,[s("code",null,`Hello World!
-$ ▊
-`)],-1),F=a("",2),h=a("",4),_=s("pre",null,[s("code",null,`Hello World!    You're welcome.
-▊
-`)],-1),g=a("",3),m=s("p",null,[s("b",null,"Bold Text"),e(" - "),s("i",null,"Italics"),s("br"),e("▊")],-1),b=a("",13);function T(w,f,x,v,q,S){const l=p("browser-preview");return r(),c("div",null,[D,t(l,null,{default:n(()=>[d]),_:1}),y,u,s("ul",null,[s("li",null,[C,e(),t(l,null,{default:n(()=>[A]),_:1}),F]),s("li",null,[h,e(),t(l,null,{default:n(()=>[_]),_:1})])]),g,t(l,null,{default:n(()=>[m]),_:1}),b])}const P=o(i,[["render",T]]);export{k as __pageData,P as default};

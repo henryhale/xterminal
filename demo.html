@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Demo | XTerminal</title>
+    <link rel="stylesheet" href="https://unpkg.com/xterminal/dist/xterminal.css">
+    <style>
+        *, *::after, *::before {
+            box-sizing: border-box;
+        }
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+        #app {
+            height: 100vh;
+        }
+        :root {
+            --xt-fg: lime;
+            --xt-bg: black;
+        }
+        .xt {
+            padding: 10px;
+            line-height: 1.215;
+        }
+        .error {
+            color: rgb(248, 88, 88);
+        }
+        .spinner:after {
+            animation: changeContent 0.8s linear infinite;
+            content: "⠋";
+        }
+
+        @keyframes changeContent {
+            10% { content: "⠙"; }
+            20% { content: "⠹"; }
+            30% { content: "⠸"; }
+            40% { content: "⠼"; }
+            50% { content: "⠴"; }
+            60% { content: "⠦"; }
+            70% { content: "⠧"; }
+            80% { content: "⠇"; }
+            90% { content: "⠏"; }
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/xterminal/dist/xterminal.umd.js"></script>
+    <script src="./demo.js"></script>
+    <script>
+        window.onload = () => createTerminal('#app');
+    </script>
+</body>
+</html>
