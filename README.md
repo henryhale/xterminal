@@ -59,15 +59,26 @@ The full API for xterminal.js is contained within the [TypeScript declaration fi
 
 Supporting wide range of browsers is the goal. Modern browsers, most specifically the latest versions of Chrome, Firefox, Safari, and Edge (for desktop and mobile devices) are supported.
 
-## Contributing
+## Development
 
-Thank you so much for taking your time to check out `xterminal`.
+To get started with development, follow these steps:
 
-Contributions are welcome, here are areas that need your help;
+### Prerequisites
 
-- Testing
-- Documentation
-- ... anything else
+- [Node.js](https://nodejs.org) (>=14)
+- [pnpm](https://pnpm.io/) (>=7)
+
+### Setup
+
+1. Clone this repository: `git clone https://github.com/henryhale/xterminal.git`
+2. Navigate to the project directory: `cd xterminal`
+3. Install dependencies: `pnpm install`
+
+### Building the Library
+
+To build the library, run `pnpm build`
+
+This will generate the production-ready distribution files in the `dist` directory.
 
 ## Related
 
