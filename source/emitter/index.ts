@@ -1,6 +1,6 @@
 import Disposable from "../base/disposable";
 import { IDisposable } from "../base/types";
-import { EVENT_FUNC_ERR, EVENT_NAME_ERR, XError } from "../base/Error";
+import { EVENT_FUNC_ERR, EVENT_NAME_ERR, XError } from "../base/error";
 import { isFunction } from "../helpers";
 import {
     IEventEmitter,

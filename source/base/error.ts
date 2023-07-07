@@ -11,3 +11,9 @@ export const EVENT_NAME_ERR =
 
 export const EVENT_FUNC_ERR =
     "EventEmitter: The event listener (second argument) is required and must be a function";
+
+export const TARGET_INVALID_ERR =
+    "mount: A parent HTMLElement (target) is required";
+
+export const TARGET_NOT_CONNECTED_ERR =
+    "'mount' was called on an HTMLElement (target) that is not attached to DOM.";
