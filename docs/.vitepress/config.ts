@@ -23,7 +23,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
-      { text: 'Examples', link: '/examples/' },
+      { text: 'Demo', link: '/demo/' },
       { 
         text: 'About',
         items: [
@@ -31,7 +31,7 @@ export default defineConfig({
           { text: 'History', link: '/about/history' },
           { text: 'Code of Conduct', link: '/about/coc' },
         ]
-    },
+      },
     ],
 
     sidebar: [
@@ -56,6 +56,7 @@ export default defineConfig({
           { text: 'Output', link: '/guide/output' },
           { text: 'Events', link: '/guide/events' },
           { text: 'Prompt', link: '/guide/prompt' },
+          { text: 'History', link: '/guide/history' },
           { text: 'Key Bindings', link: '/guide/keybindings' },
         ]
       },
@@ -64,13 +65,15 @@ export default defineConfig({
         collapsed: true,
         items: [
           { text: 'AutoComplete', link: '/guide/autocomplete' },
+          { text: 'Batch Mode', link: '/guide/batchmode' },
           { text: 'Disposal', link: '/guide/disposal' },
           { text: 'Theme', link: '/guide/theme' },
         ]
       },
       {
-        text: 'Examples',
-        items: []
+        text: 'API Reference',
+        link: '/api/',
+        items: [],
       }
     ],
 

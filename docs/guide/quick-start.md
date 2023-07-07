@@ -2,7 +2,7 @@
 
 To get started, you need to [install XTerminal](./installation.md) and ship the `CSS` and `JS` from XTerminal `dist` folder into your application.
 
-Here is a quick setup using the [cdn installation guide](./installation.md#using-cdn). This setup requires a simple project structure with three essential files; `index.html`, `styles.css` and `main.js` in the same directory.
+Here is a quick setup using the [CDN installation guide](./installation.md#using-cdn). This setup requires a simple project structure with three essential files; `index.html`, `styles.css` and `main.js` in the same directory.
 
 Let's create a full page terminal application;
 
@@ -34,11 +34,11 @@ Let's create a full page terminal application;
 html, body {
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  overflow: hidden; /* prevent page from scrolling */
 }
 
 #app {
-  height: 100vh;
+  height: 100vh; /* occur the entire page */
 }
 ```
 
@@ -55,24 +55,21 @@ const promptStyle = '[user] $ ';
 // write prompt style and prepare for input
 function ask() {
   term.write(promptStyle);
-  term.prompt();
 }
-
-// capture clear event
-// it erases everything, so prompt user again
-term.on('clear', () => ask());
 
 // capture data event
 term.on('data', input => {
   if (input == 'clear') {
-    // trigger clear event
+    // clear screen
     term.clear();
   } else {
-    // write
+    // write the input
     term.writeln(input);
-    // then prompt user for more input
-    ask();
+    // do something
+    term.writeln('Data' + input);
   }
+  // then prompt user for more input
+  ask();
 });
 
 // print greeting message
@@ -96,7 +93,7 @@ Open the `index.html` file in your browser.
 Follow the rest of the guide to customize, add interactivity, and also learn how to setup your own terminal application.
 :::
 
-## Next Steps
+## Next Step
 
 If you skipped the [introduction](./index.md), we strongly recommend reading it before moving on to the rest of the documentation.
 

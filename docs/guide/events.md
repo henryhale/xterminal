@@ -1,21 +1,19 @@
 # Events
 
-The `Terminal` class, from which we create an instance, extends an internal `EventEmitter` class.
+The [XTerminal](../api/index.md#xterminal) class, from which we create an instance, extends an internal [EventEmitter](../api/index.md#xeventemitter) class.
 This implies that we can handle events the same way the browser does to provide interaction through events like:
-clicks, key presses, and so on.
+click, keydown, and so on.
 
-The underlying `EventEmitter` exposes, the `on`, `off`, `once`, `emit` and `stopEmit` methods.
+The underlying [EventEmitter](../api/index.md#xeventemitter) exposes, the `on`, `off`, `once`, and `emit` methods.
 
-- `on` is used to add a callback function (event listener) that's executed when the event is triggered
-- `emit` is used to trigger an event
-- `off` is used to remove a callback function from an event
+- `on` is used to add an event listener that's executed when the event is triggered
+- `off` is used to remove an event listener from an event
 - `once` is used to add a one-time event listener, it is triggered only once and then removed using `off`
-- `stopEmit` is used to stop the execution of callbacks for the triggered event
+- `emit` is used to trigger an event
 
 ## Custom Events
 
-Let's create a `start` event, and as a matter of providing an example, the reaction to the event is a simply 
-outputting to the terminal.
+Let's create a `start` event, and as a matter of providing an example, the reaction to the event is a simply outputting to the terminal.
 
 ```js
 term.on('start', () => {
@@ -31,9 +29,9 @@ term.emit('start');
 
 the event handler function is triggered, and we get the terminal log.
 
-### Multiple Arguments
+### Arguments
 
-You can pass multiple arguments to the event handler by passing them as additional arguments to `emit()`.
+You can pass multiple arguments to the event handler by passing them as additional arguments to `term.emit()`.
 
 ```js
 term.on('start', (id) => {
@@ -56,7 +54,7 @@ term.emit('start', 1, 10);
 ### One-Time Event
 
 In some cases, it might be necessary to only run an operation once and only once.
-Any event listener added using the `once()` method is executed once and deleted thereafter when the event is triggered.
+Any event listener added using the `term.once()` method is executed once and deleted thereafter when the event is triggered.
 
 ```js
 term.once('load', () => {
@@ -89,86 +87,93 @@ term.emit(START_EVENT);
 Every terminal instance has existing events that are used internally and can be used in your application lifecycle.
 They include:
 
-- `data` event - triggered when user inputs data and presses the Enter key
-- `clear` event - triggered on `CTRL + L` or `term.clear()`
-- `history` event - triggered when ever the terminal's input history record changes (no duplicate inputs are stored) 
-- `close` event - triggered on `CTRL + C` or `term.terminate()`
+- `data` event - triggered when user inputs data and presses the _Enter key_
+- `clear` event - triggered on [term.clear()](../api/index.md#term-clear)
+- `keypress` event - triggered on every key press except _tab, enter, arrowup_ and _arrowdown_
   
 ### Example
 
 In this example, we are going to capture the user's input and simply write it to the terminal.
 
-Let's first write a function, `ask`, that will prompt the user for input by printing the prompt style.
+First, add an event listener for the `data` event to capture data, output it and then ask for more input thereafter. We clear the terminal on recieving the input matching to `clear` and as a result, everything is erased from the terminal including the prompt style. Let's also add a `keypress` event to clear the terminal.
 
-```js
-const promptStyle = '[root@web] $ ';
-
-function ask() {
-    term.write(promptStyle);
-    term.prompt();
-}
-```
-
-:::info Note
-Don't mind the `term.prompt()` right now, all it does is to activate the terminal for input.
-:::
-
-Then add an event listener for the `data` event to capture data, output it and then ask for more input thereafter. We clear the terminal on recieving the input matching to `clear` and as a result, everything is erased from the terminal including the prompt style.
+:::details Code
 
 ```js
 term.on('data', (input) => {
     if (input == 'clear') {
+        // clear the terminal
         term.clear();
     } else {
+        // first write the input back
+        term.write(input);
+        // do something
         term.writeln('Data: ' + input);
-        ask();
     }
+    // write the prompt again
+    term.write("$ ");
 });
 
 term.on('clear', () => {
     term.writeln('You cleared the terminal');
-    ask();
+});
+
+term.on('keypress', (ev) => {
+    /**
+     * Checkout the event object
+     */
+    console.log(ev);
+
+    // on CTRL+L - clear
+    if (ev.key.toLowerCase() == 'l' && ev.ctrlKey) {
+        
+        // prevent default behaviour
+        ev.cancel();
+
+        // clear and trigger `clear` event
+        term.clear();
+    }
 });
 ```
-
-:::warning Note
-We don't call `ask()` when `input == 'clear'` as the `term.clear()` call emits the `clear` event that triggers another `ask()` operation.
-
-The keyboard shortcut `CTRL + L` will clear the terminal and emit the `clear` event but that is behind the scenes. No prompt style will be written producing a side effect where the cursor is ready but the user isn't sure about that. 
-This is why we call `ask()` when the `clear` event is emitted.
 :::
 
-Initialize the terminal for interaction by calling `ask()`.
+The terminal will be cleared incase the user inputs `clear` or presses the shortcut `CTRL+L` which triggers the `clear` event that logs `You cleared the terminal` on the screen.
 
-Here is the complete example:
+## Limitations
 
-```js :line-numbers
-const term = new XTerminal();
+Multiple events can exist on the same terminal instance which is an advantage. However you should keep caution on when every event is triggered.
 
-term.mount('#app');
+:::warning Nested Emits
+When an event is triggered, it is added on top of the emitting stack and then the listeners attached to the event are invoked synchronously. 
+If you emit the same event within one of the listeners, it will not work.
+:::
 
-function ask() {
-    term.write('[root@web] # ');
-    term.prompt();
-}
+**Example:** 
 
-term.on('data', (input) => {
-    if (input == 'clear') {
-        term.clear();
-    } else {
-        term.writeln('Data: ' + input);
-        ask();
-    }
+The code sample below will not work as expected.
+
+```js
+term.on('run', () => {
+    console.log('running...');
+    // ...
+    term.emit('run');
 });
-
-term.on('clear', () => {
-    term.writeln('You cleared the terminal');
-    ask();
-});
-
-ask(); // [!code ++]
 ```
 
-## Next Steps
+Triggering the event `run` will log in the console: `running...`, do stuff, and attempt to trigger itself again (possible deadlock).
 
-You'll learn to everything about the prompt inlcuding activation, styling, blur and focus.  
+**Workaround**
+
+Trigger the same event in the next event loop.
+
+```js{4}
+term.on('run', () => {
+    console.log('running...');
+    // ...
+    setTimeout(() => term.emit('run'), 0);
+});
+```
+
+## Next Step
+
+You'll learn to everything about the prompt including activation, styling, blur and focus.  

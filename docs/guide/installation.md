@@ -1,4 +1,4 @@
-# Getting started with XTerminal
+# Getting Started with XTerminal
 
 ## Installation
 
@@ -7,11 +7,18 @@ Below are some of the ways `XTerminal` can be installed;
 - [CDN](./installation.md#using-cdn) - (for development with a simple setup)
 - [NPM](./installation.md#using-npm) - (use this if you are using bundlers or having a build step)
 
+### Production Builds
+
+There are two production ready builds:
+
+- `xterminal.umd.js` - for the browser (no build tools), it's minified
+- `xterminal.esm.js` - in case of build tools like [Vite](https://vitejs.dev) or Webpack
+
 ## Using NPM
 
 [NPM](https://npmjs.org) is a popular javascript package manager on which [XTerminal](https://npmjs.org/xterminal) is a public npm package that can be installed by anyone.
 
-To install it, run one of the following comands;
+To install it, run one of the following commands;
 
 ::: code-group
 
@@ -39,17 +46,17 @@ First include the styles in your markup:
 <link rel="stylesheet" href="./node_modules/xterminal/dist/xterminal.css">
 ```
 
-Then import the script into your application.
+Then import the script into your application (ESM build by default).
 
 ```js
 import XTerminal from 'xterminal';
+
+console.log(XTerminal.version);
 ```
 
 ## Using CDN
 
 You can use any CDN that serves npm packages;
-
-These deliver npm packages globally over their fast content delivery network.
 
 Install via CDN using one of the following;
 
@@ -70,11 +77,11 @@ Install via CDN using one of the following;
 Including `XTerminal` javascript file defines a global property `window.XTerminal` on the `window` object. This implies that the `XTerminal` class is globally accessible. 
 
 ```js
-console.log(window.XTerminal());
+console.log(XTerminal.version);
 //or
-console.log(XTerminal);
+console.log(window.XTerminal.version);
 ```
 
-## Next Steps
+## Next Step
 
 Now that you have installed `XTerminal`, it is time to dive into the essential parts.

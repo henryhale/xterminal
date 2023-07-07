@@ -1,7 +1,7 @@
 /**
  * XTerminal styles
  * @license MIT
- * -> https://github.com/henryhale/xterminal
+ * @url https://github.com/henryhale/xterminal
  */
 
 :root {
@@ -51,7 +51,6 @@
 }
 
 .xt > .xt-stdin {
-  width: 100%;
   height: 0;
   position: relative;
   margin-top: 2px;
