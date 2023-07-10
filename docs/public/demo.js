@@ -117,6 +117,10 @@ function createTerminal(target) {
         term.focus();
     }
 
+    term.on('keypress', event => {
+        console.debug(['keypress', event.key]);
+    })
+
     // user input handler
     term.on("data", async input => {
 
