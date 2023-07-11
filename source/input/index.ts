@@ -17,7 +17,7 @@ export default class XInputComponent
     extends Disposable
     implements IInputInterface
 {
-    private el: HTMLInputElement;
+    public readonly el: HTMLInputElement;
     private data: IReactive<string>;
     private ptr: IReactive<number>;
     private isActive: IReactive<boolean>;
@@ -83,6 +83,7 @@ export default class XInputComponent
 
         this.register(
             addEvent(this.el, "keydown", (ev: KeyboardEvent) => {
+                ev.stopImmediatePropagation();
                 const value = this.data.value;
                 if (ev.key === ENTER_KEY) {
                     if (this.el) this.el.value = "";

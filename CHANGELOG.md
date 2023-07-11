@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.1 (2023-07-11)
+
+
+### Bug Fixes
+
+* trigger keypress event on every key pressed ([#12](https://github.com/henryhale/xterminal/issues/12)) ([501d43c](https://github.com/henryhale/xterminal/commit/501d43cbc78a817a0e7915526b250e0c1b3377a4))
+
 # 2.0.0 (2023-07-07)
 
 
