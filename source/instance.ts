@@ -13,6 +13,7 @@ import {
     TAB_KEY,
     addEvent
 } from "./renderer/events";
+import { bounce } from "./base/debouncer";
 
 // private store for states
 const instances = new WeakMap<XTerminal, ITerminalState>();
@@ -66,7 +67,17 @@ export function setup(instance: XTerminal, target: HTMLElement): void {
     // scroll to the bottom on every output operation
     output.onoutput = () => scrollDown(term);
 
-    instance.register(addEvent(term, "keydown", input.focus.bind(input)));
+    instance.register(
+        addEvent(term, "keydown", function (ev: KeyboardEvent) {
+            // focus input element
+            input.focus();
+            // redirect the `keyboard` event to the input in the next event loop
+            bounce(() => {
+                input.el.dispatchEvent(new KeyboardEvent("keydown", ev));
+                input.el.dispatchEvent(new KeyboardEvent("input", ev));
+            });
+        })
+    );
 
     instance.register(
         addEvent(term, "focus", () => (input.isFocused.value = true))
