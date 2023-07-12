@@ -10,10 +10,11 @@
 
 ## What is XTerminal?
 
-`XTerminal` is a simple, lightweight and perfomant front-end component written in TypeScript that lets you create terminal-like interfaces for use in the browser.
+`XTerminal` is a simple, lightweight and perfomant front-end component written in TypeScript that lets you create interactive terminal-like interfaces in your web applications. It is inspired by [xterm.js](https://github.com/xtermjs) and the [node:readline](https://nodejs.org/api/readline.html) module in nodejs. 
 
-> **Note:** It can't be connected to your terminal nor ssh, it's entirely browser based.
-> If you're searching for a full blown command line program (web terminal), then check out [xterm.js](https://github.com/xtermjs).
+> **Note:** XTerminal can't be connected to your terminal nor ssh, it's entirely browser based.
+> It's built to primarily support the REPL (Read Evaluate Print Loop) interactive approach.
+> If you're searching for a full blown command line program (web-based terminal emulator), then check out [xterm.js](https://github.com/xtermjs).
 
 ## Live Demo
 
@@ -21,10 +22,19 @@ There is a quick demo online. [Try it Now](https://henryhale.github.io/xterminal
 
 ## Getting Started
 
-Checkout the [documentation](https://henryhale.github.io/xterminal/) online.
+### Installation
 
-**Quick start**
-<details>
+To install `xterminal`, use [npm](https://npmjs.org/xterminal):
+
+```sh
+npm install xterminal
+```
+
+alternatively use [unpkg](https://unpkg.com/xterminal) or [jsdelivr](https://cdn.jsdelivr.net/npm/xterminal).
+
+### Basic Usage
+
+Import the package and create a new instance of the `XTerminal` class:
 
 ```html
 <link rel='stylesheet' href='https://unpkg.com/xterminal/dist/xterminal.css'>
@@ -40,24 +50,24 @@ Checkout the [documentation](https://henryhale.github.io/xterminal/) online.
 </script>
 ```
 
-</details>
+For more detailed information, please refer to the [official documentation](https://henryhale.github.io/xterminal/) online.
 
-### Alternative installation
+## Documentation
 
-You can add `xterminal.js` and `xterminal.css` using to your HTML page using any CDN that ships npm packages e.g [unpkg](https://unpkg.com/xterminal).
+The complete documentation for `XTerminal` can be found [here](https://henryhale.github.io/xterminal/). It provides detailed information on installation, configuration, usage, and advanced features. You'll also find code examples and API references.
 
-```html
-  <link rel="stylesheet" href="https://unpkg.com/xterminal/dist/xterminal.css" />
-  <script src="https://unpkg.com/xterminal/dist/xterminal.umd.js"></script>
-```
-
-## API
-
-The full API for xterminal.js is contained within the [TypeScript declaration file](https://github.com/henryhale/xterminal/blob/master/types/terminal.d.ts).
+The full API for `XTerminal` can also be found within this [TypeScript declaration file](https://github.com/henryhale/xterminal/blob/master/types/terminal.d.ts).
 
 ## Browser Support
 
 Supporting wide range of browsers is the goal. Modern browsers, most specifically the latest versions of Chrome, Firefox, Safari, and Edge (for desktop and mobile devices) are supported.
+
+## Contributing
+
+Thank you for checking out this awesome project. Any contributions to the project are appreciated, whether it's fixing bugs, adding new features, or improving documentation. To contribute, please follow these guidelines:
+
+- **Issues**: Before starting to work on a new feature or bug fix, please check the issue tracker to see if the task is already in progress or has been reported. If not, feel free to [open a new issue](https://github.com/henryhale/xterminal/issues/new) to discuss the proposed changes or bug fixes.
+- **Branching**: Create a new branch for each feature or bug fix you are working on. Use clear descriptive branch names that reflect the purpose of your changes e.g. `feature/events` or `bugfix/issue-1234`.
 
 ## Development
 
