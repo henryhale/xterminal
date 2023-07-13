@@ -27,3 +27,16 @@ Now that you know something about **XTerminal**, here is a brief definition of w
 - XTerminal is not an application that can be downloaded and used just like others on your computer.
 - XTerminal is not a fully fledged terminal application that comprises of all fundamental utility functions. It can't be connected to your terminal nor ssh, it's entirely browser based.
 :::
+
+
+## Main Objectives
+
+The primary goals of this project are:
+
+- **Simplicity**: Provide a simple and intuitive API that allows developers to quickly create web-based CLIs without the need for extensive setup or dependencies.
+
+- **Performance**: Prioritize performance optimizations to ensure a smooth and responsive CLI experience, even with large outputs or complex interactions.
+
+- **Flexibility**: Enable developers to customize and extend the library to meet the specific requirements of their applications. Provide a solid foundation while allowing for easy integration and customization.
+
+We appreciate your interest in this project, and we hope that it will empower you to create impressive web-based command-line interfaces for your applications.
