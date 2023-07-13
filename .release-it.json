@@ -3,7 +3,7 @@
         "tagName": "v${version}",
         "commitMessage": "chore(release): v${version}",
         "requireBranch": "master",
-        "changelog": "npx auto-changelog --stdout --commit-limit false --unreleased --template https://raw.githubusercontent.com/release-it/release-it/main/templates/changelog-compact.hbs"
+        "changelog": "pnpm exec auto-changelog --stdout --commit-limit false --unreleased --template https://raw.githubusercontent.com/release-it/release-it/main/templates/changelog-compact.hbs"
     },
     "changelogFile": "CHANGELOG.md",
     "github": {
@@ -19,6 +19,6 @@
     },
     "hooks": {
         "before:init": "git fetch --tags",
-        "after:bump": "npx auto-changelog -p"
+        "after:bump": "pnpm exec auto-changelog -p"
     }
 }
