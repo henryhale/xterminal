@@ -8,17 +8,19 @@
 <img alt="GitHub" src="https://img.shields.io/github/license/henryhale/xterminal">
 </div>
 
-## What is XTerminal?
+## Overview
 
-`XTerminal` is a simple, lightweight and perfomant front-end component written in TypeScript that lets you create interactive terminal-like interfaces in your web applications. It is inspired by [xterm.js](https://github.com/xtermjs) and the [node:readline](https://nodejs.org/api/readline.html) module in nodejs. 
+Welcome to XTerminal! This library provides a simple, lightweight and perfomant solution for creating web-based command-line interfaces (CLIs) with ease in your web applications. It aims to be a minimalist dependency-free alternative to popular libraries like `jquery.terminal`, offering improved performance and a simplified approach.
 
-> **Note:** XTerminal can't be connected to your terminal nor ssh, it's entirely browser based.
-> It's built to primarily support the REPL (Read Evaluate Print Loop) interactive approach.
-> If you're searching for a full blown command line program (web-based terminal emulator), then check out [xterm.js](https://github.com/xtermjs).
+## Inspiration
+
+This project draws inspiration from the powerful [`node:readline`](https://nodejs.org/api/readline.html) module in Node.js, which has proven to be a reliable and efficient tool for command-line interactions. Additionally, inspiration is derived from the versatility and functionality of [`xterm.js`](https://github.com/xtermjs), a widely adopted library for web-based terminal emulators.
+
+By combining the best features and ideas from these sources, this library aims to provide an accessible and performant solution for creating web-based CLIs that meet the needs of modern web applications.
 
 ## Live Demo
 
-There is a quick demo online. [Try it Now](https://henryhale.github.io/xterminal/demo/).
+We have prepared you a quick demo online: [Try It Yourself](https://henryhale.github.io/xterminal/demo/).
 
 ## Getting Started
 
