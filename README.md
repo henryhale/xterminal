@@ -10,7 +10,9 @@
 
 ## Overview
 
-Welcome to XTerminal! This library provides a simple, lightweight and perfomant solution for creating web-based command-line interfaces (CLIs) with ease in your web applications. It aims to be a minimalist dependency-free alternative to popular libraries like `jquery.terminal`, offering improved performance and a simplified approach.
+**Welcome to XTerminal!** 
+
+This library provides a simple, lightweight and perfomant solution for creating interactive web-based command-line interfaces (CLIs) with ease in your web applications. It aims to be a minimalist dependency-free alternative to popular libraries like `jquery.terminal`, offering improved performance and a simplified approach.
 
 ## Inspiration
 
