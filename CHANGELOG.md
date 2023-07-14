@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.6 (2023-07-14)
+
+## 2.0.5 (2023-07-14)
+
+
+### Reverts
+
+* "merge: release/changelog update ([#16](https://github.com/henryhale/xterminal/issues/16))" ([#18](https://github.com/henryhale/xterminal/issues/18)) ([2abd547](https://github.com/henryhale/xterminal/commit/2abd54765bdfe500754c8dec16a311123d5db573))
+
 ## 2.0.4 (2023-07-13)
 
 ## 2.0.3 (2023-07-13)
