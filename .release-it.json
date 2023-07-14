@@ -2,8 +2,8 @@
     "git": {
         "tagName": "v${version}",
         "commitMessage": "chore(release): v${version}",
-        "changelog": "CHANGELOG.md",
-        "requireBranch": "master"
+        "requireBranch": "master",
+        "changelog": "pnpm exec auto-changelog --stdout --commit-limit false --unreleased --template https://raw.githubusercontent.com/release-it/release-it/main/templates/changelog-compact.hbs"
     },
     "changelogFile": "CHANGELOG.md",
     "github": {
@@ -17,14 +17,8 @@
         "publish": true,
         "skipChecks": true
     },
-    "plugins": {
-        "@release-it/conventional-changelog": {
-            "preset": "angular",
-            "infile": "CHANGELOG.md",
-            "header": "# Changelog"
-        }
-    },
     "hooks": {
-        "before:init": "git fetch --tags"
+        "before:init": "git fetch --tags",
+        "after:bump": "pnpm exec auto-changelog -p"
     }
 }
