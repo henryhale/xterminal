@@ -1,4 +1,4 @@
-import XTerminal from "./xterminal";
+import XTerminal from "./index";
 import XHistory from "./history/index";
 import XOutputComponent from "./output/index";
 import XInputComponent from "./input/index";

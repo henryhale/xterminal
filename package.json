@@ -34,8 +34,11 @@
   "type": "module",
   "scripts": {
     "clean": "del-cli out dist",
+    "build:ts": "tsc -b",
+    "build:js": "rollup -c",
+    "build:css": "postcss theme/index.css > dist/xterminal.css",
+    "build": "pnpm clean && pnpm build:ts && pnpm build:js && pnpm build:css",
     "dev": "vite",
-    "build": "vite build",
     "lint": "eslint -c .eslintrc.json --max-warnings 0 --ext .ts source/ types/",
     "lint:fix": "eslint \"source/**/*.ts\" \"types/*.ts\" --fix",
     "prepack": "pnpm build",
@@ -65,10 +68,9 @@
     "postcss-cli": "^10.1.0",
     "prettier": "^2.8.8",
     "release-it": "^16.0.0",
+    "rollup": "^3.26.1",
     "typescript": "^5.0.4",
     "vite": "^4.4.3",
-    "vite-plugin-banner": "^0.7.0",
-    "vite-plugin-replace": "^0.1.1",
     "vitepress": "1.0.0-beta.5"
   },
   "browserslist": [
