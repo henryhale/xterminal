@@ -87,6 +87,7 @@ To get started with development, follow these steps:
 1. Clone this repository: `git clone https://github.com/henryhale/xterminal.git`
 2. Navigate to the project directory: `cd xterminal`
 3. Install dependencies: `pnpm install`
+4. Start the development server: `pnpm dev`
 
 ### Building the Library
 
