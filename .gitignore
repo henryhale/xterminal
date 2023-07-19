@@ -28,8 +28,9 @@ node_modules/
 # Typescript build output
 out/
 
-# vscode workspace settings
+# IDEs
 .vscode/
+.idea/
 
 # Build output
 dist/

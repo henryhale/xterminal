@@ -1,0 +1,13 @@
+@import "../dist/xterminal.css";
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+html, body {
+    padding: 0;
+    margin: 0;
+}
+#app {
+    height: 100vh;
+}
+

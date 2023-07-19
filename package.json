@@ -38,6 +38,7 @@
     "build:js": "rollup -c",
     "build:css": "postcss theme/index.css > dist/xterminal.css",
     "build": "pnpm clean && pnpm build:ts && pnpm build:js && pnpm build:css",
+    "dev": "concurrently \"tsc -w\" \"rollup -c -w\" \"vite demo\"",
     "lint": "eslint -c .eslintrc.json --max-warnings 0 --ext .ts source/ types/",
     "lint:fix": "eslint \"source/**/*.ts\" \"types/*.ts\" --fix",
     "prepack": "pnpm build",
@@ -58,6 +59,7 @@
     "@typescript-eslint/parser": "^5.61.0",
     "auto-changelog": "^2.4.0",
     "autoprefixer": "^10.4.14",
+    "concurrently": "^8.2.0",
     "cssnano": "^6.0.1",
     "del-cli": "^5.0.0",
     "eslint": "^8.39.0",
@@ -69,6 +71,7 @@
     "release-it": "^16.0.0",
     "rollup": "^3.26.1",
     "typescript": "^5.0.4",
+    "vite": "^4.4.3",
     "vitepress": "1.0.0-beta.5"
   },
   "browserslist": [
