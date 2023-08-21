@@ -70,4 +70,4 @@ jobs:
       - name: Release
         run: npx release-it --ci
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
