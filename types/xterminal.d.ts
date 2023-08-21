@@ -21,7 +21,7 @@ declare module "xterminal" {
     /**
      * Type of event name.
      */
-    export type IEventName = string | symbol;
+    export type IEventName = "data" | "clear" | "keypress" | string | symbol;
 
     /**
      * Callback function invoked when the event is dispatched.
