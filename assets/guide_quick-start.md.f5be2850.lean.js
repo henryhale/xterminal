@@ -1,3 +1,0 @@
-import{_ as l,H as p,o as e,c as o,L as t,w as r,V as n,k as s}from"./chunks/framework.fb592c47.js";const g=JSON.parse('{"title":"Quick Start","description":"","frontmatter":{},"headers":[],"relativePath":"guide/quick-start.md","filePath":"guide/quick-start.md"}'),c={name:"guide/quick-start.md"},D=n("",6),F=s("pre",null,[s("code",null,`Hello World!
-[user] $ ▊
-`)],-1),i=n("",4);function y(u,C,b,m,A,d){const a=p("browser-preview");return e(),o("div",null,[D,t(a,null,{default:r(()=>[F]),_:1}),i])}const f=l(c,[["render",y]]);export{g as __pageData,f as default};
