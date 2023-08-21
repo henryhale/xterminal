@@ -13,11 +13,12 @@ import {
 const states = new WeakMap<XEventEmitter, IEmitterState>();
 
 // Create a new state object
-const defaultState = () =>
-    ({
+const defaultState = () => {
+    return {
         stack: [],
         store: new Map()
-    } as IEmitterState);
+    } as IEmitterState;
+};
 
 /**
  * Access the state of an event emitter object
