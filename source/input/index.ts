@@ -19,6 +19,7 @@ export default class XInputComponent
     implements IInputInterface
 {
     public readonly el: HTMLInputElement;
+    private buffer: string;
     private data: IReactive<string>;
     private ptr: IReactive<number>;
     private isActive: IReactive<boolean>;
@@ -30,6 +31,7 @@ export default class XInputComponent
         super();
 
         this.el = inputBuild(target);
+        this.buffer = "";
         this.data = ref<string>("");
         this.ptr = ref<number>(0);
         this.isActive = ref<boolean>(true);
@@ -48,7 +50,7 @@ export default class XInputComponent
         const cursorHandler = debounce(cursorUpdater);
 
         const inputHandler = debounce(() => {
-            this.data.value = this.el.value;
+            this.data.value = this.buffer = this.el.value;
         });
 
         createEffect(cursorUpdater);
@@ -89,6 +91,7 @@ export default class XInputComponent
                 if (ev.key === ENTER_KEY) {
                     if (this.el) this.el.value = "";
                     this.data.value = "";
+                    this.buffer = "";
                     this.showInput.value = true;
                 }
                 if (!this.isActive.value) return;
@@ -127,6 +130,7 @@ export default class XInputComponent
     }
 
     public setValue(str: string): void {
+        str = str || this.buffer;
         if (this.el) this.el.value = str;
         this.data.value = str;
     }
