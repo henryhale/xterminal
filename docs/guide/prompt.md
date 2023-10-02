@@ -41,22 +41,33 @@ function ask() {
 
 Using [term.pause()](../api/index.md#term-pause) will pause or deactivate the terminal from recieving user input whereas [term.resume()](../api/index.md#term-resume) will do the opposite.
 
+When invoked, [term.pause()](../api/index.md#term-pause) will trigger the [pause](./events.md#default-events) event whereas [term.resume()](../api/index.md#term-resume) will trigger the [resume](./events.md#default-events) event.
+
 :::warning Note
 In both cases, _input_ is affected but not the _output_. You can still do write operations even when the input is deactivated.
 :::
 
-**Example:** Pause input for five (5) seconds and resume thereafter. 
+**Example:** Pause input for five (5) seconds and resume thereafter while listening for events.
 
 ```js
 const term = new XTerminal();
+
 term.mount('#app');
 
-term.pause();
+// capture `pause` event
+term.on("pause", () => term.writeln("pausing..."));
 
-setTimeout(() => term.resume(), 5000);
+// capture `resume` event
+term.on("resume", () => term.writeln("resuming..."));
+
+term.pause(); // triggers the `pause` event
+
+setTimeout(() => {
+    term.resume();  // triggers the `resume` event
+}, 5000);
 ```
 
-In the five seconds, any keypress won't do anything.
+In the five seconds, any keypress won't do anything but we can observe to write operations in order of the events.
 
 ---
 
@@ -66,10 +77,10 @@ practice to [pause](../api/index.md#term-pause) the terminal for input and [resu
 Whenever the input is recieved, we can pause the terminal and handle the async operation first.
 
 ```js
-term.on("data", input => {
+term.on("data", async input => {
     term.pause();
     // ...
-    // do something
+    // do async task
     // ...
     term.resume();
 });

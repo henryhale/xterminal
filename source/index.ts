@@ -2,7 +2,7 @@ import XEventEmitter from "./emitter/index";
 import { isFunction } from "./helpers";
 import type { ITerminalOptions } from "./types";
 import type { ITerminalState } from "./interface";
-import { CLEAR_EVENT, setup } from "./instance";
+import { CLEAR_EVENT, PAUSE_EVENT, RESUME_EVENT, setup } from "./instance";
 import {
     TARGET_INVALID_ERR,
     TARGET_NOT_CONNECTED_ERR,
@@ -32,10 +32,12 @@ export default class XTerminal extends XEventEmitter {
 
     public pause(): void {
         this.#state.input.pause();
+        this.emit(PAUSE_EVENT);
     }
 
     public resume(): void {
         this.#state.input.resume();
+        this.emit(RESUME_EVENT);
     }
 
     public write(data: string | number, callback?: () => void): void {

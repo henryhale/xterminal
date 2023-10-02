@@ -21,27 +21,8 @@ import { ITerminalState } from "./interface";
 export const DATA_EVENT = "data";
 export const CLEAR_EVENT = "clear";
 export const KEYPRESS_EVENT = "keypress";
-
-/**
- * Access the state of a terminal object
- * @param instance The terminal object
- * @returns An object containing object's state
- */
-function $(instance: XTerminal) {
-    const state = instances.get(instance);
-    function process(fn: (s: ITerminalState) => void) {
-        if (state) fn.call(undefined, state);
-    }
-    return { state, process };
-}
-
-// alias
-export const getState = $;
-
-// Remove the entire state of a terminal object
-export function deleteState(instance: XTerminal) {
-    instances.delete(instance);
-}
+export const PAUSE_EVENT = "pause";
+export const RESUME_EVENT = "resume";
 
 /**
  * Composes the components of the terminal object and integrates them
