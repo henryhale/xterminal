@@ -22,7 +22,7 @@ By combining the best features and ideas from these sources, this library aims t
 
 ## Live Demo
 
-We have prepared you a quick demo online: [Try It Yourself](https://henryhale.github.io/xterminal/demo/).
+There is a quick demo online: [Try It Yourself](https://henryhale.github.io/xterminal/demo/).
 
 ## Getting Started
 
@@ -99,6 +99,7 @@ This will generate the production-ready distribution files in the `dist` directo
 
 - [chalk-dom](https://github.com/henryhale/chalk-dom) - Chalk for the browser
 - [inken](https://github.com/henryhale/inken) - Terminal-like string styling for the browser
+- [viteshell](https://github.com/henryhale/viteshell) - A minimal bash-like shell implementation written in TypeScript
 
 ## License
 
