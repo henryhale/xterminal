@@ -63,8 +63,6 @@ term.on('data', input => {
     // clear screen
     term.clear();
   } else {
-    // write the input
-    term.writeln(input);
     // do something
     term.writeln('Data' + input);
   }

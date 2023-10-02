@@ -107,8 +107,6 @@ term.on('data', (input) => {
         // clear the terminal
         term.clear();
     } else {
-        // first write the input back
-        term.write(input);
         // do something
         term.writeln('Data: ' + input);
     }
