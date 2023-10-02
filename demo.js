@@ -120,9 +120,6 @@ function createTerminal(target) {
     // user input handler
     term.on("data", async input => {
 
-        // write back
-        term.writeln(input);
-
         // deactivate until the execution is done
         term.pause();
 
