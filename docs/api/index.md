@@ -3,7 +3,8 @@
 ### Application
 
 - [XTerminal](#xterminal) extends [XEventEmitter](#xeventemitter)
-- [term.version](#term-version)
+- [XTerminal.version](#xterminal-version)
+- [XTerminal.XEventEmitter](#xterminal-xeventemitter)
 - [term.mount()](#term-mount)
 - [term.dispose()](#term-dispose)
 
@@ -22,10 +23,12 @@
 - [term.clear()](#term-clear)
 - [term.clearLast()](#term-clearlast)
 
-## History
+### History
 
 - [term.history](#term-history)
 - [term.clearHistory()](#term-clearhistory)
+
+---
 
 ## XEventEmitter
 
@@ -88,7 +91,7 @@ Creates a terminal instance
 
     The constructor takes one argument, `options` containing the `target` element reference.
     
-    If the `target` element is provided, the [term.mount()](#termmount) method is called automatically.
+    If the `target` element is provided, the [term.mount()](#term-mount) method is called automatically.
 
 - **Example**
 
@@ -100,7 +103,7 @@ Creates a terminal instance
 
 - **See also:** [Guide - Creating a Terminal](../guide/initialization.md#creating-your-first-terminal)
 
-## term.version
+## XTerminal.version
 
 The version number
 
@@ -108,7 +111,7 @@ The version number
 
     ```ts
     interface TerminalApi {
-        version: string;
+        readonly version: string;
     }
     ```
 
@@ -122,6 +125,32 @@ The version number
     import XTerminal from 'xterminal';
 
     console.log(XTerminal.version);
+    ```
+
+## XTerminal.XEventEmitter
+
+The event emitter class
+
+- **Type**
+
+    Same as [XEventEmitter](#xeventemitter).
+
+- **Details**
+
+    This is a static property (class) that can be used to create independent instances 
+
+- **Example**
+
+    Using the [UMD build](../guide/installation.md#installation):
+    ```js
+    const emitter = new XTerminal.XEventEmitter();
+    ```
+
+    Using [ESM build](../guide/installation.md#installation) (tree shakeable):
+    ```js
+    import { XEventEmitter } from 'xterminal';
+
+    const emitter = new XEventEmitter();
     ```
 
 ## term.mount()
@@ -461,7 +490,7 @@ Access the history stack.
 
 - **Details**
   
-    It is a getter that returns an array of entries in the history stack. 
+    Manages an array of entries in the history stack. 
 
 - **Example**
 
@@ -470,6 +499,8 @@ Access the history stack.
     ```js
     term.on('data', () => console.log(term.history));
     ```
+
+- **See also:** [History](../guide/history.md)
 
 ## term.clearHistory()
 
@@ -489,7 +520,7 @@ Clear the entire history stack.
 
 - **Example**
 
-    Clear history on CTRL+H using [keypress](../guide/events.md#default-events) event
+    Clear history on `CTRL+H` using [keypress](../guide/events.md#default-events) event
 
     ```js
     term.on('keypress', e => {
@@ -498,3 +529,5 @@ Clear the entire history stack.
         }
     });
     ```
+
+- **See also:** [History](../guide/history.md)

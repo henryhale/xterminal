@@ -15,10 +15,12 @@ By default, the `data` event is triggered by the user input followed by `enter` 
 ## Example
 
 ```js
+// no user interactivity
 term.pause();
 
-function handleInput(str) {
-    switch (str) {
+// executes command
+function handleInput(command) {
+    switch (command) {
         case 'install':
             // ...
             console.log('installing...');
@@ -38,12 +40,26 @@ function handleInput(str) {
     }
 }
 
+// register input callback
 term.on('data', handleInput);
 
-term.emit('data', 'install');
-    // installing...
-term.emit('data', 'commit');
-    // commiting changes...
-term.emit('data', 'fetch');
-    // fetching state...
+// demo shell script
+const script = `
+# install deps...
+install
+
+# save changes...
+commit
+
+# load state/resource...
+fetch
+`;
+
+// run it
+for (const line of script.split(/\n/)) {
+    // skip empty lines and comments
+    if (!line || line.startsWith("#")) continue;
+    // execute line
+    term.emit('data', line);
+}
 ```
