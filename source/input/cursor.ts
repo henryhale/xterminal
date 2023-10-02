@@ -1,4 +1,4 @@
-import { IReactive } from "../base/types";
+import type { IReactive } from "../base/reactivity";
 
 /**
  * Get current cursor position in a textbox

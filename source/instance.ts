@@ -2,10 +2,9 @@ import XTerminal from "./index";
 import XHistory from "./history/index";
 import XOutputComponent from "./output/index";
 import XInputComponent from "./input/index";
-import { ITerminalState } from "./interface";
 import { createEffect } from "./base/reactivity";
 import { THEME, h, scrollDown } from "./renderer/dom";
-import { isMobile } from "./helpers";
+import { isFunction, isMobile } from "./helpers";
 import {
     ARROW_DOWN_KEY,
     ARROW_UP_KEY,
@@ -14,9 +13,7 @@ import {
     addEvent
 } from "./renderer/events";
 import { bounce } from "./base/debouncer";
-
-// private store for states
-const instances = new WeakMap<XTerminal, ITerminalState>();
+import { ITerminalState } from "./interface";
 
 /**
  * Public Events
@@ -51,7 +48,10 @@ export function deleteState(instance: XTerminal) {
  * @param instance The terminal object
  * @param target The DOM element in which the terminal is to be mounted
  */
-export function setup(instance: XTerminal, target: HTMLElement): void {
+export function setup(
+    instance: XTerminal,
+    target: HTMLElement
+): ITerminalState {
     const term = h<HTMLDivElement>("div", {
         class: THEME.CONTAINER,
         props: { tabindex: 0 }
@@ -60,6 +60,13 @@ export function setup(instance: XTerminal, target: HTMLElement): void {
     const xhistory = new XHistory();
     const output = new XOutputComponent(term);
     const input = new XInputComponent(term);
+
+    const state = {
+        input,
+        output,
+        history: xhistory,
+        completer: (x: string) => x
+    };
 
     // connect the input to output (cursor & input text)
     input.pipe(output);
@@ -102,11 +109,9 @@ export function setup(instance: XTerminal, target: HTMLElement): void {
             instance.emit(DATA_EVENT, ev.value);
         } else if (ev.key == TAB_KEY) {
             ev.cancel();
-            $(instance).process((state) => {
-                if (state.completer) {
-                    input.setValue(state.completer(ev.value));
-                }
-            });
+            if (isFunction(state.completer)) {
+                input.setValue(state.completer(ev.value));
+            }
         } else if (ev.key == ARROW_DOWN_KEY) {
             ev.cancel();
             input.setValue(xhistory.next);
@@ -119,14 +124,6 @@ export function setup(instance: XTerminal, target: HTMLElement): void {
         scrollDown(term);
     };
 
-    // save state for this instance
-    instances.set(instance, {
-        input,
-        output,
-        history: xhistory,
-        completer: undefined
-    });
-
     createEffect(() => {
         // Fill the cursor if focused, otherwise outline
         if (input.isFocused.value) {
@@ -135,4 +132,6 @@ export function setup(instance: XTerminal, target: HTMLElement): void {
             term.classList.add(THEME.INACTIVE);
         }
     });
+
+    return state;
 }

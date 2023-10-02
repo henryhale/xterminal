@@ -1,4 +1,4 @@
-import { IDisposable } from "../base/types";
+import type { IDisposable } from "../types";
 
 export const ENTER_KEY = "Enter",
     TAB_KEY = "Tab",

@@ -1,5 +1,5 @@
 import Disposable from "../base/disposable";
-import { IReactive } from "../base/types";
+import type { IReactive } from "../base/reactivity";
 import { isFunction } from "../helpers";
 import { inputBuild } from "../renderer/index";
 import { SPACE, THEME, h } from "../renderer/dom";
@@ -7,8 +7,9 @@ import { ENTER_KEY, addEvent } from "../renderer/events";
 import { updateCursor } from "./cursor";
 import { debounce } from "../base/debouncer";
 import { createEffect, ref } from "../base/reactivity";
-import { IOutputInterface } from "../output/interface";
-import { IInputInterface, IKeyPress } from "./interface";
+import type { IOutputInterface } from "../output/interface";
+import type { IInputInterface } from "./interface";
+import type { IKeyPress } from "../types";
 
 /**
  * Input Component

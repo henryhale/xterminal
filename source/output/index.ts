@@ -1,7 +1,7 @@
 import { isFunction } from "../helpers";
 import outputBuild from "../renderer/index";
 import { SPACE, h } from "../renderer/dom";
-import { IOutputInterface } from "./interface";
+import type { IOutputInterface } from "./interface";
 
 const TAB_SIZE = 4;
 

@@ -60,7 +60,7 @@ For more detailed information, please refer to the [official documentation](http
 
 The complete documentation for `XTerminal` can be found [here](https://henryhale.github.io/xterminal/). It provides detailed information on installation, configuration, usage, and advanced features. You'll also find code examples and API references.
 
-The full API for `XTerminal` can also be found within this [TypeScript declaration file](https://github.com/henryhale/xterminal/blob/master/types/terminal.d.ts).
+The full Public API for `XTerminal` can also be found within this [TypeScript declaration file](https://github.com/henryhale/xterminal/blob/master/source/types.ts).
 
 ## Browser Support
 

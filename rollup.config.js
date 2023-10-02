@@ -23,7 +23,7 @@ function copyToDist() {
     closeBundle: () => {
       copyFileSync('./LICENSE.txt', './dist/LICENSE.txt');
       console.log(`[Y]: copied license file to dist/`);
-      copyFileSync('./types/xterminal.d.ts', './dist/types.d.ts');
+      copyFileSync('./source/types.ts', './dist/types.d.ts');
       console.log(`[Y]: copied typings file to dist/`);
     },
   };

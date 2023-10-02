@@ -1,18 +1,5 @@
-import { IDisposable } from "../base/types";
-import { IOutputInterface } from "../output/interface";
-
-/**
- * Object passed to callback functions invoked on `keypress` event
- */
-export type IKeyPress = {
-    key: string;
-    altKey: boolean;
-    metaKey: boolean;
-    shiftKey: boolean;
-    ctrlKey: boolean;
-    value: string;
-    cancel(): void;
-};
+import type { IDisposable, IKeyPress } from "../types";
+import type { IOutputInterface } from "../output/interface";
 
 /**
  * Interface: Input Component

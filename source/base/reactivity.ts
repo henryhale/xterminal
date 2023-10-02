@@ -1,11 +1,26 @@
 import { isFunction } from "../helpers";
-import { IEffect, IReactive } from "./types";
+import type { IDisposable } from "../types";
 
 /**
  * Reactivity
  * => https://github.com/henryhale/reactivity
  */
 
+/**
+ * Effect - callback triggered when a reactive value changes
+ */
+export type IEffect = () => void;
+
+/**
+ * Reactive value -> all effects are disposable
+ */
+export interface IReactive<T> extends IDisposable {
+    value: T;
+}
+
+/**
+ * Global observer
+ */
 let observer: IEffect | null;
 
 /**

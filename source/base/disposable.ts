@@ -1,4 +1,4 @@
-import { IDisposable } from "./types";
+import type { IDisposable } from "../types";
 
 /**
  * Disposables
