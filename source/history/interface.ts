@@ -24,7 +24,7 @@ export interface IHistory {
      *
      * @returns boolean
      */
-    add(input: string): boolean;
+    add(input: string): void;
 
     /**
      * Empty the stack of entries

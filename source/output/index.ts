@@ -5,7 +5,7 @@ import type { IOutputInterface } from "./interface";
 
 const TAB_SIZE = 4;
 
-function parseOutput(data: string): string {
+function parseOutput(data = ""): string {
     return ("" + data)
         .replace(/(\n)|(\n\r)|(\r\n)/g, "<br/>")
         .replace(/\s{2}/g, SPACE.repeat(2))
@@ -18,7 +18,7 @@ function parseOutput(data: string): string {
 export default class XOutputComponent implements IOutputInterface {
     public el: HTMLDivElement;
     private console: HTMLSpanElement;
-    private lastOutput: HTMLSpanElement | undefined;
+    private lastOutput?: HTMLSpanElement;
     public onoutput?: () => void;
 
     constructor(target: HTMLElement) {

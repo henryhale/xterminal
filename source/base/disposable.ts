@@ -8,15 +8,15 @@ import type { IDisposable } from "../types";
  * https://github.com/xtermjs/xterm.js/blob/master/src/common/Lifecycle.ts
  */
 
-// private store for states
-const instances = new WeakMap<Disposable, IDisposable[]>();
-
 export default class Disposable implements IDisposable {
+    // private store for states
+    #disposables: IDisposable[];
+
     public isDisposed: boolean;
 
     constructor() {
         this.isDisposed = false;
-        instances.set(this, []);
+        this.#disposables = [];
     }
 
     /**
@@ -27,7 +27,7 @@ export default class Disposable implements IDisposable {
         if (this.isDisposed) {
             d?.dispose();
         } else {
-            instances.get(this)?.push(d);
+            this.#disposables.push(d);
         }
     }
 
@@ -37,10 +37,6 @@ export default class Disposable implements IDisposable {
     public dispose(): void {
         if (this.isDisposed) return;
         this.isDisposed = true;
-        const disposables = instances.get(this) as IDisposable[];
-        for (const d of disposables) {
-            d?.dispose();
-        }
-        instances.delete(this);
+        this.#disposables.forEach((d) => d?.dispose());
     }
 }

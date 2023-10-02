@@ -1,5 +1,5 @@
 import { isArray } from "../helpers";
-import { IHistory } from "./interface";
+import type { IHistory } from "./interface";
 
 /**
  * History stack
@@ -21,13 +21,11 @@ export default class XHistory implements IHistory {
         return [].slice.call(this.store).reverse();
     }
 
-    add(input: string): boolean {
+    add(input: string): void {
         if (input && input !== this.store[0]) {
             this.store.unshift(input);
-            this.ptr = -1;
-            return true;
         }
-        return false;
+        this.ptr = -1;
     }
 
     get previous(): string {
