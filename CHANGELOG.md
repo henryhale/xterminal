@@ -1,5 +1,12 @@
 # Changelog
 
+# 2.1.0 (2023-10-02)
+
+
+### Features
+
+* provide static eventemitter class, update docs ([0bc9694](https://github.com/henryhale/xterminal/commit/0bc9694710cb22969fa6b968913cc60beab891de))
+
 ## 2.0.12 (2023-10-01)
 
 ##
