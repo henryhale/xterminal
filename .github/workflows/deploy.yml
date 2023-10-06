@@ -52,6 +52,11 @@ jobs:
       - name: Build
         run: pnpm docs:build
 
+      - name: Set CNAME
+        shell: bash
+        run: |
+          echo "xterminal.js.org" > docs/.vitepress/dist/CNAME
+      
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
