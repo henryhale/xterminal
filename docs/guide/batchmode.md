@@ -10,7 +10,7 @@ Suppose that you want the users to only have a readonly interface or you would l
 
 - Trigger events manually with arguments using [term.emit()](./events.md#arguments)
 
-By default, the `data` event is triggered by the user input followed by `enter` key. You can manually trigger the `data` event to mimic user interaction.
+By default, the `data` event is triggered by the user input followed by `Enter` key. You can manually trigger the `data` event to mimic user interaction.
 
 ## Example
 

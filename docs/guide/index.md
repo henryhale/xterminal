@@ -38,5 +38,3 @@ The primary goals of this project are:
 - **Performance**: Prioritize performance optimizations to ensure a smooth and responsive CLI experience, even with large outputs or complex interactions.
 
 - **Flexibility**: Enable developers to customize and extend the library to meet the specific requirements of their applications. Provide a solid foundation while allowing for easy integration and customization.
-
-We appreciate your interest in this project, and we hope that it will empower you to create impressive web-based command-line interfaces for your applications.
