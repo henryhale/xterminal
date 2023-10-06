@@ -28,7 +28,7 @@ You might want to clear the entire history list for some reasons. You can do tha
 
 **Example:**
 
-Let's clear the history on `CTRL+H` using the `keypress` event.
+Clearing the history on `CTRL+H` using the `keypress` event.
 
 ```js
 term.on('keypress', (ev) => {

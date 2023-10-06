@@ -5,17 +5,17 @@ they need thereby being not only interactive but also productive.
 
 ## How does it work?
 
-The user inputs data in the terminal and presses the `Enter` key, the input is saved in an internal history stack (accessible as an array). When the user types a partial string of an already input string, then presses the `Tab` key, we can loop through the history array for matches and set the most recent one as the input value iteratively.
+The user inputs data in the terminal and presses the `Enter` key, the input is saved in an internal history stack (accessible as an array). When the user types a partial string of an already input string, then presses the `Tab` key, you can loop through the history array for matches and set the most recent one as the input value iteratively.
 
 :::tip
-In addition to that, we can also include an external list of strings to use when matching.
+In addition to that, you can also include an external list of strings to use when matching.
 :::
 
 ## Implementation
 
-To implement the above methodology, we need the [term.history](../api/index.md#history) which provide an copy of the entries.
+To implement the above methodology, you need the [term.history](../api/index.md#history) which provide an copy of the entries.
 
-we can now create and add the basic autocomplete function using [term.setCompleter()](../api/index.md#term-setcompleter).
+Create and add the basic autocomplete function using [term.setCompleter()](../api/index.md#term-setcompleter).
 
 ```js
 const matches = [];

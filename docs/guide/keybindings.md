@@ -40,7 +40,7 @@ This is can be done using the [term.setCompleter()](../api/index.md#term-setcomp
 
 ## Custom Key Bindings
 
-You can create your own key bindings and add the desired functionality for each one of them. We can employ the [keypress event](./events.md#default-events) to attach the key bindings.
+You can create your own key bindings and add the desired functionality for each one of them. Employ the [keypress event](./events.md#default-events) to attach the key bindings.
 
 **Example:**
 

@@ -13,7 +13,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     
-    siteTitle: 'XTerminal Docs',
+    siteTitle: 'XTerminal',
     logo: '/logo.svg',
 
     search: {
