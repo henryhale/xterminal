@@ -22,7 +22,7 @@ By combining the best features and ideas from these sources, this library aims t
 
 ## Live Demo
 
-There is a quick demo online: [Try It Yourself](https://henryhale.github.io/xterminal/demo/).
+There is a quick demo online: [Try It Yourself](https://xterminal.js.org/demo/).
 
 ## Getting Started
 
@@ -54,11 +54,11 @@ Import the package and create a new instance of the `XTerminal` class:
 </script>
 ```
 
-For more detailed information, please refer to the [official documentation](https://henryhale.github.io/xterminal/) online.
+For more detailed information, please refer to the [official documentation](https://xterminal.js.org/) online.
 
 ## Documentation
 
-The complete documentation for `XTerminal` can be found [here](https://henryhale.github.io/xterminal/). It provides detailed information on installation, configuration, usage, and advanced features. You'll also find code examples and API references.
+The complete documentation for `XTerminal` can be found [here](https://xterminal.js.org/). It provides detailed information on installation, configuration, usage, and advanced features. You'll also find code examples and API references.
 
 The full Public API for `XTerminal` can also be found within this [TypeScript declaration file](https://github.com/henryhale/xterminal/blob/master/source/types.ts).
 
