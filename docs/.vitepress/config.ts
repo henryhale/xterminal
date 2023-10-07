@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/xterminal/',
+  base: '/',
 
   // metadata
   lang: 'en-US',
