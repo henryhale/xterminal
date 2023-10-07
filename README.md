@@ -79,8 +79,8 @@ To get started with development, follow these steps:
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) (>=14)
-- [pnpm](https://pnpm.io/) (>=7)
+- [Node.js](https://nodejs.org) (>=18)
+- [pnpm](https://pnpm.io/) (>=8)
 
 ### Setup
 
