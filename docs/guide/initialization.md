@@ -21,13 +21,6 @@ There will be nothing rendered on your page not until the `target` element is pr
 
 Initialize the terminal instance with `#app` as the target using one of the following:
 
-- Options object
-
-    ```js
-    const term = new XTerminal(); // [!code --]
-    const term = new XTerminal({ target: "#app" }); // [!code ++]
-    ```
-
 - CSS selector
 
     ```js
@@ -40,8 +33,17 @@ Initialize the terminal instance with `#app` as the target using one of the foll
     ```js
     const term = new XTerminal();
     term.mount( // [!code ++]
-        document.getElementById("app") // [!code ++]
+        document.querySelector("#app") // [!code ++]
     ); // [!code ++]
+    ```
+
+- Options object
+
+    ```js
+    const term = new XTerminal(); // [!code --]
+    const term = new XTerminal({ // [!code ++]
+        target: "#app" // or document.querySelector("#app") // [!code ++]
+    }); // [!code ++]
     ```
 
 Choosing one of the above basically sets up the terminal HTML structure, key bindings added, and then rendered in the target element `#app`.

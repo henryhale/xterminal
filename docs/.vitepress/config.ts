@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/xterminal/',
+  base: '/',
 
   // metadata
   lang: 'en-US',
@@ -13,7 +13,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     
-    siteTitle: 'XTerminal Docs',
+    siteTitle: 'XTerminal',
     logo: '/logo.svg',
 
     search: {

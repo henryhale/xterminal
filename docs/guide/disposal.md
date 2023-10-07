@@ -4,7 +4,7 @@ Nearly everything that makes up the terminal is disposable. Right from the base 
 
 ## Why dispose?
 
-The `XTerminal` package is lightweight and on top of that, we fight so hard that its efficient during runtime. 
+The `XTerminal` package is lightweight and on top of that, its efficiency during runtime is greatly considered. 
 
 A disposable object refers to an object that can self detach itself from a parent via a [term.dispose()](../api/index.md#term-dispose) method.
 
@@ -43,11 +43,11 @@ function createState(app) {
 }
 ```
 
-Whenever we create a new state using `createState` from the above example, a _disposable state object_ is returned. This implies that when the `dispose` method on that object is invoked, the entire state for that app is deleted.
+Whenever a new state is created using `createState` from the above example, a _disposable state object_ is returned. This implies that when the `dispose` method on that object is invoked, the entire state for that app is deleted.
 
 ## Terminal Disposal
 
-It is possible that we might want to close off the terminal and end it's usage. In this case, you can entirely dispose the terminal using [term.dispose()](../api/index.md#term-dispose). This will clear states of the underlying objects, dispose events, remove the HTML elements and their DOM events. 
+It is possible that you might want to close off the terminal and end it's usage. In this case, you can entirely dispose the terminal using [term.dispose()](../api/index.md#term-dispose). This will clear states of the underlying objects, dispose events, remove the HTML elements and their DOM events. 
 
 This tears down the entire terminal and renders it not usable thereafter. 
 

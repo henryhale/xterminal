@@ -13,7 +13,7 @@ The underlying [EventEmitter](../api/index.md#xeventemitter) exposes, the `on`, 
 
 ## Custom Events
 
-Let's create a `start` event, and as a matter of providing an example, the reaction to the event is a simply outputting to the terminal.
+Create a `start` event, and as a matter of providing an example, the reaction to the event is a simply outputting to the terminal.
 
 ```js
 term.on('start', () => {
@@ -70,7 +70,7 @@ The second event trigger does nothing since there is no event listener for the `
 
 ### Symbols
 
-So far, the event names used are strings. JavaScript symbols can as well be used to create events too.
+Apart from strings, JavaScript symbols can as well be used to create events too.
 
 ```js
 const START_EVENT = Symbol('start');
@@ -95,9 +95,9 @@ They include:
 
 ### Example
 
-In this example, we are going to capture the user's input and simply write it to the terminal.
+In this example, you are going to capture the user's input and simply write it to the terminal.
 
-First, add an event listener for the `data` event to capture data, output it and then ask for more input thereafter. We clear the terminal on recieving the input matching to `clear` and as a result, everything is erased from the terminal including the prompt style. Let's also add a `keypress` event to clear the terminal.
+First, add an event listener for the `data` event to capture data, output it and then ask for more input thereafter. Clear the terminal on recieving the input matching to `clear` and as a result, everything is erased from the terminal including the prompt style. Additionally, add a `keypress` event to clear the terminal.
 
 :::details Code
 

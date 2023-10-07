@@ -4,8 +4,6 @@ To get started, you need to [install XTerminal](./installation.md) and ship the 
 
 Here is a quick setup using the [CDN installation guide](./installation.md#using-cdn). This setup requires a simple project structure with three essential files; `index.html`, `styles.css` and `main.js` in the same directory.
 
-Let's create a full page terminal application;
-
 ::: code-group
 
 ```html :line-numbers [index.html]
@@ -64,7 +62,7 @@ term.on('data', input => {
     term.clear();
   } else {
     // do something
-    term.writeln('Data' + input);
+    term.writeln('Data: ' + input);
   }
   // then prompt user for more input
   ask();
@@ -93,6 +91,6 @@ Follow the rest of the guide to customize, add interactivity, and also learn how
 
 ## Next Step
 
-If you skipped the [introduction](./index.md), we strongly recommend reading it before moving on to the rest of the documentation.
+If you skipped the [introduction](./index.md), you're strongly recommend reading it before moving on to the rest of the documentation.
 
-Otherwise continue the guide. It takes you through details of the library. 
+Otherwise continue reading the guide. It takes you through details of the library. 

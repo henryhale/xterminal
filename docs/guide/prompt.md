@@ -17,7 +17,7 @@ Or even
 └$ ▊
 ```
 
-In the same way, we can organize the flow of input with a prompt style just before the cursor.
+In the same way, you can organize the flow of input with a prompt style just before the cursor.
 
 Suppose the state of our app defines the `username` and `hostname` like so
 
@@ -28,7 +28,7 @@ const state = {
 };
 ```
 
-We can create a function to write our prompt style to the terminal, let it be `ask()`.
+Create a function to write our prompt style to the terminal, let it be `ask()`.
 
 ```js
 function ask() {
@@ -74,7 +74,7 @@ In the five seconds, any keypress won't do anything but we can observe to write 
 Suppose that you want to do an async operation, it is a good 
 practice to [pause](../api/index.md#term-pause) the terminal for input and [resume](../api/index.md#term-resume) later when the operation is done.
 
-Whenever the input is recieved, we can pause the terminal and handle the async operation first.
+Whenever the input is recieved, you can pause the terminal and handle the async operation first.
 
 ```js
 term.on("data", async input => {
@@ -86,7 +86,7 @@ term.on("data", async input => {
 });
 ```
 
-Everytime we write the prompt style, we may want to be able to capture the next command input from the user. In this case, we can use the 
+Everytime you write the prompt style, you may want to be able to capture the next command input from the user. In this case, you can use the 
 [term.resume()](../api/index.md#term-resume) method.
 
 ```js
@@ -101,7 +101,7 @@ function ask() {
 
 You can programmatically focus the terminal input, toggling the keyboard in case of mobile devices, using the [term.focus()](../api/index.md#term-focus) method on the terminal instance.
 
-Let's focus the input everytime we ask for input.
+Focus the input everytime you ask for input using:
 
 ```js
 function ask() {
@@ -112,8 +112,8 @@ function ask() {
 }
 ```
 
-In the same way, we might want to blur the terminal for some reason, let's say after entering
-data and pressing the enter key. We can achieve that using the `data` event and the [term.blur()](../api/index.md#term-blur) method.
+In the same way, you might want to blur the terminal for some reason, say after entering
+data and pressing the enter key. You can achieve that using the `data` event and the [term.blur()](../api/index.md#term-blur) method.
 
 ```js
 term.on('data', () => {
