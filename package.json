@@ -1,6 +1,6 @@
 {
   "name": "xterminal",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "Build web-based cli interfaces",
   "main": "./dist/xterminal.umd.js",
   "module": "./dist/xterminal.esm.js",
