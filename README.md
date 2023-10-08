@@ -68,7 +68,7 @@ Supporting wide range of browsers is the goal. Modern browsers, most specificall
 
 ## Contributing
 
-Thank you for checking out this awesome project. Any contributions to the project are appreciated, whether it's fixing bugs, adding new features, or improving documentation. To contribute, please follow these guidelines:
+Thank you for checking out this awesome project. Any contributions to the project are [appreciated](https://xterminal.js.org/about/team.html), whether it's fixing bugs, adding new features, or improving documentation. To contribute, please follow these guidelines:
 
 - **Issues**: Before starting to work on a new feature or bug fix, please check the issue tracker to see if the task is already in progress or has been reported. If not, feel free to [open a new issue](https://github.com/henryhale/xterminal/issues/new) to discuss the proposed changes or bug fixes.
 - **Branching**: Create a new branch for each feature or bug fix you are working on. Use clear descriptive branch names that reflect the purpose of your changes e.g. `feature/events` or `bugfix/issue-1234`.
