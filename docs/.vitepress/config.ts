@@ -24,6 +24,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
       { text: 'Demo', link: '/demo/' },
+      { text: 'Showcase', link: '/showcase/' },
       { 
         text: 'About',
         items: [
@@ -50,7 +51,7 @@ export default defineConfig({
       },
       {
         text: 'Essentials',
-        collapsed: true,
+        collapsed: false,
         items: [
           { text: 'Initialization', link: '/guide/initialization' },
           { text: 'Output', link: '/guide/output' },
