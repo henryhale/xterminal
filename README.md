@@ -62,6 +62,10 @@ The complete documentation for `XTerminal` can be found [here](https://xterminal
 
 The full Public API for `XTerminal` can also be found within this [TypeScript declaration file](https://github.com/henryhale/xterminal/blob/master/source/types.ts).
 
+## Showcase
+
+Several projects that are using XTerminal are listed [here](https://xterminal.js.org/showcase). Feel free to open a pull request adding your project in this [file](https://github.com/henryhale/xterminal/blob/master/docs/showcase/index.md).
+
 ## Browser Support
 
 Supporting wide range of browsers is the goal. Modern browsers, most specifically the latest versions of Chrome, Firefox, Safari, and Edge (for desktop and mobile devices) are supported.
