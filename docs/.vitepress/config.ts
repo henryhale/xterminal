@@ -9,6 +9,8 @@ export default defineConfig({
   title: 'XTerminal',
   description: 'Build web-based command line interfaces',
 
+  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
+
   // theme
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
