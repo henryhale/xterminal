@@ -109,8 +109,4 @@ export default class XTerminal extends XEventEmitter {
     static get version() {
         return "__VERSION__";
     }
-
-    static get XEventEmitter() {
-        return XEventEmitter;
-    }
 }
