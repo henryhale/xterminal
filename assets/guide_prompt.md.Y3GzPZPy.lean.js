@@ -1,1 +1,0 @@
-import{_ as s,o as i,c as a,R as t}from"./chunks/framework.xFJs6Dqv.js";const y=JSON.parse('{"title":"Prompt","description":"","frontmatter":{},"headers":[],"relativePath":"guide/prompt.md","filePath":"guide/prompt.md"}'),e={name:"guide/prompt.md"},n=t("",33),h=[n];function p(l,k,r,E,d,o){return i(),a("div",null,h)}const c=s(e,[["render",p]]);export{y as __pageData,c as default};
