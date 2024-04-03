@@ -45,7 +45,7 @@ export default [
     ],
   },
   {
-    input: 'out/export.js',
+    input: 'out/index.js',
     output: {
       file: pkg.module,
       format: 'esm',

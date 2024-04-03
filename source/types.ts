@@ -219,11 +219,6 @@ declare class XTerminal extends XEventEmitter {
      * Version number
      */
     static readonly version: string;
-
-    /**
-     * Event Emitter
-     */
-    static readonly XEventEmitter: XEventEmitter;
 }
 
 export default XTerminal;

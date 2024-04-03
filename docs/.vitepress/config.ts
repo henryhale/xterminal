@@ -1,33 +1,55 @@
 import { defineConfig } from 'vitepress'
 
+const TITLE = "XTerminal";
+const DESCRIPTION = 'Build web-based command line interfaces';
+const IMAGE = "/logo.svg";
+const LINK = "https://henryhale.github.io/xterminal";
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/',
 
   // metadata
   lang: 'en-US',
-  title: 'XTerminal',
-  description: 'Build web-based command line interfaces',
+  title: TITLE,
+  description: DESCRIPTION,
 
-  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
+  head: [
+    // favicon
+    ['link', { rel: 'shortcut icon', href: IMAGE }],
+
+    // open graph - facebook
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:url', content: LINK }],
+    ['meta', { property: 'og:title', content: TITLE }],
+    ['meta', { property: 'og:description', content: DESCRIPTION }],
+    ['meta', { property: 'og:image', content: IMAGE }],
+
+    // twitter
+    ['meta', { property: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { property: 'twitter:url', content: LINK }],
+    ['meta', { property: 'twitter:title', content: TITLE }],
+    ['meta', { property: 'twitter:description', content: DESCRIPTION }],
+    ['meta', { property: 'twitter:image', content: IMAGE }],
+  ],
 
   // theme
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    
-    siteTitle: 'XTerminal',
-    logo: '/logo.svg',
+
+    siteTitle: TITLE,
+    logo: IMAGE,
 
     search: {
       provider: 'local'
     },
-    
+
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
       { text: 'Demo', link: '/demo/' },
       { text: 'Showcase', link: '/showcase/' },
-      { 
+      {
         text: 'About',
         items: [
           { text: 'Team', link: '/about/team' },
