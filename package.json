@@ -43,7 +43,7 @@
     "lint:fix": "eslint \"source/**/*.ts\" --fix",
     "prepack": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install",
+    "prepare": "husky",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
@@ -55,8 +55,8 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-replace": "^5.0.5",
     "@rollup/plugin-terser": "^0.4.4",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
-    "@typescript-eslint/parser": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
     "auto-changelog": "^2.4.0",
     "autoprefixer": "^10.4.19",
     "concurrently": "^8.2.2",
@@ -70,10 +70,10 @@
     "postcss-cli": "^11.0.0",
     "prettier": "^3.2.5",
     "release-it": "^17.1.1",
-    "rollup": "^4.13.2",
+    "rollup": "^4.14.0",
     "typescript": "^5.4.3",
     "vite": "^5.2.7",
-    "vitepress": "1.0.0-rc.45"
+    "vitepress": "^1.0.2"
   },
   "browserslist": [
     "last 4 versions",
