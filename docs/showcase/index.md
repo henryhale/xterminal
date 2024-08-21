@@ -48,5 +48,3 @@ const showcase = [
 </script>
 
 <project-cards :projects='showcase'></project-cards>
-
-
