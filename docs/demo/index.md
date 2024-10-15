@@ -11,7 +11,7 @@
 
 <a href="../demo.html" target="_blank" rel="noreferrer">View fullpage demo</a>
 
-<browser-preview>
+<browser-preview hidelabel>
 
 <iframe src="../demo.html" height="400px"></iframe>
 
