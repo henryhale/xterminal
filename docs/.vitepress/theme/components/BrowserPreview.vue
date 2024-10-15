@@ -1,7 +1,16 @@
+<script setup>
+const props = defineProps({
+    hidelabel: {
+        type: Boolean,
+        default: () => false
+    }
+})
+</script>
+
 <template>
     <div>
-        <div class="bp-preview">
-            <b>Preview: </b>
+        <div v-if="!props.hidelabel" class="bp-preview">
+            <b>Result: </b>
         </div>
         <div class="bp-container">
             <header class="bp-header">
@@ -35,15 +44,16 @@
     flex-direction: column;
     border-radius: 6px;
     background-color: var(--vp-code-block-bg);
-    color: #efefef;
+    color: var(--vp-c-text-1);
     overflow: hidden;
-    border: 1px solid var(--vp-code-block-bg);
+    border: 1px solid var(--vp-c-divider);
 }
 
 .bp-header {
     display: flex;
     align-items: center;
     padding: 0.25rem 0.75rem;
+    border-bottom: 1px solid var(--vp-c-divider);
 }
 .bp-header > .bp-title {
     flex-grow: 1;

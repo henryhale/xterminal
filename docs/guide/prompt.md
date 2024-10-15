@@ -6,16 +6,18 @@ In most terminal emulators, the prompt style appears before the cursor. This is 
 
 For example:
 
-```
-user@host:~ $ ▊
-```
+<browser-preview hidelabel>
+
+    user@host:~ $ ▊
+</browser-preview>
 
 Or even
 
-```
-┌[user@host]
-└$ ▊
-```
+<browser-preview hidelabel>
+
+    ┌[user@host]
+    └$ ▊
+</browser-preview>
 
 In the same way, you can organize the flow of input with a prompt style just before the cursor.
 
