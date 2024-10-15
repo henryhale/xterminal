@@ -1,1 +1,0 @@
-import{_ as s,c as i,o as a,a4 as n}from"./chunks/framework.DEGhkz86.js";const c=JSON.parse('{"title":"Theme","description":"","frontmatter":{},"headers":[],"relativePath":"guide/theme.md","filePath":"guide/theme.md"}'),t={name:"guide/theme.md"},h=n("",43),l=[h];function e(p,k,d,r,E,o){return a(),i("div",null,l)}const y=s(t,[["render",e]]);export{c as __pageData,y as default};
