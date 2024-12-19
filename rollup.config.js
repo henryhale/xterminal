@@ -10,12 +10,11 @@ const replacer = replace({
   values: { __VERSION__: pkg.version },
 });
 
-const banner = `
-/**
+const banner = `/**
  *  XTerminal - v${pkg.version}
- *  @author Henry Hale
- *  @license MIT
- *  @url https://github.com/henryhale/xterminal
+ *  @author ${pkg.author.name}
+ *  @license ${pkg.license}
+ *  @url ${pkg.homepage}
  */`;
 
 function copyToDist() {
@@ -23,7 +22,7 @@ function copyToDist() {
     closeBundle: () => {
       copyFileSync('./LICENSE.txt', './dist/LICENSE.txt');
       console.log(`[Y]: copied license file to dist/`);
-      copyFileSync('./source/types.ts', './dist/types.d.ts');
+      copyFileSync('./source/types.d.ts', './dist/types.d.ts');
       console.log(`[Y]: copied typings file to dist/`);
     },
   };
@@ -34,7 +33,7 @@ export default [
     input: 'out/index.js',
     output: {
       name: 'XTerminal',
-      file: pkg.browser,
+      file: 'dist/xterminal.umd.js',
       format: 'umd',
       banner,
     },
@@ -47,7 +46,7 @@ export default [
   {
     input: 'out/index.js',
     output: {
-      file: pkg.module,
+      file: 'dist/xterminal.esm.js',
       format: 'esm',
       banner,
     },
