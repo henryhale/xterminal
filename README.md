@@ -83,8 +83,8 @@ To get started with development, follow these steps:
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) (>=18)
-- [pnpm](https://pnpm.io/) (>=8)
+- [Node.js](https://nodejs.org) (>=20)
+- [pnpm](https://pnpm.io/) (>=9)
 
 ### Setup
 
@@ -107,6 +107,6 @@ This will generate the production-ready distribution files in the `dist` directo
 
 ## License
 
-Copyright (c) 2023 [Henry Hale](https://github.com/henryhale/).
+Copyright (c) 2023-present [Henry Hale](https://github.com/henryhale/).
 
 Released under the [MIT License](https://github.com/henryhale/xterminal/blob/master/LICENSE.txt).
