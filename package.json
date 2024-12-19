@@ -3,14 +3,18 @@
   "version": "2.1.9",
   "description": "Build web-based cli interfaces",
   "main": "./dist/xterminal.umd.js",
-  "module": "./dist/xterminal.esm.js",
-  "browser": "./dist/xterminal.umd.js",
   "types": "./dist/types.d.ts",
   "files": [
     "dist",
     "./LICENSE.txt",
     "./README.md"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/xterminal.esm.js",
+      "require": "./dist/xterminal.umd.js"
+    }
+  },
   "keywords": [
     "terminal",
     "terminal-emulator",
