@@ -221,4 +221,4 @@ declare class XTerminal extends XEventEmitter {
     static readonly version: string;
 }
 
-export default XTerminal;
+export = XTerminal;
