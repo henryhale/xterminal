@@ -4,8 +4,7 @@ export function isObject(val: unknown): val is object {
     return typeof val === "object" && val !== null;
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export function isFunction(val: unknown): val is Function {
+export function isFunction(val: unknown): val is (...a: unknown[]) => unknown {
     return typeof val === "function";
 }
 
