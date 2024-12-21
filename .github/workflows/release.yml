@@ -27,17 +27,17 @@ jobs:
 
       # Setup Node.js environment
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           registry-url: https://registry.npmjs.org/
-          node-version: 18
+          node-version: 20
 
       # Install pnpm
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v4
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8
+          version: 9
           run_install: false
 
       # Setup pnpm store
@@ -72,6 +72,6 @@ jobs:
 
       # Publish version to public repository
       - name: Release
-        run: npx release-it --ci
+        run: pnpx release-it --ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
