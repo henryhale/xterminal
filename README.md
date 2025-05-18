@@ -10,7 +10,7 @@
 
 ## Overview
 
-**Welcome to XTerminal!** 
+**Welcome to XTerminal!**
 
 This library provides a simple, lightweight and perfomant solution for creating interactive web-based command-line interfaces (CLIs) with ease in your web applications. It aims to be a minimalist dependency-free alternative to popular libraries like [jquery.terminal](https://github.com/jcubic/jquery.terminal), offering improved performance and a simplified approach.
 
@@ -83,8 +83,8 @@ To get started with development, follow these steps:
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) (>=20)
-- [pnpm](https://pnpm.io/) (>=9)
+- [Node.js](https://nodejs.org) (>=22)
+- [pnpm](https://pnpm.io/) (>=10)
 
 ### Setup
 
