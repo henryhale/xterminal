@@ -1,77 +1,76 @@
 name: Release NPM package
 
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - source/**
+    push:
+        branches:
+            - master
+        paths:
+            - source/**
 
-  workflow_dispatch:
+    workflow_dispatch:
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
+    release:
+        runs-on: ubuntu-latest
 
-    steps:
-    
-      # Checkout project repository
-      - name: Checkout
-        uses: actions/checkout@v4
+        steps:
+            # Checkout project repository
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      # Setup git profile
-      - name: git config
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+            # Setup git profile
+            - name: git config
+              run: |
+                  git config user.name "${GITHUB_ACTOR}"
+                  git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-      # Setup Node.js environment
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          registry-url: https://registry.npmjs.org/
-          node-version: 20
+            # Setup Node.js environment
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  registry-url: https://registry.npmjs.org/
+                  node-version: 22
 
-      # Install pnpm
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 9
-          run_install: false
+            # Install pnpm
+            - uses: pnpm/action-setup@v4
+              name: Install pnpm
+              id: pnpm-install
+              with:
+                  version: 10
+                  run_install: false
 
-      # Setup pnpm store
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+            # Setup pnpm store
+            - name: Get pnpm store directory
+              id: pnpm-cache
+              shell: bash
+              run: |
+                  echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      # Use cache to reduce installation time
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+            # Use cache to reduce installation time
+            - uses: actions/cache@v3
+              name: Setup pnpm cache
+              with:
+                  path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+                  key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-store-
 
-      # Install dependencies
-      - name: Install dependencies
-        run: pnpm install
+            # Install dependencies
+            - name: Install dependencies
+              run: pnpm install
 
-      # Tests
-      #- name: Run tests
-      #  run: npm run test
+            # Tests
+            #- name: Run tests
+            #  run: npm run test
 
-      # Setup NPM
-      - name: Create .npmrc
-        run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+            # Setup NPM
+            - name: Create .npmrc
+              run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+              env:
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Publish version to public repository
-      - name: Release
-        run: pnpx release-it --ci
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            # Publish version to public repository
+            - name: Release
+              run: pnpx release-it --ci
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
