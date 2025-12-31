@@ -22,10 +22,9 @@ term.on('data', input => {
         // clear screen
         term.clear();
     } else {
-        // write the input
-        term.writeln(input);
-        // do something
-        term.writeln('Data: ' + input);
+        // do something with the input
+        term.writelnSafe('Data: ' + input);
+        term.writelnSafe('Data: ' + input);
     }
     // then prompt user for more input
     ask();

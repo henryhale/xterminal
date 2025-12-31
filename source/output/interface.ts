@@ -18,6 +18,11 @@ export interface IOutputInterface {
     write(data: string, callback?: () => void): void;
 
     /**
+     * Safely output data to the console
+     */
+    writeSafe(data: string, callback?: () => void): void;
+
+    /**
      * Clear the console
      */
     clear(): void;

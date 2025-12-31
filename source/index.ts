@@ -48,6 +48,14 @@ export default class XTerminal extends XEventEmitter {
         this.#state.output.write("" + data + "\n", callback);
     }
 
+    public writeSafe(data: string | number, callback?: () => void): void {
+        this.#state.output.writeSafe("" + data, callback);
+    }
+
+    public writelnSafe(data: string | number, callback?: () => void): void {
+        this.#state.output.writeSafe("" + data + "\n", callback);
+    }
+
     public clear(): void {
         this.#state.output.clear();
         this.emit(CLEAR_EVENT);

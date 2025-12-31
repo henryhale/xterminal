@@ -47,7 +47,7 @@ Whenever a new state is created using `createState` from the above example, a _d
 
 ## Terminal Disposal
 
-It is possible that you might want to close off the terminal and end it's usage. In this case, you can entirely dispose the terminal using [term.dispose()](../api/index.md#term-dispose). This will clear states of the underlying objects, dispose events, remove the HTML elements and their DOM events. 
+It is possible that you might want to close off the terminal and end its usage. In this case, you can entirely dispose the terminal using [term.dispose()](../api/index.md#term-dispose). This will clear states of the underlying objects, dispose events, remove the HTML elements and their DOM events. 
 
 This tears down the entire terminal and renders it not usable thereafter. 
 

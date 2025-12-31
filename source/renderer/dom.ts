@@ -44,7 +44,7 @@ export function h<T extends HTMLElement>(
         elem.className = options.class || "";
     }
     if (options?.content) {
-        elem.appendChild(document.createTextNode("" + options.content));
+        elem.appendChild(document.createTextNode(options.content || ""));
     }
     if (options?.html) {
         elem.innerHTML = options.html;

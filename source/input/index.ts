@@ -149,18 +149,14 @@ export default class XInputComponent
             const i = this.ptr.value;
             const d = this.data.value;
             if (!this.isActive.value || !this.showInput.value) {
-                txtBefore.innerHTML = "";
+                txtBefore.textContent = "";
                 cursor.innerHTML = SPACE;
-                txtAfter.innerHTML = "";
+                txtAfter.textContent = "";
                 return;
             }
-            txtBefore.innerHTML = d
-                .substring(0, i)
-                .replace(/\s{2}/g, " " + SPACE);
+            txtBefore.textContent = d.substring(0, i);
             cursor.innerHTML = d.substring(i, i + 1).trim() || SPACE;
-            txtAfter.innerHTML = d
-                .substring(i + 1)
-                .replace(/\s{2}/g, " " + SPACE);
+            txtAfter.textContent = d.substring(i + 1);
         });
     }
 }

@@ -20,6 +20,8 @@
 
 - [term.write()](#term-write)
 - [term.writeln()](#term-writeln)
+- [term.writeSafe()](#term-writesafe)
+- [term.writelnSafe()](#term-writelnsafe)
 - [term.clear()](#term-clear)
 - [term.clearLast()](#term-clearlast)
 
@@ -74,7 +76,7 @@ Creates a terminal instance
 - **Type**
 
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         // ...
     }
 
@@ -82,7 +84,7 @@ Creates a terminal instance
         target: HTMLElement | string;
     }
 
-    class XTerminal extends XEventEmitter implements TerminalApi {
+    class XTerminal extends XEventEmitter implements XTerminal {
         constructor(options: TerminalOptions);
     }
     ```
@@ -110,7 +112,7 @@ The version number
 - **Type**
 
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         readonly version: string;
     }
     ```
@@ -160,7 +162,7 @@ Mounts the terminal instance structure to the specified DOM element.
 - **Type**
 
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         mount(target: HTMLElement | string): void;
     }
     ```
@@ -200,7 +202,7 @@ Gracefully close the terminal instance.
 - **Type**
 
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         dispose(): void;
     }
     ```
@@ -228,7 +230,7 @@ Focus the terminal input component - ready for input.
 - **Type**
 
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         focus(): void;
     }
     ```
@@ -254,7 +256,7 @@ Blurs the terminal input component.
 - **Type**
 
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         blur(): void;
     }
     ```
@@ -276,7 +278,7 @@ Deactivate the terminal input component.
 - **Type**
   
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         pause(): void;
     }
     ```
@@ -304,7 +306,7 @@ Activate the terminal input component
 - **Type**
 
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         resume(): void;
     }
     ```
@@ -334,7 +336,7 @@ Sets the autocomplete function that is invoked on Tab key.
 - **Type**
   
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         setCompleter(fn: (data: string) => string): void;
     }
     ```
@@ -365,7 +367,7 @@ Write data to the terminal.
 - **Type**
   
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         write(data: string | number, callback?: () => void): void;
     }
     ```
@@ -392,7 +394,7 @@ Write data to the terminal, followed by a break line character (\n).
 - **Type**
   
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         writeln(data: string | number, callback?: () => void): void;
     }
     ```
@@ -412,6 +414,61 @@ Write data to the terminal, followed by a break line character (\n).
 
 - **See also:** [Guide - Output](../guide/output.md#output)
 
+
+## term.writeSafe()
+
+Securely write data to the terminal.
+
+- **Type**
+  
+    ```ts
+    interface XTerminal {
+        writeSafe(data: string | number, callback?: () => void): void;
+    }
+    ```
+  
+- **Details**
+
+    `data`: The data to write to the terminal
+
+    `callback`:  Optional function invoked on successful write
+
+- **Example**
+
+    ```js
+    term.writeSafe('<h1>hello</h1>');
+    // &lt;h1&gt;hello&lt;/h1&gt;
+    ```
+
+- **See also:** [Guide - Output](../guide/output.md#output)
+
+## term.writelnSafe()
+
+Securely write data to the terminal, followed by a break line character (\n).        
+
+- **Type**
+  
+    ```ts
+    interface XTerminal {
+        writelnSafe(data: string | number, callback?: () => void): void;
+    }
+    ```
+  
+- **Details**
+
+    `data`: The data to write to the terminal
+
+    `callback`:  Optional function invoked on successful write
+
+- **Example**
+
+    ```js
+    term.writelnSafe('<h1>hello</h1>');
+    // &lt;h1&gt;hello&lt;/h1&gt;<br/>
+    ```
+
+- **See also:** [Guide - Output](../guide/output.md#output)
+
 ## term.clear()
 
 Clear the entire terminal.
@@ -419,7 +476,7 @@ Clear the entire terminal.
 - **Type**
   
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         clear(): void;
     }
     ```
@@ -452,7 +509,7 @@ Remove the element containing the previous output.
 - **Type**
   
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         clearLast(): void;
     }
     ```
@@ -483,7 +540,7 @@ Access the history stack.
 - **Type**
     
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         history: string[];
     }
     ```
@@ -509,7 +566,7 @@ Clear the entire history stack.
 - **Type**
     
     ```ts
-    interface TerminalApi {
+    interface XTerminal {
         clearHistory(): void;
     }
     ```

@@ -1,27 +1,37 @@
 # Output
 
-Information maybe output in a number of ways and logged in the terminal instance with the help of [term.write()](../api/index.md#term-write) or [term.writeln()](../api/index.md#term-writeln).
+Information maybe output in a number of ways and logged in the terminal instance with the help of [term.write()](../api/index.md#term-write), [term.writeln()](../api/index.md#term-writeln), [term.writeSafe()](../api/index.md#term-writesafe) or [term.writelnSafe()](../api/index.md#term-writelnsafe).
 
 ## Raw Data
 
-Raw data may include strings and numbers. 
+Raw data may include strings and numbers.
 
 Here is a simple `hello world` example:
 
 ```js
-term.write('Hello World!');
+term.write("Hello World!");
 ```
 
 <browser-preview>
 
     Hello World!▊
+
 </browser-preview>
 
 With an optional callback function,
 
 ```js
-term.write('Hello World!', () => console.log('Done!'));
+term.write("Hello World!", () => console.log("Done!"));
 // Done!
+```
+
+When dealing with arbitrary (untrustworthy) data like user input or remote resources,
+use `term.writeSafe` to securely print to the terminal. For more details, see [HTML Strings section](#html-strings).
+
+```js
+const someData = "...";
+
+term.writeSafe(someData);
 ```
 
 ## Escape characters
@@ -39,35 +49,37 @@ Below is a list of available and ready to use escape characters;
     term.write(`Hello World!\n$ `);
     ```
 
-    <browser-preview>
+      <browser-preview>
 
-      Hello World!
-      $ ▊
-    </browser-preview>
+        Hello World!
+        $ ▊
+
+      </browser-preview>
 
     The same can be achieved using [term.writeln()](../api/index.md#term-writeln) which writes the
     data passed on the current line, followed by a new line character.
 
     ```js
     term.writeln(`Hello World!`);
-    term.write('$ ');
+    term.write("$ ");
     ```
 
 - **`\t` - Tab**
 
     The tab character defaults to _four_ (4) space characters.
 
-    **Example:** 
+    **Example:**
 
     ```js
     term.writeln(`Hello World!\tYou're Welcome.`);
     ```
 
-    <browser-preview>
+      <browser-preview>
 
-      Hello World!    You're welcome.
-      ▊
-    </browser-preview>
+        Hello World!    You're welcome.
+        ▊
+
+      </browser-preview>
 
 ## HTML Strings
 
@@ -79,8 +91,31 @@ term.writeln(`<b>Bold Text</b> - <i>Italics</i>`);
 
 <browser-preview>
 
-  <b>Bold Text</b> - <i>Italics</i>
-  <br>▊
+<b>Bold Text</b> - <i>Italics</i>
+<br>▊
+</browser-preview>
+
+::: warning
+- Use [term.writeSafe()](../api/index.md#term-writesafe) or [term.writelnSafe()](../api/index.md#term-writelnsafe) to safely output arbitrary data to the terminal.
+These methods sanitize the data before being output to the terminal, specifically, before appending it to the DOM.
+
+Avoid outputting data from arbitrary sources like user input or remote sources (such as images).  
+Doing so has been proved to allow for malicious attacks like XSS where a user may input some HTML
+code that could potentially expose user information such as session cookies or even inject malicious scripts on the page.
+
+For example: `term.writeln("<img onerror=alert('hacked') />")` would run the malicious script.
+
+Additionally use libraries like DOMPurify to sanitize arbitrary data before outputting it using `term.write()` or `term.writeln()`.
+:::
+
+```js
+term.writelnSafe(`<b>Bold Text</b> - <i>Italics</i>`);
+```
+
+<browser-preview>
+
+<\b>Bold Text</\b> - <\i>Italics</\i>
+<br>▊
 </browser-preview>
 
 ### Attributes
@@ -105,7 +140,7 @@ term.writeln('<b style="color: dodgerblue    ">Bold Blue Text</b>'); // [!code -
 term.writeln('<b style="color: dodgerblue">Bold Blue Text</b>'); // [!code ++]
 ```
 
-However, multiple spaces are **okay** in between the opening and closing tags. 
+However, multiple spaces are **okay** in between the opening and closing tags.
 
 **For example:**
 
@@ -116,7 +151,7 @@ term.writeln('<b style="color: dodgerblue">Bold      Blue      Text</b>');
 ## Clear Screen
 
 To clear the entire terminal, you can do it programmatically using
-[term.clear()](../api/index.md#term-clear). 
+[term.clear()](../api/index.md#term-clear).
 
 ```js
 term.clear();
@@ -124,7 +159,7 @@ term.clear();
 
 ## Clear Last Output
 
-To remove the output for the previous write operation, [term.clearLast()](../api/index.md#term-clearlast) does the job. 
+To remove the output for the previous write operation, [term.clearLast()](../api/index.md#term-clearlast) does the job.
 
 :::info
 This is like the undo method but for only one output operation.
@@ -133,15 +168,15 @@ This is like the undo method but for only one output operation.
 **Example:**
 
 ```js
-term.writeln('Welcome to Space!');
-term.writeln('Loading...');
+term.writeln("Welcome to Space!");
+term.writeln("Loading...");
 term.clearLast();
 ```
 
 <browser-preview>
 
-  Welcome to Space!
-  <br>▊
+Welcome to Space!
+<br>▊
 </browser-preview>
 
 It is useful in several cases for example when implementing a loader.
@@ -150,31 +185,50 @@ It is useful in several cases for example when implementing a loader.
 
 - **Styles**
 
-  ```css
-  .spinner:after {
-    animation: changeContent 0.8s linear infinite;
-    content: "⠋";
-  }
+    ```css
+    .spinner:after {
+        animation: changeContent 0.8s linear infinite;
+        content: "⠋";
+    }
 
-  @keyframes changeContent {
-    10% { content: "⠙"; }
-    20% { content: "⠹"; }
-    30% { content: "⠸"; }
-    40% { content: "⠼"; }
-    50% { content: "⠴"; }
-    60% { content: "⠦"; }
-    70% { content: "⠧"; }
-    80% { content: "⠇"; }
-    90% { content: "⠏"; }
-  }
-  ```
+    @keyframes changeContent {
+        10% {
+            content: "⠙";
+        }
+        20% {
+            content: "⠹";
+        }
+        30% {
+            content: "⠸";
+        }
+        40% {
+            content: "⠼";
+        }
+        50% {
+            content: "⠴";
+        }
+        60% {
+            content: "⠦";
+        }
+        70% {
+            content: "⠧";
+        }
+        80% {
+            content: "⠇";
+        }
+        90% {
+            content: "⠏";
+        }
+    }
+    ```
 
 - **Script**
-  ```js
-  term.write('<span class="spinner"></span> Loading...');
 
-  setTimeout(() => term.clearLast(), 5000);
-  ```
+    ```js
+    term.write('<span class="spinner"></span> Loading...');
+
+    setTimeout(() => term.clearLast(), 5000);
+    ```
 
 :::
 

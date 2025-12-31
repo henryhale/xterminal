@@ -144,6 +144,8 @@ declare class XTerminal extends XEventEmitter {
     /**
      * Write data to the terminal.
      *
+     * - use `XTerminal.writeSafe` when printing arbitrary data like user input
+     *
      * @param data The data to write to the terminal
      * @param callback Optional function invoked on successful write
      * @returns void
@@ -151,13 +153,48 @@ declare class XTerminal extends XEventEmitter {
     write(data: string | number, callback?: () => void): void;
 
     /**
+     * Safely write data to the terminal.
+     *
+     * (recommended) to prevent malicious attacks like XSS
+     *
+     * Example:
+     * ```js
+     * term.writeSafe('<h1>hello</h1>');
+     * // &lt;h1&gt;hello&lt;/h1&gt;
+     * ```
+     *
+     * @param data The data to write to the terminal
+     * @param callback Optional function invoked on successful write
+     * @returns void
+     */
+    writeSafe(data: string | number, callback?: () => void): void;
+
+    /**
      * Write data to the terminal, followed by a break line character (\n).
+     *
+     * - use `XTerminal.writelnSafe` when printing arbitrary data like user input
      *
      * @param data The data to write to the terminal
      * @param callback Optional function invoked on successful write
      * @returns void
      */
     writeln(data: string | number, callback?: () => void): void;
+
+    /**
+     * Safely write data to the terminal, followed by a break line character (\n).
+     *
+     * (recommended) to prevent malicious attacks like XSS
+     *
+     * Example:
+     * ```js
+     * term.writelnSafe('<h1>hello</h1>');
+     * // &lt;h1&gt;hello&lt;/h1&gt;<br/>
+     * ```
+     * @param data The data to write to the terminal
+     * @param callback Optional function invoked on successful write
+     * @returns void
+     */
+    writelnSafe(data: string | number, callback?: () => void): void;
 
     /**
      * Clear the entire terminal.
