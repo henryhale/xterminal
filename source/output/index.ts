@@ -17,7 +17,6 @@ function parseOutput(data = ""): string {
 function escapeHTML(data = ""): string {
     const span = document.createElement("span");
     span.textContent = data;
-    console.log(span.innerHTML);
     return span.innerHTML;
 }
 
