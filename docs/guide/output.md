@@ -95,6 +95,8 @@ term.writeln(`<b>Bold Text</b> - <i>Italics</i>`);
 <br>▊
 </browser-preview>
 
+### Safe Output
+
 ::: warning
 - Use [term.writeSafe()](../api/index.md#term-writesafe) or [term.writelnSafe()](../api/index.md#term-writelnsafe) to safely output arbitrary data to the terminal.
 These methods sanitize the data before being output to the terminal, specifically, before appending it to the DOM.
@@ -103,9 +105,9 @@ Avoid outputting data from arbitrary sources like user input or remote sources (
 Doing so has been proved to allow for malicious attacks like XSS where a user may input some HTML
 code that could potentially expose user information such as session cookies or even inject malicious scripts on the page.
 
-For example: `term.writeln("<img onerror=alert('hacked') />")` would run the malicious script.
+For example: `term.writeln("<img onerror=alert('hacked') />")` would run the malicious script and you would see an alert dialog.
 
-Additionally use libraries like DOMPurify to sanitize arbitrary data before outputting it using `term.write()` or `term.writeln()`.
+Additionally use [XTerminal.escapeHTML()](#xterminal-escapehtml) or external libraries like DOMPurify to sanitize arbitrary data before outputting it using `term.write()` or `term.writeln()`. See examples below.
 :::
 
 ```js
@@ -114,9 +116,20 @@ term.writelnSafe(`<b>Bold Text</b> - <i>Italics</i>`);
 
 <browser-preview>
 
-<\b>Bold Text</\b> - <\i>Italics</\i>
+\<b>Bold Text<\/b> - \<i>Italics<\/i>
 <br>▊
 </browser-preview>
+
+Use [XTerminal.escapeHTML()](#xterminal-escapehtml) to sanitize some data before printing it.
+
+This is helpful when using HTML containers for some other data like showing errors in red.
+
+```js
+const err = `<img onerror="alert('hacked')" />`
+
+term.writeln(`<p style="color:red">${XTerminal.escapeHTML(err)}</p>`)
+```
+
 
 ### Attributes
 

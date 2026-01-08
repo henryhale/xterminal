@@ -126,7 +126,13 @@ function createTerminal(target) {
         // execute command
         await shell.execute(term, input)
             .then(res => res && term.writeln(res))
-            .catch(err => err && term.writeln(`<span class="error">${err}</span>\n`))
+            .catch(err => {
+                if (err) {
+                    // sanitize error to prevent xss attacks
+                    // error may contain user input or HTML strings (like script tags)
+                    term.writeln(`<span class="error">${XTerminal.escapeHTML(err)}</span>\n`)
+                }
+            })
             .finally(promptUser);
     });
 

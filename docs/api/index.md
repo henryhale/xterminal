@@ -18,6 +18,7 @@
 
 ### Output
 
+- [XTerminal.escapeHTML()](#xterminal-escapehtml)
 - [term.write()](#term-write)
 - [term.writeln()](#term-writeln)
 - [term.writeSafe()](#term-writesafe)
@@ -139,21 +140,39 @@ The event emitter class
 
 - **Details**
 
-    This is a static property (class) that can be used to create independent instances 
+    This is a static property (class) that can be used to create independent instances of the event emitter
 
 - **Example**
 
-    Using the [UMD build](../guide/installation.md#installation):
     ```js
     const emitter = new XTerminal.XEventEmitter();
     ```
 
-    Using [ESM build](../guide/installation.md#installation) (tree shakeable):
-    ```js
-    import { XEventEmitter } from 'xterminal';
+## XTerminal.escapeHTML()
 
-    const emitter = new XEventEmitter();
+Escapes user input so it can be safely rendered as HTML text.
+
+- **Type**
+
+    ```ts
+    interface XTerminal {
+        static escapeHTML(data?: string): string;
+    }
     ```
+
+- **Details**
+
+    It preserves all characters by converting them to HTML entities where needed.
+    This is **recommended** for use on user input or any arbitrary data.
+
+- **Example**
+
+    ```js
+    XTerminal.escapeHTML("<b>hello</b>");
+    // => &lt;b&gt;hello&lt;/b&gt;
+    ```
+
+- **See also:** [Guide - Safe Output](../guide/output.md#safe-output)
 
 ## term.mount()
 

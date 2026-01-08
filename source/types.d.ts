@@ -256,6 +256,18 @@ declare class XTerminal extends XEventEmitter {
      * Version number
      */
     static readonly version: string;
+
+    /**
+     * Event emitter
+     */
+    static readonly XEventEmitter: XEventEmitter;
+
+    /**
+     * Escapes user input so it can be safely rendered as HTML text.
+     * - preserves all characters by converting them to HTML entities where needed.
+     * - recommended for use on user input or any arbitrary data
+     */
+    static escapeHTML(data?: string): string;
 }
 
 export default XTerminal;

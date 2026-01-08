@@ -8,6 +8,7 @@ import {
     TARGET_NOT_CONNECTED_ERR,
     XError
 } from "./base/error";
+import { escapeHTML } from "./output/index";
 
 export default class XTerminal extends XEventEmitter {
     #state!: ITerminalState;
@@ -116,5 +117,13 @@ export default class XTerminal extends XEventEmitter {
 
     static get version() {
         return "__VERSION__";
+    }
+
+    static get XEventEmitter() {
+        return XEventEmitter;
+    }
+
+    static escapeHTML(data?: string): string {
+        return escapeHTML(data);
     }
 }

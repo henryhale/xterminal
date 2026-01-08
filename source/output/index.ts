@@ -12,9 +12,11 @@ function parseOutput(data = ""): string {
         .replace(/\t/g, SPACE.repeat(TAB_SIZE));
 }
 
-// helper to prevent malicious user input from being printed
-// - inserted into the dom (console)
-function escapeHTML(data = ""): string {
+/**
+ * Escapes user input so it can be safely rendered as HTML text.
+ * - preserves all characters by converting them to HTML entities where needed.
+ */
+export function escapeHTML(data = ""): string {
     const span = document.createElement("span");
     span.textContent = data;
     return span.innerHTML;
