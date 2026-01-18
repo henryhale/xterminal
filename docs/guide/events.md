@@ -90,8 +90,8 @@ They include:
 - `data` event - triggered when user inputs data and presses the _Enter_ key
 - `clear` event - triggered on [term.clear()](../api/index.md#term-clear)
 - `keypress` event - triggered on every key press except _Tab, Enter, ArrowUp_ and _ArrowDown_
-- `pause` event - triggered on [term.pause()](./prompt.md#pause--resume), when the terminal input is _deactivated_ or _paused_
-- `resume` event - triggered on [term.resume()](./prompt.md#pause--resume), when the terminal input is _activated_ or _resumed_
+- `pause` event - triggered on [term.pause()](./prompt.md#pause-resume), when the terminal input is _deactivated_ or _paused_
+- `resume` event - triggered on [term.resume()](./prompt.md#pause-resume), when the terminal input is _activated_ or _resumed_
 
 ### Example
 

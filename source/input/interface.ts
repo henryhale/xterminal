@@ -39,4 +39,9 @@ export interface IInputInterface extends IDisposable {
      * Set the value of the input element, updates the cursor
      */
     setValue(str: string): void;
+
+    /**
+     * Clears the value of the input element
+     */
+    clear(): void;
 }

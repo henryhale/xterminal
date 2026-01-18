@@ -1,6 +1,8 @@
 import { isArray, isObject } from "../helpers";
 import type { IElementProps } from "./interface";
 
+export const NEWLINE = "\n";
+
 export const SPACE = "&nbsp;";
 
 /**

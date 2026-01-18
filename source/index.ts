@@ -9,6 +9,7 @@ import {
     XError
 } from "./base/error";
 import { escapeHTML } from "./output/index";
+import { NEWLINE } from "./renderer/dom";
 
 export default class XTerminal extends XEventEmitter {
     #state!: ITerminalState;
@@ -41,12 +42,20 @@ export default class XTerminal extends XEventEmitter {
         this.emit(RESUME_EVENT);
     }
 
+    public setInput(value: string): void {
+        this.#state.input.setValue(value);
+    }
+
+    public clearInput(): void {
+        this.#state.input.clear();
+    }
+
     public write(data: string | number, callback?: () => void): void {
         this.#state.output.write("" + data, callback);
     }
 
     public writeln(data: string | number, callback?: () => void): void {
-        this.#state.output.write("" + data + "\n", callback);
+        this.#state.output.write("" + data + NEWLINE, callback);
     }
 
     public writeSafe(data: string | number, callback?: () => void): void {
@@ -54,7 +63,7 @@ export default class XTerminal extends XEventEmitter {
     }
 
     public writelnSafe(data: string | number, callback?: () => void): void {
-        this.#state.output.writeSafe("" + data + "\n", callback);
+        this.#state.output.writeSafe("" + data + NEWLINE, callback);
     }
 
     public clear(): void {

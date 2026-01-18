@@ -268,6 +268,16 @@ declare class XTerminal extends XEventEmitter {
      * - recommended for use on user input or any arbitrary data
      */
     static escapeHTML(data?: string): string;
+
+    /**
+     * Clears the input buffer 
+     */
+    clearInput(): void;
+
+    /**
+     * Sets the value of the input buffer, updates the cursor
+     */
+    setInput(str: string): void;
 }
 
 export default XTerminal;

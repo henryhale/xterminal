@@ -78,7 +78,7 @@ export default defineConfig({
                     { text: "Initialization", link: "/guide/initialization" },
                     { text: "Output", link: "/guide/output" },
                     { text: "Events", link: "/guide/events" },
-                    { text: "Prompt", link: "/guide/prompt" },
+                    { text: "Input", link: "/guide/prompt" },
                     { text: "History", link: "/guide/history" },
                     { text: "Key Bindings", link: "/guide/keybindings" }
                 ]
