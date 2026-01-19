@@ -9,7 +9,7 @@
         "release": true,
         "releaseName": "XTerminal v${version}",
         "autoGenerate": true,
-        "assets": ["dist/", "README.md", "LICENSE.txt"],
+        "assets": ["dist/"],
         "comments": true
     },
     "npm": {
