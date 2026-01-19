@@ -2,27 +2,33 @@
     "git": {
         "tagName": "v${version}",
         "commitMessage": "chore(release): v${version}",
-        "requireBranch": "master",
-        "changelog": "pnpm exec auto-changelog --stdout --commit-limit false --unreleased --template https://raw.githubusercontent.com/release-it/release-it/main/templates/changelog-compact.hbs"
+        "requireBranch": "master"
     },
     "changelogFile": "CHANGELOG.md",
     "github": {
         "release": true,
         "releaseName": "XTerminal v${version}",
         "autoGenerate": true,
-        "assets": ["dist/"],
-        "comments": {
-            "submit": true,
-            "issue": ":rocket: _This issue has been resolved in v${version}. See [${releaseName}](${releaseUrl}) for release notes._",
-            "pr": ":rocket: _This pull request is included in v${version}. See [${releaseName}](${releaseUrl}) for release notes._"
-        }
+        "assets": ["dist/", "README.md", "LICENSE.txt"],
+        "comments": true
     },
     "npm": {
         "publish": true,
         "skipChecks": true
     },
     "hooks": {
-        "before:init": "git fetch --tags",
-        "after:bump": "pnpm exec auto-changelog -p"
+        "before:init": "git fetch --tags"
+    },
+    "plugins": {
+        "@release-it/conventional-changelog": {
+            "infile": "CHANGELOG.md",
+            "header": "# Changelog",
+            "preset": {
+                "name": "conventionalcommits"
+            },
+            "gitRawCommitOpts": {
+                "merge": null
+            }
+        }
     }
 }

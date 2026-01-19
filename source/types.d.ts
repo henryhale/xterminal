@@ -275,7 +275,7 @@ declare class XTerminal extends XEventEmitter {
     clearInput(): void;
 
     /**
-     * Sets the value of the input buffer, updates the cursor
+     * Sets the input buffer to some value, updates the cursor
      */
     setInput(str: string): void;
 }
