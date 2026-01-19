@@ -49,7 +49,7 @@
         "build:js": "rollup -c",
         "build:css": "postcss theme/index.css > dist/xterminal.css",
         "build": "pnpm clean && pnpm build:ts && pnpm build:js && pnpm build:css",
-        "dev": "concurrently \"tsc -w\" \"rollup -c -w\" \"vite demo\"",
+        "dev": "concurrently \"tsc -w\" \"vite demo\"",
         "lint": "eslint source/ && prettier source/ --check",
         "lint:fix": "eslint --fix source/ && prettier source/ --write",
         "prepack": "pnpm build",

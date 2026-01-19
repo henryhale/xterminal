@@ -1,4 +1,4 @@
-import XTerminal from "../dist/xterminal.esm.js";
+import XTerminal from "../out/index.js";
 
 // create a new terminal instance
 const term = new XTerminal();
