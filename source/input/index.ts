@@ -136,9 +136,9 @@ export default class XInputComponent
     }
 
     public clear(): void {
-        this.buffer = ""
-        this.data.value = ""
-        this.el.value = ""
+        this.buffer = "";
+        this.data.value = "";
+        this.el.value = "";
     }
 
     public pipe(output: IOutputInterface): void {

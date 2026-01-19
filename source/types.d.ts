@@ -270,7 +270,7 @@ declare class XTerminal extends XEventEmitter {
     static escapeHTML(data?: string): string;
 
     /**
-     * Clears the input buffer 
+     * Clears the input buffer
      */
     clearInput(): void;
 
