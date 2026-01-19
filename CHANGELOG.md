@@ -1,4 +1,12 @@
-### Changelog
+# Changelog
+
+## 2.2.0 (2026-01-19)
+
+### Features
+
+* updated release-it config ([e0420b6](https://github.com/henryhale/xterminal/commit/e0420b65ddcb5d817906af1857c05cb67042d4cf))
+
+##
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
