@@ -152,6 +152,15 @@ results into
     user@host:~ $ ▊
 </browser-preview>
 
+A complete example to illustrate both methods in action: the input is set to `help` and cleared after 2 seconds
+
+```js
+term.setInput("help")
+
+setTimeout(() => {
+    term.clearInput()
+}, 2000)
+```
 
 ## Next Step
 
