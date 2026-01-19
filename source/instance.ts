@@ -3,7 +3,7 @@ import XHistory from "./history/index";
 import XOutputComponent from "./output/index";
 import XInputComponent from "./input/index";
 import { createEffect } from "./base/reactivity";
-import { THEME, h, scrollDown } from "./renderer/dom";
+import { NEWLINE, THEME, h, scrollDown } from "./renderer/dom";
 import { isFunction, isMobile } from "./helpers";
 import {
     ARROW_DOWN_KEY,
@@ -87,7 +87,7 @@ export function setup(
         if (ev.key == ENTER_KEY) {
             ev.cancel();
             xhistory.add(ev.value);
-            instance.writelnSafe(ev.value);
+            output.writeSafe(ev.value + NEWLINE);
             instance.emit(DATA_EVENT, ev.value);
         } else if (ev.key == TAB_KEY) {
             ev.cancel();

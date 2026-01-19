@@ -135,6 +135,12 @@ export default class XInputComponent
         this.data.value = str;
     }
 
+    public clear(): void {
+        this.buffer = "";
+        this.data.value = "";
+        this.el.value = "";
+    }
+
     public pipe(output: IOutputInterface): void {
         const txtBefore = h<HTMLSpanElement>("span");
         const cursor = h<HTMLSpanElement>("span", {

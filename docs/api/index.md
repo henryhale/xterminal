@@ -14,6 +14,8 @@
 - [term.blur()](#term-blur)
 - [term.pause()](#term-pause)
 - [term.resume()](#term-resume)
+- [term.setInput()](#term-setinput)
+- [term.clearInput()](#term-clearinput)
 - [term.setCompleter()](#term-setcompleter)
 
 ### Output
@@ -85,7 +87,7 @@ Creates a terminal instance
         target: HTMLElement | string;
     }
 
-    class XTerminal extends XEventEmitter implements XTerminal {
+    class Terminal extends XEventEmitter implements XTerminal {
         constructor(options: TerminalOptions);
     }
     ```
@@ -306,7 +308,7 @@ Deactivate the terminal input component.
 
     This method will stop events and input from being written to the terminal but rather input will be buffered.
 
-    **NB:** It is used in conjuction with [term.resume()](#termresume).
+    **NB:** It is used in conjuction with [term.resume()](#term-resume).
 
 - **Example**
 
@@ -316,7 +318,7 @@ Deactivate the terminal input component.
     term.pause();
     ```
 
-- **See also:** [Guide - Pause & Resume](../guide/prompt.md#pause--resume)
+- **See also:** [Guide - Pause & Resume](../guide/prompt.md#pause-resume)
 
 ## term.resume()
 
@@ -332,7 +334,7 @@ Activate the terminal input component
   
 - **Details**
   
-    This method will enable events dispatch and user input if they were deactivate using [term.pause()](#termpause). 
+    This method will enable events dispatch and user input if they were deactivate using [term.pause()](#term-pause). 
 
 - **Example**
 
@@ -346,7 +348,59 @@ Activate the terminal input component
     term.resume();
     ```
 
-- **See also:** [Guide - Pause & Resume](../guide/prompt.md#pause--resume)
+- **See also:** [Guide - Pause & Resume](../guide/prompt.md#pause-resume)
+
+## term.setInput()
+
+Sets the value of the terminal input buffer
+
+- **Type**
+
+    ```ts
+    interface XTerminal {
+        setInput(value: string): void;
+    }
+    ```
+  
+- **Details**
+  
+    This method will set/modify the contents of the input buffer. 
+
+- **Example**
+
+    Presetting some input when the terminal is loaded or resumed
+
+    ```js
+    term.setInput("echo 'Hello World'");
+    ```
+
+- **See also:** [Guide - Set & Clear](../guide/prompt.md#set-clear)
+
+## term.clearInput()
+
+Clears the terminal input buffer
+
+- **Type**
+
+    ```ts
+    interface XTerminal {
+        clearInput(): void;
+    }
+    ```
+  
+- **Details**
+  
+    This method will empty/clear the contents of the input buffer. 
+
+- **Example**
+
+    Clearing the input buffer when the terminal [resumes](#term-resume)
+
+    ```js
+    term.clearInput();
+    ```
+
+- **See also:** [Guide - Set & Clear](../guide/prompt.md#set-clear)
 
 ## term.setCompleter()
 

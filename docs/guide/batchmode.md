@@ -6,7 +6,7 @@ This refers to the non interactive mode where the user does not input anything a
 
 Suppose that you want the users to only have a readonly interface or you would like to take control from the user for awhile, here is how you can achieve that;
 
-- Pause the terminal input using [term.pause()](./prompt.md#pause--resume)
+- Pause the terminal input using [term.pause()](./prompt.md#pause-resume)
 
 - Trigger events manually with arguments using [term.emit()](./events.md#arguments)
 

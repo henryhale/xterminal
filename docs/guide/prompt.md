@@ -1,4 +1,4 @@
-# Prompt
+# Input
 
 ## Prompt Style
 
@@ -115,13 +115,43 @@ function ask() {
 ```
 
 In the same way, you might want to blur the terminal for some reason, say after entering
-data and pressing the enter key. You can achieve that using the `data` event and the [term.blur()](../api/index.md#term-blur) method.
+data and pressing the Enter key. You can achieve that using the `data` event and the [term.blur()](../api/index.md#term-blur) method.
 
 ```js
 term.on('data', () => {
     term.blur();
 });
 ```
+
+## Set & Clear 
+
+Use [term.setInput()](../api/index.md#term-setinput) to simulate user input by modifying the value of the input buffer.
+This is useful in many scenarios, one of which is to preset some input in the terminal a user can use/modify/execute (so that they don't have to type it themselves).
+
+Here is an example:
+
+```js
+term.setInput("help")
+```
+
+<browser-preview hidelabel>
+
+    user@host:~ $ help▊
+</browser-preview>
+
+Given that we can now change the input buffer, [term.clearInput()](../api/index.md#term-clearinput) allows for clearing the input buffer, for instance, when you want to discard any user input or contents of the input buffer. 
+
+```js
+term.clearInput()
+```
+
+results into
+
+<browser-preview hidelabel>
+
+    user@host:~ $ ▊
+</browser-preview>
+
 
 ## Next Step
 
