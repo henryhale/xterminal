@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.1 (2026-01-24)
+
+### Bug Fixes
+
+* set isMounted to false when terminal is disposed ([988a610](https://github.com/henryhale/xterminal/commit/988a610d38bfe09d6ea66bfde9c55bdf7f8cb1b6))
+
 ## 2.2.0 (2026-01-19)
 
 ### Features
