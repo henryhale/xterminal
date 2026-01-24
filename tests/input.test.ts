@@ -40,10 +40,10 @@ describe("XInputComponent", () => {
     describe("pause and resume", () => {
         it("should pause and resume", () => {
             input.pause();
-            // @ts-ignore
+            // @ts-expect-error testing private property
             expect(input.isActive.value).toBe(false);
             input.resume();
-            // @ts-ignore
+            // @ts-expect-error testing private property
             expect(input.isActive.value).toBe(true);
         });
     });
@@ -52,7 +52,7 @@ describe("XInputComponent", () => {
         it("should set input value", () => {
             input.setValue("test");
             expect(input.el.value).toBe("test");
-            // @ts-ignore
+            // @ts-expect-error testing private property
             expect(input.data.value).toBe("test");
         });
     });
@@ -62,7 +62,7 @@ describe("XInputComponent", () => {
             input.setValue("test");
             input.clear();
             expect(input.el.value).toBe("");
-            // @ts-ignore
+            // @ts-expect-error testing private property
             expect(input.data.value).toBe("");
         });
     });
