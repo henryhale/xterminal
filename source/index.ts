@@ -122,6 +122,7 @@ export default class XTerminal extends XEventEmitter {
         state.input.dispose();
         const box = state.output.el.parentNode;
         box?.parentNode?.removeChild(box);
+        this.isMounted = false;
     }
 
     static get version() {
