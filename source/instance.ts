@@ -96,10 +96,10 @@ export function setup(
             }
         } else if (ev.key == ARROW_DOWN_KEY) {
             ev.cancel();
-            input.setValue(xhistory.next);
+            input.setValue(xhistory.next());
         } else if (ev.key == ARROW_UP_KEY) {
             ev.cancel();
-            input.setValue(xhistory.previous);
+            input.setValue(xhistory.previous());
         } else {
             instance.emit(KEYPRESS_EVENT, ev);
         }

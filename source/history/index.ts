@@ -28,13 +28,13 @@ export default class XHistory implements IHistory {
         this.ptr = -1;
     }
 
-    get previous(): string {
+    previous(): string {
         this.ptr++;
         if (this.ptr >= this.size) this.ptr = this.size - 1;
         return this.store[this.ptr] || "";
     }
 
-    get next(): string {
+    next(): string {
         this.ptr--;
         if (this.ptr <= -1) this.ptr = -1;
         return this.store[this.ptr] || "";

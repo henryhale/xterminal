@@ -10,12 +10,12 @@ export interface IHistory {
     /**
      * Getter: access one entry at a time (forward)
      */
-    next: string;
+    next(): string;
 
     /**
      * Getter: access one entry at a time (backwards)
      */
-    previous: string;
+    previous(): string;
 
     /**
      * Insert an input string to the stack
