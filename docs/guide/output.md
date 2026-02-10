@@ -49,12 +49,12 @@ Below is a list of available and ready to use escape characters;
     term.write(`Hello World!\n$ `);
     ```
 
-      <browser-preview>
+    <browser-preview>
 
-        Hello World!
-        $ ▊
+    Hello World!
+    $ ▊
 
-      </browser-preview>
+    </browser-preview>
 
     The same can be achieved using [term.writeln()](../api/index.md#term-writeln) which writes the
     data passed on the current line, followed by a new line character.
@@ -74,12 +74,12 @@ Below is a list of available and ready to use escape characters;
     term.writeln(`Hello World!\tYou're Welcome.`);
     ```
 
-      <browser-preview>
+    <browser-preview>
 
-        Hello World!    You're welcome.
-        ▊
+    Hello World!    You're welcome.
+    ▊
 
-      </browser-preview>
+    </browser-preview>
 
 ## HTML Strings
 
@@ -97,9 +97,9 @@ term.writeln(`<b>Bold Text</b> - <i>Italics</i>`);
 
 ### Safe Output
 
-::: warning
-- Use [term.writeSafe()](../api/index.md#term-writesafe) or [term.writelnSafe()](../api/index.md#term-writelnsafe) to safely output arbitrary data to the terminal.
-These methods sanitize the data before being output to the terminal, specifically, before appending it to the DOM.
+::: warning :warning: SECURITY WARNING
+- **Use [term.writeSafe()](../api/index.md#term-writesafe) or [term.writelnSafe()](../api/index.md#term-writelnsafe) to safely output arbitrary data to the terminal.**
+**These methods sanitize the data before being output to the terminal, specifically, before appending it to the DOM.**
 
 Avoid outputting data from arbitrary sources like user input or remote sources (such as images).  
 Doing so has been proved to allow for malicious attacks like XSS where a user may input some HTML
@@ -107,7 +107,7 @@ code that could potentially expose user information such as session cookies or e
 
 For example: `term.writeln("<img onerror=alert('hacked') />")` would run the malicious script and you would see an alert dialog.
 
-Additionally use [XTerminal.escapeHTML()](#xterminal-escapehtml) or external libraries like DOMPurify to sanitize arbitrary data before outputting it using `term.write()` or `term.writeln()`. See examples below.
+- **RECOMMENDED: Additionally use [XTerminal.escapeHTML()](#xterminal-escapehtml) or external libraries like [DOMPurify](https://www.npmjs.com/package/dompurify) to sanitize arbitrary data before outputting it using `term.write()` or `term.writeln()`. See examples below.**
 :::
 
 ```js
@@ -122,14 +122,19 @@ term.writelnSafe(`<b>Bold Text</b> - <i>Italics</i>`);
 
 Use [XTerminal.escapeHTML()](#xterminal-escapehtml) to sanitize some data before printing it.
 
-This is helpful when using HTML containers for some other data like showing errors in red.
+This is helpful when using HTML containers for some other data like showing styled error messages.
 
 ```js
 const err = `<img onerror="alert('hacked')" />`
 
-term.writeln(`<p style="color:red">${XTerminal.escapeHTML(err)}</p>`)
+term.writeln(`<p class="error">${XTerminal.escapeHTML(err)}</p>`)
 ```
 
+<browser-preview>
+
+\<img onerror="alert('hacked')" \/>
+<br>▊
+</browser-preview>
 
 ### Attributes
 
