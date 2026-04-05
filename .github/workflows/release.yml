@@ -29,14 +29,13 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   registry-url: https://registry.npmjs.org/
-                  node-version: 22
+                  node-version: latest
 
             # Install pnpm
             - uses: pnpm/action-setup@v4
               name: Install pnpm
               id: pnpm-install
               with:
-                  version: 10
                   cache: true
 
             # Install dependencies
