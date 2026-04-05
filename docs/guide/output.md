@@ -51,7 +51,7 @@ Below is a list of available and ready to use escape characters;
 
     <browser-preview>
 
-    Hello World!
+    Hello World!<br>
     $ ▊
 
     </browser-preview>
@@ -97,18 +97,43 @@ term.writeln(`<b>Bold Text</b> - <i>Italics</i>`);
 
 ### Safe Output
 
-::: warning :warning: SECURITY WARNING
-- **Use [term.writeSafe()](../api/index.md#term-writesafe) or [term.writelnSafe()](../api/index.md#term-writelnsafe) to safely output arbitrary data to the terminal.**
-**These methods sanitize the data before being output to the terminal, specifically, before appending it to the DOM.**
+::: warning :warning: CRITICAL SECURITY WARNING
 
-Avoid outputting data from arbitrary sources like user input or remote sources (such as images).  
-Doing so has been proved to allow for malicious attacks like XSS where a user may input some HTML
-code that could potentially expose user information such as session cookies or even inject malicious scripts on the page.
+**ALWAYS use [term.writeSafe()](../api/index.md#term-writesafe) or [term.writelnSafe()](../api/index.md#term-writelnsafe) for ANY data from untrusted sources.**
 
-For example: `term.writeln("<img onerror=alert('hacked') />")` would run the malicious script and you would see an alert dialog.
+These methods automatically sanitize the data before rendering it to the terminal, preventing XSS (Cross-Site Scripting) attacks.
 
-- **RECOMMENDED: Additionally use [XTerminal.escapeHTML()](#xterminal-escapehtml) or external libraries like [DOMPurify](https://www.npmjs.com/package/dompurify) to sanitize arbitrary data before outputting it using `term.write()` or `term.writeln()`. See examples below.**
+#### Never Do This ❌
+
+- **User input:** `term.writeln(userInput)` - If a user enters `<img onerror="alert('hacked')" />`, the script runs!
+- **External APIs:** `term.writeln(response.data)` - A malicious GitHub bio or similar field could inject code
+- **Form data:** `term.writeln(formField)` - Users could craft HTML payloads in forms
+
+#### Always Do This ✅
+
+For untrusted data (user input, API responses, form submissions):
+```js
+// Safe methods that automatically escape HTML
+term.writeSafe(userInput);
+term.writelnSafe(apiResponse.name);
+term.writelnSafe(formField);
+```
+
+#### HTML Output with Safe Data Sanitization
+
+If you need to output HTML markup while keeping data safe, use [XTerminal.escapeHTML()](#xterminal-escapehtml):
+```js
+// Mix safe HTML structure with escaped user data
+const name = apiResponse.name;  // Could be malicious!
+term.writeln(`<span class="user">${XTerminal.escapeHTML(name)}</span>`);
+```
+
+**Additional Resources:** For complex sanitization, consider external libraries like [DOMPurify](https://www.npmjs.com/package/dompurify).
 :::
+
+#### Example 1: Escape HTML for Safe Display
+
+When you need to display untrusted data (like arbitrary text), use `term.writeSafe()`:
 
 ```js
 term.writelnSafe(`<b>Bold Text</b> - <i>Italics</i>`);
@@ -120,14 +145,18 @@ term.writelnSafe(`<b>Bold Text</b> - <i>Italics</i>`);
 <br>▊
 </browser-preview>
 
-Use [XTerminal.escapeHTML()](#xterminal-escapehtml) to sanitize some data before printing it.
+#### Example 2: Safe Output with HTML Structure
 
-This is helpful when using HTML containers for some other data like showing styled error messages.
+Use [XTerminal.escapeHTML()](#xterminal-escapehtml) to safely embed untrusted data within custom HTML markup:
 
 ```js
-const err = `<img onerror="alert('hacked')" />`
+// UNSAFE - User data could contain malicious scripts
+const userName = `<img onerror="alert('hacked')" />`;
+term.writeln(`<p class="user">${userName}</p>`);  // Vulnerable!
 
-term.writeln(`<p class="error">${XTerminal.escapeHTML(err)}</p>`)
+// SAFE - Data is properly escaped
+const userName = `<img onerror="alert('hacked')" />`;
+term.writeln(`<p class="user">${XTerminal.escapeHTML(userName)}</p>`);
 ```
 
 <browser-preview>
@@ -135,6 +164,20 @@ term.writeln(`<p class="error">${XTerminal.escapeHTML(err)}</p>`)
 \<img onerror="alert('hacked')" \/>
 <br>▊
 </browser-preview>
+
+#### Example 3: Processing External API Responses
+
+```js
+// UNSAFE - API data could be malicious
+fetch('/api/user')
+    .then(res => res.json())
+    .then(user => term.writeln(`User: ${user.name}`));
+
+// SAFE - Use writeSafe for untrusted external data
+fetch('/api/user')
+    .then(res => res.json())
+    .then(user => term.writelnSafe(`User: ${user.name}`));
+```
 
 ### Attributes
 

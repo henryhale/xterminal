@@ -8,6 +8,7 @@ export interface IElementProps {
     class?: string;
     content?: string;
     html?: string;
+    isSafe?: boolean;
     children?: (string | Node)[];
     props?: object;
 }
