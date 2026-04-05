@@ -39,7 +39,8 @@ export default class XOutputComponent implements IOutputInterface {
 
     public write(data: string, callback?: () => void): void {
         this.lastOutput = h<HTMLSpanElement>("span", {
-            html: parseOutput(data)
+            html: parseOutput(data),
+            isSafe: true
         });
         this.console.appendChild(this.lastOutput);
         if (isFunction(this.onoutput)) this.onoutput();
@@ -47,7 +48,13 @@ export default class XOutputComponent implements IOutputInterface {
     }
 
     public writeSafe(data: string, callback?: () => void): void {
-        this.write(escapeHTML(data), callback);
+        this.lastOutput = h<HTMLSpanElement>("span", {
+            content: parseOutput(data),
+            isSafe: false
+        });
+        this.console.appendChild(this.lastOutput);
+        if (isFunction(this.onoutput)) this.onoutput();
+        if (isFunction(callback)) callback();
     }
 
     public clear(): void {

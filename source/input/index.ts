@@ -145,7 +145,8 @@ export default class XInputComponent
         const txtBefore = h<HTMLSpanElement>("span");
         const cursor = h<HTMLSpanElement>("span", {
             class: THEME.CURSOR,
-            html: SPACE
+            html: SPACE,
+            isSafe: true
         });
         const txtAfter = h<HTMLSpanElement>("span");
 
