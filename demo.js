@@ -1,17 +1,26 @@
 /**
- * Create a demo shell object 
+ * Create a demo shell object
  */
 
 // #region shell
-function createShell() {
 
+/**
+ * Escape HTML special characters to prevent XSS attacks
+ */
+function escapeHTML(text) {
+    const tmp = document.createElement("div");
+    tmp.textContent = text;
+    return tmp.innerHTML;
+}
+
+function createShell() {
     // Help
     const manual = `XTerminal : version ${XTerminal.version}
 
 Type 'help' to see this list
-  
+
 Commands:
-  
+
   gh (username)   search for github users
   js [expr]       execute a JS expression
   clear           clear the terminal screen
@@ -20,67 +29,71 @@ Commands:
 
     // Get public github user information
     async function fetchGitHubUser(username) {
-        return fetch('https://api.github.com/users/' + username)
-            .then(res => res.json())
-            .then(res => {
-                return(
-                    '<table border="0">' + 
-                        '<tr>' +
-                            `<td rowspan="3" width="100"><img width="75" src="${res.avatar_url}" alt="${res.name}" /></td>` +
-                            `<td>Name</td>` +
-                            `<td>${res.name}</td>` +
-                        '</tr>' +
-                        '<tr>' +
-                            `<td>Bio</td>` +
-                            `<td>${res.bio}</td>` +
-                        '</tr>' +
-                        '<tr>' +
-                            `<td>Repos</td>` +
-                            `<td>${res.public_repos}</td>` +
-                        '</tr>' +
-                    '</table>'
+        return fetch("https://api.github.com/users/" + username)
+            .then((res) => res.json())
+            .then((res) => {
+                const escapedName = escapeHTML(res.name);
+                const escapedBio = escapeHTML(res.bio);
+                const escapedRepos = escapeHTML(res.public_repos);
+                const escapedAvatar = escapeHTML(res.avatar_url);
+                return (
+                    '<table border="0">' +
+                    "<tr>" +
+                    `<td rowspan="3" width="100"><img width="75" src="${escapedAvatar}" alt="${escapedName}" /></td>` +
+                    `<td>Name</td>` +
+                    `<td>${escapedName}</td>` +
+                    "</tr>" +
+                    "<tr>" +
+                    `<td>Bio</td>` +
+                    `<td>${escapedBio}</td>` +
+                    "</tr>" +
+                    "<tr>" +
+                    `<td>Repos</td>` +
+                    `<td>${escapedRepos}</td>` +
+                    "</tr>" +
+                    "</table>"
                 );
             });
     }
 
     // evaluate user input from the terminal
     // -> can be shared among several terminal objects
-    function execute(term, command = '') {
-        let args = command.split(' ');
+    function execute(term, command = "") {
+        let args = command.split(" ");
         let cmd = args.shift();
         // GitHub User Search
-        if (cmd == 'gh') {
+        if (cmd == "gh") {
             return new Promise(async (res, rej) => {
                 let output, error;
                 term.write('<span class="spinner"></span> Searching...');
-                await fetchGitHubUser(args.join(''))
-                    .then(val => output = val)
-                    .catch(err => error = ':( Not found!')
+                await fetchGitHubUser(args.join(""))
+                    .then((val) => (output = val))
+                    .catch((err) => (error = ":( Not found!"))
                     .finally(() => term.clearLast());
                 if (error) rej(error);
                 else res(output);
             });
         }
         // JavaScript Evaluation
-        else if (cmd == 'js') {
+        else if (cmd == "js") {
             return new Promise((res, rej) => {
                 try {
-                    let output = eval(args.join(' ')) + '\n';
+                    let output = eval(args.join(" ")) + "\n";
                     res(output);
                 } catch (error) {
                     rej(error);
                 }
             });
-        } 
+        }
         // Help menu
-        else if (cmd == 'help') {
+        else if (cmd == "help") {
             return Promise.resolve(manual);
-        } 
+        }
         // Clear the terminal
-        else if (cmd == 'clear') {
+        else if (cmd == "clear") {
             term.clear();
             return Promise.resolve(null);
-        } 
+        }
         // Oopps!
         else {
             return Promise.reject(`sh: '${cmd}' command not found`);
@@ -88,7 +101,6 @@ Commands:
     }
 
     return { execute };
-
 }
 // #endregion shell
 
@@ -98,10 +110,9 @@ Commands:
 
 // #region terminal
 function createTerminal(target) {
-    
     const term = new XTerminal({ target });
 
-    const state = { 
+    const state = {
         username: "user",
         hostname: "web"
     };
@@ -118,19 +129,21 @@ function createTerminal(target) {
     }
 
     // user input handler
-    term.on("data", async input => {
-
+    term.on("data", async (input) => {
         // deactivate until the execution is done
         term.pause();
 
         // execute command
-        await shell.execute(term, input)
-            .then(res => res && term.writeln(res))
-            .catch(err => {
+        await shell
+            .execute(term, input)
+            .then((res) => res && term.writeln(res))
+            .catch((err) => {
                 if (err) {
                     // sanitize error to prevent xss attacks
                     // error may contain user input or HTML strings (like script tags)
-                    term.writeln(`<span class="error">${XTerminal.escapeHTML(err)}</span>\n`)
+                    term.writeln(
+                        `<span class="error">${XTerminal.escapeHTML(err)}</span>\n`
+                    );
                 }
             })
             .finally(promptUser);
@@ -139,11 +152,11 @@ function createTerminal(target) {
     // greeting message
     term.writeln("Welcome to XTerminal (v" + XTerminal.version + ")");
     term.writeln("Type `help` for available commands\n");
-    
+
     // kickstart
     promptUser();
 
     // remember to free resources
-    window.addEventListener('unload', () => term.dispose());
+    window.addEventListener("unload", () => term.dispose());
 }
 // #endregion terminal
