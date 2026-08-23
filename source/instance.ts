@@ -87,7 +87,8 @@ export function setup(
         if (ev.key == ENTER_KEY) {
             ev.cancel();
             xhistory.add(ev.value);
-            output.writeSafe(ev.value + NEWLINE);
+            output.writeSafe(ev.value);
+            output.write(NEWLINE);
             instance.emit(DATA_EVENT, ev.value);
         } else if (ev.key == TAB_KEY) {
             ev.cancel();
