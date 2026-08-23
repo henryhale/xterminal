@@ -82,7 +82,7 @@
         "prettier": "^3.9.6",
         "release-it": "^21.0.2",
         "rollup": "^4.62.5",
-        "typescript": "^7.0.2",
+        "typescript": "6.0.2",
         "typescript-eslint": "^8.67.0",
         "vite": "^8.2.2",
         "vitepress": "^1.6.4",
