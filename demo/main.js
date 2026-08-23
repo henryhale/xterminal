@@ -23,8 +23,9 @@ term.on('data', input => {
         term.clear();
     } else {
         // do something with the input
-        term.writelnSafe('Data: ' + input);
-        term.writelnSafe('Data: ' + input);
+        term.write('Data: ');
+        term.writeSafe(input);
+        term.writeln('');
     }
     // then prompt user for more input
     ask();
