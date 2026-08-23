@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.3](https://github.com/henryhale/xterminal/compare/v2.2.2...v2.2.3) (2026-08-23)
+
+### Bug Fixes
+
+* handle prompt output safely ([9043c27](https://github.com/henryhale/xterminal/commit/9043c27eaf8254223ff68b62a27b7cb2a6141c7a))
+* pin TypeScript to compatible version ([b510492](https://github.com/henryhale/xterminal/commit/b5104920c3b554989f0e1a9fa2448aac967e8e14))
+
 ## 2.2.2 (2026-04-05)
 
 ## 2.2.1 (2026-01-24)
